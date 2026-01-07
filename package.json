@@ -1,0 +1,47 @@
+{
+  "name": "userlify",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Design Agency - Turning Startup Ideas into Real Products",
+  "author": "SparkStudio-Ltd",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "rimraf .next out node_modules/.cache"
+  },
+  "dependencies": {
+    "next": "^15.1.8",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "gsap": "^3.12.7",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.6",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "typescript": "^5.7.3",
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.5.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "^15.1.8",
+    "@eslint/eslintrc": "^3.2.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "rimraf": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=24.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.4"
+}

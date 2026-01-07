@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 61, 29, 92;
+  --background-start-rgb: 255, 229, 220;
+  --background-end-rgb: 253, 248, 246;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+        to bottom,
+        rgb(var(--background-start-rgb)),
+        rgb(var(--background-end-rgb))
+      )
+      rgb(var(--background-end-rgb));
+    min-height: 100vh;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: rgba(232, 90, 60, 0.2);
+    color: #3d1d5c;
+  }
+
+  /* Focus visible styling */
+  :focus-visible {
+    outline: 2px solid #e85a3c;
+    outline-offset: 2px;
+  }
+
+  /* Smooth scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #fdf8f6;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d1b9e7;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b50c3;
+  }
+}
+
+@layer components {
+  /* Button base styles */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-medium transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-white shadow-button hover:bg-accent-600 hover:shadow-lg active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply border border-primary-800/20 bg-white/80 text-primary-800 backdrop-blur-sm hover:bg-white hover:border-primary-800/40;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Card styles */
+  .card {
+    @apply rounded-3xl bg-white/80 p-6 shadow-soft backdrop-blur-sm transition-all duration-300 hover:shadow-soft-lg;
+  }
+
+  /* Badge/Tag styles */
+  .tag {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-medium text-primary-800 shadow-soft;
+  }
+
+  .tag::before {
+    content: '';
+    @apply h-2 w-2 rounded-full bg-accent;
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-800 to-accent bg-clip-text text-transparent;
+  }
+
+  /* Background gradient */
+  .bg-gradient-hero {
+    background: radial-gradient(ellipse at bottom left, rgba(255, 229, 220, 0.8) 0%, transparent 50%),
+      radial-gradient(ellipse at top right, rgba(253, 248, 246, 1) 0%, transparent 50%),
+      linear-gradient(180deg, #fdf8f6 0%, #ffffff 100%);
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/70 backdrop-blur-md;
+  }
+
+  /* Animation delays */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+}

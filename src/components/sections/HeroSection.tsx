@@ -1,0 +1,132 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { Container } from '@/components/ui/Container';
+import { Button } from '@/components/ui/Button';
+import { ArrowUpRight } from '@/components/icons';
+
+const floatingTags = [
+  { text: 'App Design', position: 'left-[15%] top-[30%]' },
+  { text: 'Development', position: 'right-[18%] top-[25%]' },
+  { text: 'Web Design', position: 'right-[12%] top-[45%]' },
+];
+
+export function HeroSection() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const tagsRef = useRef<HTMLDivElement[]>([]);
+  const ctaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Heading animation
+      gsap.from(headingRef.current, {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+      });
+
+      // Tags animation with stagger
+      gsap.from(tagsRef.current, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power2.out',
+        delay: 0.3,
+      });
+
+      // Floating animation for tags
+      tagsRef.current.forEach((tag, index) => {
+        gsap.to(tag, {
+          y: 'random(-8, 8)',
+          duration: 'random(2, 3)',
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: index * 0.2,
+        });
+      });
+
+      // CTA animation
+      gsap.from(ctaRef.current, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        delay: 0.6,
+      });
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={heroRef}
+      className="relative min-h-screen overflow-hidden bg-gradient-hero pt-20"
+    >
+      {/* Background gradient orb */}
+      <div className="absolute -left-40 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-gradient-to-br from-accent-200/40 via-accent-100/20 to-transparent blur-3xl" />
+
+      <Container className="relative">
+        <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-center py-20 text-center">
+          {/* Floating Tags */}
+          <div className="absolute inset-0 hidden lg:block">
+            {floatingTags.map((tag, index) => (
+              <div
+                key={tag.text}
+                ref={(el) => {
+                  if (el) tagsRef.current[index] = el;
+                }}
+                className={`tag absolute ${tag.position}`}
+              >
+                {tag.text}
+              </div>
+            ))}
+          </div>
+
+          {/* Main heading */}
+          <h1
+            ref={headingRef}
+            className="max-w-4xl text-display-2 font-heading font-bold leading-tight text-primary-800 md:text-display-1"
+          >
+            Design Agency{' '}
+            <span className="block">
+              Turning Startup Ideas
+            </span>
+            <span className="block">
+              into <span className="font-heading italic text-accent">Real Products</span>
+            </span>
+          </h1>
+
+          {/* CTA Buttons */}
+          <div
+            ref={ctaRef}
+            className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6"
+          >
+            <Button href="/get-quote" variant="primary" size="lg">
+              Start Your Project
+              <ArrowUpRight className="h-5 w-5" />
+            </Button>
+            <Button href="/case-study" variant="secondary" size="lg">
+              View Our Work
+              <ArrowUpRight className="h-5 w-5" />
+            </Button>
+          </div>
+
+          {/* Mobile Tags */}
+          <div className="mt-12 flex flex-wrap justify-center gap-3 lg:hidden">
+            {floatingTags.map((tag) => (
+              <div key={tag.text} className="tag">
+                {tag.text}
+              </div>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Userlify",
+  "short_name": "Userlify",
+  "description": "Design Agency Turning Startup Ideas into Real Products",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF8F6",
+  "theme_color": "#3D1D5C",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
