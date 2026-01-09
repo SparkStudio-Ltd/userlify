@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
 import { ArrowUpRight } from '@/components/icons';
+import { Button } from '@/components/ui/Button';
+import { Container } from '@/components/ui/Container';
+import { gsap } from 'gsap';
+import { useEffect, useRef } from 'react';
 
 const floatingTags = [
   { text: 'App Design', position: 'left-[15%] top-[30%]' },
@@ -66,10 +66,10 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen overflow-hidden bg-gradient-hero pt-20"
+      className="bg-gradient-hero relative min-h-screen overflow-hidden pt-20"
     >
       {/* Background gradient orb */}
-      <div className="absolute -left-40 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-gradient-to-br from-accent-200/40 via-accent-100/20 to-transparent blur-3xl" />
+      <div className="absolute -left-40 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-gradient-to-br from-primary-200/40 via-primary-100/20 to-transparent blur-3xl" />
 
       <Container className="relative">
         <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-center py-20 text-center">
@@ -91,22 +91,16 @@ export function HeroSection() {
           {/* Main heading */}
           <h1
             ref={headingRef}
-            className="max-w-4xl text-display-2 font-heading font-bold leading-tight text-primary-800 md:text-display-1"
+            className="max-w-4xl font-heading text-display-2 font-medium leading-tight text-accent-950 md:text-display-1"
           >
-            Design Agency{' '}
+            Design Agency <span className="block">Turning Startup Ideas</span>
             <span className="block">
-              Turning Startup Ideas
-            </span>
-            <span className="block">
-              into <span className="font-heading italic text-accent">Real Products</span>
+              into <span className="font-serif italic text-primary">Real Products</span>
             </span>
           </h1>
 
           {/* CTA Buttons */}
-          <div
-            ref={ctaRef}
-            className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6"
-          >
+          <div ref={ctaRef} className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6">
             <Button href="/get-quote" variant="primary" size="lg">
               Start Your Project
               <ArrowUpRight className="h-5 w-5" />
