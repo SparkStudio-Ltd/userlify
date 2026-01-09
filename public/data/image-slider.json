@@ -1,0 +1,47 @@
+{
+  "slides": [
+    {
+      "id": 1,
+      "image": "/assets/images/sliderImg2.png",
+      "alt": "Device Screen Mockup"
+    },
+    {
+      "id": 2,
+      "image": "/assets/images/sliderImg3.png",
+      "alt": "Tablet and App Screen Mockup"
+    },
+    {
+      "id": 3,
+      "image": "/assets/images/sliderImg4.png",
+      "alt": "Mobile Phone Mockup"
+    },
+    {
+      "id": 4,
+      "image": "/assets/images/sliderImg5.png",
+      "alt": "Tablet Device Mockup"
+    },
+    {
+      "id": 5,
+      "image": "/assets/images/sliderImg2.png",
+      "alt": "MacBook and iPhone Mockup"
+    },
+    {
+      "id": 6,
+      "image": "/assets/images/sliderImg3.png",
+      "alt": "iPhone Pro Mockup"
+    }
+  ],
+  "config": {
+    "direction": "rtl",
+    "loop": true,
+    "mode": "center",
+    "aspectRatio": "5:7",
+    "padding": {
+      "vertical": "24px",
+      "horizontal": "16px"
+    },
+    "borderRadius": "24px",
+    "gap": "40px",
+    "animation": "smooth"
+  }
+}
