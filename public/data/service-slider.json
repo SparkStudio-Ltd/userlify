@@ -1,0 +1,63 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Product Design",
+      "icon": "/assets/icons/Vector1.svg"
+    },
+    {
+      "id": 2,
+      "name": "User Testing",
+      "icon": "/assets/icons/Vector3.svg"
+    },
+    {
+      "id": 3,
+      "name": "UI Design",
+      "icon": "/assets/icons/Vector5.svg"
+    },
+    {
+      "id": 4,
+      "name": "App Design",
+      "icon": "/assets/icons/Vector2.svg"
+    },
+    {
+      "id": 5,
+      "name": "User Testing",
+      "icon": "/assets/icons/Vector4.svg"
+    },
+    {
+      "id": 6,
+      "name": "App Design",
+      "icon": "/assets/icons/Vector6.svg"
+    },
+    {
+      "id": 7,
+      "name": "User Testing",
+      "icon": "/assets/icons/Vector1.svg"
+    }
+  ],
+  "config": {
+    "direction": "ltr",
+    "loop": true,
+    "iconSize": "24px",
+    "font": {
+      "family": "Nohemi",
+      "size": "30px",
+      "weight": "regular"
+    },
+    "padding": {
+      "vertical": "24px",
+      "horizontal": "28px"
+    },
+    "border": {
+      "width": "1px",
+      "color": "#E8E6E6"
+    },
+    "borderRadius": "56px",
+    "gap": "16px",
+    "animation": "smooth"
+  },
+  "spacing": {
+    "betweenSliders": "96px"
+  }
+}

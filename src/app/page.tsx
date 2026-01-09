@@ -1,5 +1,6 @@
-import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { Header } from '@/components/layout/Header';
+import { SliderSection } from '@/components/sections';
 import { HeroSection } from '@/components/sections/HeroSection';
 
 export default function HomePage() {
@@ -8,7 +9,7 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
-        {/* Additional sections will be added here */}
+        <SliderSection />
       </main>
       <Footer />
     </>
