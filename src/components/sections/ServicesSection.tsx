@@ -85,7 +85,7 @@ export default function ServicesSection() {
                         </div>
                     </div>
 
-                    {/* RIGHT SECTION - The Card Deck */}
+                    {/* RIGHT-SECTION - The Card Deck */}
                     {/* Note: Fixed height h-[600px] is required for absolute children */}
                     <div className="lg:w-1/2 relative h-[600px] w-full" ref={cardsContainerRef}>
                         {servicesData.cards.map((card, index) => (
