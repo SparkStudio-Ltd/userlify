@@ -17,6 +17,7 @@
     "clean": "rimraf .next out node_modules/.cache"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "clsx": "^2.1.1",
     "gsap": "^3.14.2",
     "next": "^15.1.8",
