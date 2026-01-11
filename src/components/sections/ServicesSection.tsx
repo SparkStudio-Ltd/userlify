@@ -2,60 +2,87 @@
 
 import servicesData from '@/../public/data/services.json';
 import { ServiceCard } from '@/components/cards';
+import { ArrowUpRight } from '@/components/icons';
 import { Button } from '@/components/ui';
+import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
 import { useRef } from 'react';
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function ServicesSection() {
     const sectionRef = useRef<HTMLElement>(null);
-    const cardsContainerRef = useRef<HTMLDivElement>(null);
-    const cardsRef = useRef<HTMLDivElement[]>([]);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    // Refs for background elements
+    const starRef1 = useRef(null);
+    const starRef2 = useRef(null);
+    const blobRef = useRef(null);
 
     useGSAP(() => {
-        const cards = cardsRef.current.filter(Boolean);
-        if (!cards.length || !sectionRef.current) return;
-
-        // Create the main stacking timeline
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top top',
-                end: `+=${cards.length * 1000}`, // Longer scroll for smoother stacking
-                pin: true,
-                scrub: true,
-            },
+        // ---------------------------------------------------------
+        // 1. BACKGROUND DECORATION ANIMATIONS
+        // ---------------------------------------------------------
+        gsap.to(starRef1.current, {
+            scale: 1.2,
+            opacity: 1,
+            duration: 0.5,
+            ease: "power1.inOut",
+            yoyo: true,
+            repeat: -1
         });
 
-        // 1. Initial State: Only the first card is visible
-        // We set initial opacity/y for all cards to match your Expertise logic
-        gsap.set(cards, { opacity: 0, y: 100 });
-        gsap.set(cards[0], { opacity: 1, y: 0 });
+        gsap.to(starRef2.current, {
+            rotation: 360,
+            duration: 20,
+            ease: "linear",
+            repeat: -1,
+            transformOrigin: "50% 50%"
+        });
 
-        // 2. Animate each additional card to stack on top of the previous one
-        // This follows your slice(1) logic exactly
-        cards.slice(1).forEach((card, index) => {
-            tl.fromTo(
-                card,
-                { y: 400, opacity: 0 }, // Start deeper for a clearer "slide up"
-                { 
-                    y: 0, 
-                    opacity: 1, 
-                    duration: 0.75, 
-                    ease: 'power2.out' 
+        gsap.to(blobRef.current, {
+            keyframes: {
+                "0%": { x: 0, y: 0 },
+                "25%": { x: -8, y: -8 },
+                "50%": { x: -15, y: -15 },
+                "75%": { x: -8, y: 8 },
+                "100%": { x: 0, y: 0 }
+            },
+            duration: 5,
+            ease: "none",
+            repeat: -1
+        });
+
+        // ---------------------------------------------------------
+        // 2. CARD REVEAL ANIMATION (Blur <-> Clear)
+        // ---------------------------------------------------------
+
+        const cards = gsap.utils.toArray('.card-item');
+
+        cards.forEach((card) => {
+            gsap.fromTo(card as Element,
+                {
+                    filter: "blur(20px)",
+                    opacity: 0,
+                    y: 100 // Start 100px lower
                 },
-                (index + 1) * 0.5 // Staggered start time in the timeline
+                {
+                    filter: "blur(0px)",
+                    opacity: 1,
+                    y: 0,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: card as Element,
+                        start: "top 85%", // Animation starts when card hits 85% of viewport
+                        end: "top 55%",   // Animation ends when card hits 55% of viewport
+                        scrub: 1,         // Tie animation to scroll (reverse on scroll up)
+                        toggleActions: "play reverse play reverse"
+                    }
+                }
             );
-
-            // Optional: Slight scale effect on the card underneath to add depth
-            tl.to(cards[index], {
-                scale: 0.95,
-                opacity: 0.7,
-                duration: 0.5
-            }, "<"); 
         });
 
     }, { scope: sectionRef });
@@ -63,45 +90,48 @@ export default function ServicesSection() {
     return (
         <section
             ref={sectionRef}
-            className="w-full bg-black py-32 px-4 md:px-8 lg:px-16 overflow-hidden"
+            className="relative w-full bg-[#0a0a0a] py-32 px-4 md:px-8 lg:px-16 min-h-screen text-white"
         >
-            <div className="max-w-7xl mx-auto h-full">
-                <div className="flex flex-col lg:flex-row gap-24 items-start h-full">
-                    
-                    {/* LEFT SECTION - Stays pinned and visible */}
-                    <div className="lg:w-1/2 flex flex-col justify-start pt-10">
-                        <h2 className="text-white text-5xl font-bold mb-6 leading-tight">
-                            Design Agency Turning <br />
-                            <span className="italic font-serif text-gray-400">
-                                Startup Ideas into Real
-                            </span>
+            {/* BACKGROUND LAYERS */}
+
+            <div className="max-w-7xl mx-auto relative z-10">
+                <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+
+                    {/* LEFT CONTENT (Sticky) */}
+                    {/* Added 'h-fit' to ensure it takes only necessary height for sticky calculation */}
+                    <div className="lg:w-1/2 flex flex-col justify-start pt-4 lg:sticky lg:top-64 h-fit">
+                        <h2 className="text-white text-5xl md:text-6xl font-bold mb-6 leading-[1.1]">
+                            Do you know how <br />
+                            <span className="text-gray-400">Cryptocurrency</span> app works?
                         </h2>
-                        <p className="text-gray-300 text-lg mb-8 max-w-md">
-                            We&apos;re proud to have designed apps and digital experiences
-                            that are live on the Play Store and App Store.
+                        <p className="text-gray-400 text-lg mb-8 max-w-md leading-relaxed">
+                            Discover the basics of how cryptocurrency apps function—from wallet integration
+                            and real-time price tracking to secure transactions.
                         </p>
                         <div>
-                            <Button variant="primary" href="#">Start Your Project</Button>
+
+                            <Button href="/case-study" variant="primary" size="lg">
+                                Start Your Project
+                                <ArrowUpRight className="h-5 w-5" />
+                            </Button>
                         </div>
                     </div>
 
-                    {/* RIGHT-SECTION - The Card Deck */}
-                    {/* Note: Fixed height h-[600px] is required for absolute children */}
-                    <div className="lg:w-1/2 relative h-[600px] w-full" ref={cardsContainerRef}>
-                        {servicesData.cards.map((card, index) => (
+                    {/* RIGHT CONTENT (Scrolling List) */}
+                    <div ref={containerRef} className="lg:w-1/2 w-full flex flex-col gap-8">
+                        {servicesData.cards.map((card) => (
                             <div
                                 key={card.id}
-                                ref={(el) => { if (el) cardsRef.current[index] = el; }}
-                                // Absolute top-0 is crucial so they all stack in one spot
-                                className="card-item absolute top-0 left-0 w-full"
-                                style={{ zIndex: index + 1 }}
+                                className="card-item w-full"
                             >
-                                <ServiceCard
-                                    title={card.title}
-                                    icon={card.icon}
-                                    description={card.description}
-                                    tags={card.tags}
-                                />
+                                <div className="transition-colors duration-300">
+                                    <ServiceCard
+                                        title={card.title}
+                                        icon={card.icon}
+                                        description={card.description}
+                                        tags={card.tags}
+                                    />
+                                </div>
                             </div>
                         ))}
                     </div>
