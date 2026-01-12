@@ -89,7 +89,7 @@ export default function WhyChooseUsSection() {
 
     return (
         <section className="w-full py-[120px] bg-white">
-            <div className="max-w-[1472px] mx-auto px-4">
+            <div className="max-w-[1472px] mx-auto">
                 {/* Title Container */}
                 <div ref={titleRef} className="flex flex-col items-center gap-4 mb-24">
                     {/* Kicker */}
