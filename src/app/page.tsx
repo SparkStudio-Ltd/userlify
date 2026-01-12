@@ -1,6 +1,7 @@
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import {
+  ProjectsSection,
   ServicesSection,
   SliderSection,
   WhyChooseUsSection,
@@ -16,6 +17,7 @@ export default function HomePage() {
         <SliderSection />
         <ServicesSection />
         <WhyChooseUsSection />
+        <ProjectsSection />
       </main>
       <Footer />
     </>

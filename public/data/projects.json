@@ -1,0 +1,52 @@
+[
+  {
+    "id": "project-1-desktop",
+    "title": "Project 1",
+    "description": "Designed a sleek, user-friendly web app interface for TechFlow, enhancing usability and improving customer engagement.",
+    "image": "/assets/images/projectImg1.png",
+    "tags": [
+      "Troubleshooting Challenges",
+      "Resolving Issues",
+      "Finding Solutions",
+      "Addressing Problems",
+      "Overcoming Obstacles"
+    ]
+  },
+  {
+    "id": "project-1-mobile-mockup",
+    "title": "Project 1",
+    "description": "Designed a sleek, user-friendly web app interface for TechFlow, enhancing usability and improving customer engagement.",
+    "image": "/assets/images/projectImg2.png",
+    "tags": [
+      "Troubleshooting Challenges",
+      "Resolving Issues",
+      "Finding Solutions",
+      "Addressing Problems"
+    ]
+  },
+  {
+    "id": "project-1-product-shot",
+    "title": "Project 1",
+    "description": "Designed a sleek, user-friendly web app interface for TechFlow, enhancing usability and improving customer engagement.",
+    "image": "/assets/images/projectImg3.png",
+    "tags": [
+      "Troubleshooting Challenges",
+      "Resolving Issues",
+      "Finding Solutions",
+      "Addressing Problems"
+    ]
+  },
+  {
+    "id": "project-1-mobile-ui",
+    "title": "Project 1",
+    "description": "Designed a sleek, user-friendly web app interface for TechFlow, enhancing usability and improving customer engagement.",
+    "image": "/assets/images/projectImg4.png",
+    "tags": [
+      "Troubleshooting Challenges",
+      "Resolving Issues",
+      "Finding Solutions",
+      "Addressing Problems",
+      "Overcoming Obstacles"
+    ]
+  }
+]
