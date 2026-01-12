@@ -1,0 +1,44 @@
+[
+  {
+    "id": "user-first-design",
+    "title": "User-First Design",
+    "description": "Userlify is a growing creative UI/UX design service company helping startups turn ideas into user-focused digital products.",
+    "icon": "/assets/icons/whySvg1.svg",
+    "variant": "default"
+  },
+  {
+    "id": "startup-focused",
+    "title": "Startup Focused",
+    "description": "Userlify is a growing creative UI/UX design service company helping startups turn ideas into user-focused digital products. We design experiences that are simple.",
+    "icon": "/assets/icons/whySvg2.svg",
+    "variant": "default"
+  },
+  {
+    "id": "product-thinking",
+    "title": "Product Thinking",
+    "description": "Userlify is a growing creative UI/UX design service company helping startups turn ideas into user-focused products.",
+    "icon": "/assets/icons/whySvg3.svg",
+    "variant": "default"
+  },
+  {
+    "id": "fast-flexible-1",
+    "title": "Fast & Flexible",
+    "description": "Userlify is a growing creative UI/UX design service company helping startups turn ideas into user-focused",
+    "icon": "/assets/icons/whySvg4.svg",
+    "variant": "default"
+  },
+  {
+    "id": "fast-flexible-2",
+    "title": "Fast & Flexible",
+    "description": "Userlify is a growing creative UI/UX design service company helping startups turn ideas into user-focused",
+    "icon": "/assets/icons/whySvg4.svg",
+    "variant": "default"
+  },
+  {
+    "id": "fast-flexible-highlight",
+    "title": "Fast & Flexible",
+    "description": "Userlify is a growing creative UI/UX design service company helping startups turn ideas into user-focused",
+    "icon": "/assets/icons/whySvg4.svg",
+    "variant": "default"
+  }
+]
