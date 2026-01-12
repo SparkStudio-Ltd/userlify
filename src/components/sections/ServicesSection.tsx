@@ -90,11 +90,11 @@ export default function ServicesSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full bg-[#0a0a0a] py-32 px-4 md:px-8 lg:px-16 min-h-screen text-white"
+            className="relative w-full bg-[#030712] py-32 px-4 md:px-8 lg:px-16 min-h-screen text-white"
         >
             {/* BACKGROUND LAYERS */}
 
-            <div className="max-w-7xl mx-auto relative z-10">
+            <div className="max-w-[1472px] mx-auto relative z-10">
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
 
                     {/* LEFT CONTENT (Sticky) */}

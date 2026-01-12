@@ -1,6 +1,6 @@
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
-import { ServicesSection, SliderSection } from '@/components/sections';
+import { ProjectsSection, ServicesSection, SliderSection } from '@/components/sections';
 import { HeroSection } from '@/components/sections/HeroSection';
 
 export default function HomePage() {
@@ -11,6 +11,7 @@ export default function HomePage() {
         <HeroSection />
         <SliderSection />
         <ServicesSection />
+        <ProjectsSection />
       </main>
       <Footer />
     </>
