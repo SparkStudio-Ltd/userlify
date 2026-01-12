@@ -21,7 +21,7 @@ export default function ServiceCard({
             }}
         >
             {/* Icon */}
-            <div className="w-16 h-16 mb-6 relative">
+            <div className="w-20 h-20 mb-6 relative">
                 <Image
                     src={icon}
                     alt={title}
@@ -32,7 +32,7 @@ export default function ServiceCard({
             </div>
 
             {/* Title */}
-            <h3 className="text-white text-[30px] font-semibold mb-4">{title}</h3>
+            <h3 className="text-white text-3xl font-normal mb-4 leading-9">{title}</h3>
 
             {/* Description */}
             <p

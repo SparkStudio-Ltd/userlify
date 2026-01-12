@@ -100,20 +100,27 @@ export default function ServicesSection() {
                     {/* LEFT CONTENT (Sticky) */}
                     {/* Added 'h-fit' to ensure it takes only necessary height for sticky calculation */}
                     <div className="lg:w-1/2 flex flex-col justify-start pt-4 lg:sticky lg:top-64 h-fit">
-                        <h2 className="text-white text-5xl md:text-6xl font-bold mb-6 leading-[1.1]">
-                            Do you know how <br />
-                            <span className="text-gray-400">Cryptocurrency</span> app works?
+                        <h2 className="text-white text-5xl font-[500] mb-6 leading-tight">
+                            Design Agency Turning <br />
+                            <span className="italic font-serif font-[400]">
+                                Startup Ideas into Real
+                            </span>
                         </h2>
-                        <p className="text-gray-400 text-lg mb-8 max-w-md leading-relaxed">
-                            Discover the basics of how cryptocurrency apps function—from wallet integration
-                            and real-time price tracking to secure transactions.
+                        <p
+                            className="text-gray-300 text-lg leading-relaxed mb-8"
+                            style={{ fontFamily: 'Public Sans, sans-serif' }}
+                        >
+                            We're proud to have designed apps and digital experiences
+                            that are live on the Play Store and App Store. Each project
+                            reflects our passion for usability, creativity, and
+                            measurable business growth.
                         </p>
                         <div>
-
-                            <Button href="/case-study" variant="primary" size="lg">
+                            <Button href="/get-quote" variant="primary" size="lg">
                                 Start Your Project
                                 <ArrowUpRight className="h-5 w-5" />
                             </Button>
+
                         </div>
                     </div>
 
