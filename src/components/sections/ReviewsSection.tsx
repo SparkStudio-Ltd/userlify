@@ -27,7 +27,7 @@ export default function ReviewsSection() {
         // GSAP animation - right to left
         animationRef.current = gsap.to(slider, {
             x: -totalWidth,
-            duration: 30,
+            duration: 60,
             ease: 'none',
             repeat: -1,
             modifiers: {
