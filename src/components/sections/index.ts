@@ -1,4 +1,5 @@
 export { default as ClientsSection } from './ClientsSection';
+export { default as FAQSection } from './FAQSection';
 export { HeroSection } from './HeroSection';
 export { default as ProcessSection } from './ProcessSection';
 export { default as ProjectsSection } from './ProjectsSection';
