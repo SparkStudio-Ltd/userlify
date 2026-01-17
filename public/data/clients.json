@@ -1,0 +1,37 @@
+[
+  {
+    "id": "brand-01",
+    "name": "Nietzsche",
+    "logo_url": "/assets/images/client1.png"
+  },
+  {
+    "id": "brand-02",
+    "name": "Epicurious",
+    "logo_url": "/assets/images/client2.png"
+  },
+  {
+    "id": "brand-03",
+    "name": "CloudWatch",
+    "logo_url": "/assets/images/client3.png"
+  },
+  {
+    "id": "brand-04",
+    "name": "Acme Corp",
+    "logo_url": "/assets/images/client4.png"
+  },
+  {
+    "id": "brand-05",
+    "name": "Polymath",
+    "logo_url": "/assets/images/client5.png"
+  },
+  {
+    "id": "brand-06",
+    "name": "Craftgram",
+    "logo_url": "/assets/images/client6.png"
+  },
+  {
+    "id": "brand-07",
+    "name": "ZenZap",
+    "logo_url": "/assets/images/client7.png"
+  }
+]
