@@ -1,3 +1,4 @@
+export { default as BlogSection } from './BlogSection';
 export { default as ClientsSection } from './ClientsSection';
 export { default as FAQSection } from './FAQSection';
 export { HeroSection } from './HeroSection';

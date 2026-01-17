@@ -1,3 +1,4 @@
+export { default as BlogCard } from './BlogCard';
 export { default as FAQItem } from './FAQItem';
 export { ProjectCard } from './ProjectCard';
 export { default as ReviewCard } from './ReviewCard';
