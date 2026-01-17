@@ -3,6 +3,7 @@ import { Header } from '@/components/layout/Header';
 import {
   BlogSection,
   ClientsSection,
+  CTASection,
   FAQSection,
   ProcessSection,
   ProjectsSection,
@@ -28,6 +29,7 @@ export default function HomePage() {
         <ProcessSection />
         <FAQSection />
         <BlogSection />
+        <CTASection />
       </main>
       <Footer />
     </>
