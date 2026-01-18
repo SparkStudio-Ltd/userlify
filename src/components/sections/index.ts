@@ -1,5 +1,6 @@
 export { default as BlogSection } from './BlogSection';
 export { default as ClientsSection } from './ClientsSection';
+export { default as ContactUsSection } from './ContactUsSection';
 export { default as CTASection } from './CTASection';
 export { default as FAQSection } from './FAQSection';
 export { HeroSection } from './HeroSection';
@@ -9,4 +10,3 @@ export { default as ReviewsSection } from './ReviewsSection';
 export { default as ServicesSection } from './ServicesSection';
 export { default as SliderSection } from './SliderSection';
 export { default as WhyChooseUsSection } from './WhyChooseUsSection';
-
