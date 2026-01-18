@@ -66,13 +66,13 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="bg-gradient-hero relative min-h-screen overflow-hidden pt-20"
+      className="bg-gradient-hero relative overflow-hidden"
     >
       {/* Background gradient orb */}
       <div className="absolute -left-40 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-gradient-to-br from-primary-200/40 via-primary-100/20 to-transparent blur-3xl" />
 
       <Container className="relative">
-        <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-center py-20 text-center">
+        <div className="flex min-h-[694px] flex-col items-center justify-center mx-auto text-center">
           {/* Floating Tags */}
           <div className="absolute inset-0 hidden lg:block">
             {floatingTags.map((tag, index) => (
