@@ -16,14 +16,14 @@ export default function BlogCard({
     readTime,
 }: BlogCardProps) {
     return (
-        <div className="flex flex-col gap-8">
+        <div className="group flex flex-col gap-8">
             {/* Cover Image */}
             <div className="relative w-full aspect-[3/2] border border-[#E8E6E6] rounded-[32px] overflow-hidden">
                 <Image
                     src={coverImage}
                     alt={title}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
                 />
             </div>
