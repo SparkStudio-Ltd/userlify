@@ -24,16 +24,17 @@ export default function ClientsSection() {
         const firstClone = slider.innerHTML;
         slider.innerHTML = firstClone + firstClone;
 
-        // GSAP animation - right to left
-        animationRef.current = gsap.to(slider, {
-            x: -totalWidth,
+        // GSAP animation - left to right
+        animationRef.current = gsap.fromTo(
+            slider,
+            { x: -totalWidth },
+            {
+                x: 0,
             duration: 40,
             ease: 'none',
             repeat: -1,
-            modifiers: {
-                x: gsap.utils.unitize((x) => parseFloat(x) % totalWidth),
-            },
-        });
+            }
+        );
 
         // Pause on hover
         const handleMouseEnter = () => {
