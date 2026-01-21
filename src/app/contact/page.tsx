@@ -1,10 +1,11 @@
 'use client';
 
-import { Header } from '@/components/layout';
+import { Footer, Header } from '@/components/layout';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import gsap from 'gsap';
+import { CTASection, FAQSection } from '@/components/sections';
 
 const serviceTypes = [
     'UI/UX Design',
@@ -414,6 +415,9 @@ export default function ContactPage() {
                     </div>
                 </div>
             </main>
+            <FAQSection/>
+            <CTASection/>
+            <Footer/>
         </>
     );
 }
