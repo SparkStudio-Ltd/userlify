@@ -1,0 +1,33 @@
+{
+  "stats_section": {
+    "tag": "STATS",
+    "heading": "Real Products, Real Impact",
+    "subheading": "Designed by Userlify"
+  },
+  "stat_items": [
+    {
+      "id": 1,
+      "title": "UI/UX Design",
+      "description": "We're proud to have designed apps and digital experiences that are live on the Play Store and App Store.",
+      "position": "top-left" 
+    },
+    {
+      "id": 2,
+      "title": "Web Development",
+      "description": "Robust front-end and back-end solutions built to scale with your growing user base.",
+      "position": "center-left"
+    },
+    {
+      "id": 3,
+      "title": "Product Strategy",
+      "description": "Data-driven insights that help pivot your product towards maximum market fit.",
+      "position": "center-right"
+    },
+    {
+      "id": 4,
+      "title": "Brand Identity",
+      "description": "Crafting unique visual identities that resonate with your target audience instantly.",
+      "position": "bottom-right"
+    }
+  ]
+}
