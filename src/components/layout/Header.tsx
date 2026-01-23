@@ -12,7 +12,7 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Features', href: '/features' },
   { name: 'Case Study', href: '/case-study' },
-  { name: 'Pricing', href: '/pricing' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export function Header() {
