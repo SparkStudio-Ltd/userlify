@@ -3,6 +3,7 @@ export { default as ClientsSection } from './ClientsSection';
 export { default as ContactUsSection } from './ContactUsSection';
 export { default as CTASection } from './CTASection';
 export { default as FAQSection } from './FAQSection';
+export { default as FAQSectionContact } from './FAQSection_contact';
 export { HeroSection } from './HeroSection';
 export { default as ProcessSection } from './ProcessSection';
 export { default as ProjectsSection } from './ProjectsSection';

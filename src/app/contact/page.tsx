@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import gsap from 'gsap';
-import { CTASection, FAQSection } from '@/components/sections';
+import { CTASection, FAQSectionContact } from '@/components/sections';
 
 const serviceTypes = [
     'UI/UX Design',
@@ -415,7 +415,7 @@ export default function ContactPage() {
                     </div>
                 </div>
             </main>
-            <FAQSection/>
+            <FAQSectionContact/>
             <CTASection/>
             <Footer/>
         </>
