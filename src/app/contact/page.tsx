@@ -2,6 +2,7 @@
 
 import { Footer, Header } from '@/components/layout';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import gsap from 'gsap';
@@ -33,6 +34,7 @@ export default function ContactPage() {
     const headerRef = useRef<HTMLDivElement>(null);
     const leftCardRef = useRef<HTMLDivElement>(null);
     const rightCardRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
     const [selectedService, setSelectedService] = useState(
         typeof window !== 'undefined' ? sessionStorage.getItem('contactService') || '' : ''
@@ -140,6 +142,17 @@ export default function ContactPage() {
         e.preventDefault();
         // Handle form submission locally for now
         console.log('Form submitted:', { ...formData, service: selectedService });
+
+        
+
+        // if (typeof window !== 'undefined') {
+        //     sessionStorage.removeItem('contactService');
+        //     sessionStorage.removeItem('contactName');
+        //     sessionStorage.removeItem('contactEmail');
+        //     sessionStorage.removeItem('contactPhone');
+        //     sessionStorage.removeItem('contactMessage');
+        // }
+        // router.push('/thank-you');
     };
 
 
