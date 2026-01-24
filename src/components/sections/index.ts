@@ -11,3 +11,4 @@ export { default as ReviewsSection } from './ReviewsSection';
 export { default as ServicesSection } from './ServicesSection';
 export { default as SliderSection } from './SliderSection';
 export { default as WhyChooseUsSection } from './WhyChooseUsSection';
+export { default as AboutTopSection } from './AboutTop'
