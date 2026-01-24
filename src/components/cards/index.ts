@@ -4,4 +4,4 @@ export { ProjectCard } from './ProjectCard';
 export { default as ReviewCard } from './ReviewCard';
 export { default as ServiceCard } from './ServiceCard';
 export { default as WhyChooseUsCard } from './WhyChooseUsCard';
-
+export { default as AboutChooseCard } from './AboutChooseCard';

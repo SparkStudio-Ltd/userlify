@@ -1,0 +1,28 @@
+{
+  "cards": [
+    {
+      "id": "startup-focused",
+      "title": "Startup Focused",
+      "icon": "/assets/icons/whySvg2.svg",
+      "description": "Userlify is a growing creative UI/UX design service company helping startups turn ideas into user-focused digital products. We design experiences that are simple,"
+    },
+    {
+      "id": "user-first-design",
+      "title": "User-First Design",
+      "icon": "/assets/icons/whySvg1.svg",
+      "description": "Userlify is a growing creative UI/UX design service company helping startups turn ideas into user-focused digital products. We design experiences that are simple,"
+    },
+    {
+      "id": "product-thinking",
+      "title": "Product Thinking",
+      "icon": "/assets/icons/whySvg3.svg",
+      "description": "Userlify is a growing creative UI/UX design service company helping startups turn ideas into user-focused digital products. We design experiences that are simple,"
+    },
+    {
+      "id": "fast-and-flexible",
+      "title": "Fast & Flexible",
+      "icon": "/assets/icons/whySvg4.svg",
+      "description": "Userlify is a growing creative UI/UX design service company helping startups turn ideas into user-focused digital products. We design experiences that are simple,"
+    }
+  ]
+}

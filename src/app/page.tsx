@@ -12,6 +12,7 @@ import {
   ServicesSection,
   SliderSection,
   WhyChooseUsSection,
+  FeaturedSection,
 } from '@/components/sections';
 import { HeroSection } from '@/components/sections/HeroSection';
 
@@ -22,6 +23,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <SliderSection />
+        <FeaturedSection /> 
         <ServicesSection />
         <WhyChooseUsSection />
         <ProjectsSection />
