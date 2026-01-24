@@ -36,7 +36,7 @@ export default function AboutTopSection() {
                 </div>
 
                 <div className="relative">
-                  <div className="absolute -left-6 -top-8 h-64 w-64 rounded-full bg-gradient-to-br from-[#F6B9A4] via-[#F9D6C7] to-transparent blur-3xl opacity-70" />
+                  <div className="absolute -left-6 -top-8 h-[650px] w-[700px] rounded-full bg-gradient-to-br from-[#F6B9A4] via-[#F9D6C7] to-transparent blur-3xl opacity-70" />
                   <div className="relative flex h-[482px] w-[576px] flex-col gap-10 rounded-3xl bg-white p-10 shadow-soft-lg">
                     <div className="flex h-20 w-20 items-center justify-center gap-2 rounded-[99px] bg-[#F2EDFD]">
                       <Image

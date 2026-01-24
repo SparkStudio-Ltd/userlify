@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { AboutTopSection } from '@/components/sections';
+import { AboutTopSection, CTASection } from '@/components/sections';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -13,6 +13,7 @@ export default function AboutPage() {
     <>
       <Header />
       <AboutTopSection/>
+      <CTASection/>
       <Footer />
     </>
   );
