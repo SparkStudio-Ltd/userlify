@@ -7,9 +7,9 @@ import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 
 const floatingTags = [
-  { text: 'App Design', position: 'left-[15%] top-[30%]' },
-  { text: 'Development', position: 'right-[18%] top-[25%]' },
-  { text: 'Web Design', position: 'right-[12%] top-[45%]' },
+  { text: 'App Design', position: 'left-[27%] top-[20%]' },
+  { text: 'Development', position: 'right-[42%] top-[22%]' },
+  { text: 'Web Design', position: 'right-[23%] top-[33%]' },
 ];
 
 export function HeroSection() {
@@ -58,6 +58,48 @@ export function HeroSection() {
         ease: 'power2.out',
         delay: 0.6,
       });
+
+      // Anti-magnetic effect on mouse move
+      const handleMouseMove = (e: MouseEvent) => {
+        tagsRef.current.forEach((tag) => {
+          if (!tag) return;
+
+          const rect = tag.getBoundingClientRect();
+          const tagCenterX = rect.left + rect.width / 2;
+          const tagCenterY = rect.top + rect.height / 2;
+
+          const distanceX = e.clientX - tagCenterX;
+          const distanceY = e.clientY - tagCenterY;
+          const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+          const maxDistance = 200; // pixels
+
+          if (distance < maxDistance) {
+            const force = (maxDistance - distance) / maxDistance;
+            const moveX = -distanceX * force * 0.3;
+            const moveY = -distanceY * force * 0.3;
+
+            gsap.to(tag, {
+              x: moveX,
+              duration: 0.3,
+              ease: 'power2.out',
+              overwrite: 'auto',
+            });
+          } else {
+            gsap.to(tag, {
+              x: 0,
+              duration: 0.5,
+              ease: 'power2.out',
+            });
+          }
+        });
+      };
+
+      window.addEventListener('mousemove', handleMouseMove);
+
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+      };
     }, heroRef);
 
     return () => ctx.revert();
@@ -81,7 +123,7 @@ export function HeroSection() {
                 ref={(el) => {
                   if (el) tagsRef.current[index] = el;
                 }}
-                className={`tag absolute ${tag.position}`}
+                className={`tag absolute z-30 ${tag.position}`}
               >
                 {tag.text}
               </div>

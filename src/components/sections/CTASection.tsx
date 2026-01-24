@@ -1,85 +1,102 @@
 'use client';
 
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function CTASection() {
     const slider1Ref = useRef<HTMLDivElement>(null);
     const slider2Ref = useRef<HTMLDivElement>(null);
     const slider3Ref = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // Slider 1 - Top to Bottom
-        if (slider1Ref.current) {
-            const slider = slider1Ref.current;
-            const firstChild = slider.children[0] as HTMLElement;
-            const gap = 32; // 32px gap
-            const itemHeight = firstChild.offsetHeight + gap;
-            const halfLength = slider.children.length / 2;
+        const ctx = gsap.context(() => {
+            // Slider 1 - Top to Bottom (scroll-triggered)
+            if (slider1Ref.current && sectionRef.current) {
+                const slider = slider1Ref.current;
+                const firstChild = slider.children[0] as HTMLElement;
+                const gap = 32;
+                const itemHeight = firstChild.offsetHeight + gap;
+                const halfLength = slider.children.length / 2;
 
-            gsap.set(slider, { y: 0 });
+                gsap.fromTo(
+                    slider,
+                    { y: 0 },
+                    {
+                        y: -(itemHeight * halfLength),
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: 1,
+                        },
+                    }
+                );
+            }
 
-            gsap.to(slider, {
-                y: -(itemHeight * halfLength),
-                duration: 30,
-                ease: 'none',
-                repeat: -1,
-                onRepeat: function () {
-                    gsap.set(slider, { y: 0 });
-                },
-            });
-        }
+            // Slider 2 - Bottom to Top (scroll-triggered)
+            if (slider2Ref.current && sectionRef.current) {
+                const slider = slider2Ref.current;
+                const firstChild = slider.children[0] as HTMLElement;
+                const gap = 32;
+                const itemHeight = firstChild.offsetHeight + gap;
+                const halfLength = slider.children.length / 2;
 
-        // Slider 2 - Bottom to Top
-        if (slider2Ref.current) {
-            const slider = slider2Ref.current;
-            const firstChild = slider.children[0] as HTMLElement;
-            const gap = 32;
-            const itemHeight = firstChild.offsetHeight + gap;
-            const halfLength = slider.children.length / 2;
+                gsap.fromTo(
+                    slider,
+                    { y: -(itemHeight * halfLength) },
+                    {
+                        y: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: 1,
+                        },
+                    }
+                );
+            }
 
-            gsap.set(slider, { y: -(itemHeight * halfLength) });
+            // Slider 3 - Top to Bottom (scroll-triggered)
+            if (slider3Ref.current && sectionRef.current) {
+                const slider = slider3Ref.current;
+                const firstChild = slider.children[0] as HTMLElement;
+                const gap = 32;
+                const itemHeight = firstChild.offsetHeight + gap;
+                const halfLength = slider.children.length / 2;
 
-            gsap.to(slider, {
-                y: 0,
-                duration: 30,
-                ease: 'none',
-                repeat: -1,
-                onRepeat: function () {
-                    gsap.set(slider, { y: -(itemHeight * halfLength) });
-                },
-            });
-        }
+                gsap.fromTo(
+                    slider,
+                    { y: 0 },
+                    {
+                        y: -(itemHeight * halfLength),
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: 1,
+                        },
+                    }
+                );
+            }
+        }, sectionRef);
 
-        // Slider 3 - Top to Bottom
-        if (slider3Ref.current) {
-            const slider = slider3Ref.current;
-            const firstChild = slider.children[0] as HTMLElement;
-            const gap = 32;
-            const itemHeight = firstChild.offsetHeight + gap;
-            const halfLength = slider.children.length / 2;
-
-            gsap.set(slider, { y: 0 });
-
-            gsap.to(slider, {
-                y: -(itemHeight * halfLength),
-                duration: 30,
-                ease: 'none',
-                repeat: -1,
-                onRepeat: function () {
-                    gsap.set(slider, { y: 0 });
-                },
-            });
-        }
+        return () => ctx.revert();
     }, []);
 
     // Generate multiple copies for seamless loop
     const images = Array(6).fill('/assets/images/cta_slider_image.png');
 
     return (
-        <section className="w-full h-[720px] bg-primary overflow-hidden flex items-center">
+        <section ref={sectionRef} className="w-full h-[720px] bg-primary overflow-hidden flex items-center">
             <div className="w-full flex flex-col lg:flex-row gap-10 items-center h-full">
                 {/* Left Section */}
                 <div

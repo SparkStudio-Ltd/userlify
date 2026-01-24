@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Alamin Hossain",
+    "designation": "Co-Founder",
+    "image": "/assets/images/team-1.png"
+  },
+  {
+    "id": 2,
+    "name": "Jahidur Rahaman",
+    "designation": "Co-Founder",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Jonayed Hossain",
+    "designation": "Co-Founder",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "name": "Shakil Ahmed",
+    "designation": "App Developer",
+    "image": "/assets/images/team-4.png"
+  },
+  {
+    "id": 5,
+    "name": "Md Mohin Uddin",
+    "designation": "UI/UX Designer",
+    "image": "/assets/images/team-5.png"
+  },
+  {
+    "id": 6,
+    "name": "Abdullah",
+    "designation": "UI/UX Intern",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "name": "Sohorab",
+    "designation": "UI/UX Intern",
+    "image": ""
+  }
+]
