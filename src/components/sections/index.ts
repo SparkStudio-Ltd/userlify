@@ -13,3 +13,4 @@ export { default as SliderSection } from './SliderSection';
 export { default as WhyChooseUsSection } from './WhyChooseUsSection';
 export { default as AboutTopSection } from './AboutTop';
 export { default as OurTeamSection } from './OurTeam'
+export { default as AboutWhyChooseSection } from './AboutWhyChoose';
