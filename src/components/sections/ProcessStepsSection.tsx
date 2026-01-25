@@ -22,9 +22,9 @@ export default function ProcessStepsSection() {
       <div className="mx-auto flex w-full h-[1100px] max-w-[1920px] justify-center">
         <div className="flex w-full max-w-[1472px] flex-col items-center gap-24 rounded-[48px] bg-[#F8F8F7] py-18 sm:px-8 lg:h-[864px] lg:py-16">
           <header className="flex max-w-[820px] flex-col items-center gap-4 text-center">
-            <div className="flex items-center justify-center gap-2 text-[12px] font-semibold uppercase tracking-[0.35em] text-primary">
+            <div className="flex items-center justify-center gap-2 text-[14px] font-bold uppercase tracking-[0.75px] text-primary">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
-              <span>Process</span>
+              <span className='font-nav'>Process</span>
             </div>
             <p className="font-serif text-5xl leading-[50px] tracking-[-0.5px] italic text-[#1E1F23]">
               The Next Steps We Follow
