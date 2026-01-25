@@ -10,8 +10,8 @@ const cardPositions = [
 
 const arrowPositions = [
   { className: 'left-[26%] top-[25%] rotate-[12deg]' },
-  { className: 'left-[51%] top-[89%] rotate-[175deg] scale-x-[-1]' },
-  { className: 'right-[17%] top-[22%] rotate-[12deg]' },
+  { className: 'left-[52%] top-[89%] rotate-[175deg] scale-x-[-1]' },
+  { className: 'right-[16%] top-[22%] rotate-[12deg]' },
 ];
 
 export default function ProcessStepsSection() {
@@ -26,10 +26,10 @@ export default function ProcessStepsSection() {
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
               <span>Process</span>
             </div>
-            <p className="font-serif text-[28px] italic text-[#1E1F23] sm:text-[34px]">
+            <p className="font-serif text-5xl leading-[50px] tracking-[-0.5px] italic text-[#1E1F23]">
               The Next Steps We Follow
             </p>
-            <h2 className="font-heading text-[34px] font-semibold text-[#1E1F23] sm:text-[42px] lg:text-[48px]">
+            <h2 className="font-heading text-5xl font-medium leading-[56px] text-[#1E1F23]">
               After Receiving Your Request
             </h2>
           </header>
@@ -42,10 +42,10 @@ export default function ProcessStepsSection() {
                   className={`relative flex w-full flex-col gap-6 rounded-[24px] border border-[#E2DFDB] bg-white p-10 opacity-100 lg:absolute lg:h-[443px] lg:w-[350px] lg:gap-[200px] ${cardPositions[index]}`}
                 >
                   <div>
-                    <h3 className="font-heading text-[20px] font-semibold text-[#1E1F23]">
+                    <h3 className="font-sans text-[30px] font-normal text-[#1E1F23]">
                       {step.title}
                     </h3>
-                    <p className="mt-3 text-[14px] leading-relaxed text-[#4B4B4B]">
+                    <p className="font-nav mt-3 text-[16px] font-normal leading-[24px] tracking-[-0.25px] text-[#4B4B4B]">
                       {step.description}
                     </p>
                   </div>

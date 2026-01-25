@@ -1,5 +1,5 @@
 import { Footer, Header } from '@/components/layout';
-import { ThankYouBannerSection } from '@/components/sections';
+import { CTASection, ThankYouBannerSection } from '@/components/sections';
 import ProcessStepsSection from '@/components/sections/ProcessStepsSection';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,6 +11,7 @@ export default function ThankYouPage() {
             <Header />
             <ThankYouBannerSection/>
             <ProcessStepsSection/>
+            <CTASection/>
             <Footer />
         </>
     );
