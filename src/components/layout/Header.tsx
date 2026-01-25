@@ -12,7 +12,7 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Case Study', href: '/case-study' },
+  { name: 'Portfolio', href: '/portfolio' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -64,7 +64,7 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button href="/get-quote" variant="primary" size="md">
+            <Button href="/contact" variant="primary" size="md">
               Get a Quote
             </Button>
           </div>
