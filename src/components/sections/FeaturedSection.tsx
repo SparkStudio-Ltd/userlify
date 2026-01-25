@@ -14,8 +14,8 @@ if (typeof window !== 'undefined') {
 }
 
 export default function StatsSection() {
-  const containerRef = useRef(null);
-  const pathRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const pathRef = useRef<SVGPathElement | null>(null);
   const { stats_section, stat_items } = content;
 
 
@@ -169,7 +169,13 @@ export default function StatsSection() {
   );
 }
 
-function CleanCard({ content }) {
+type StatItem = (typeof content)['stat_items'][number];
+
+type CleanCardProps = {
+  content: StatItem;
+};
+
+function CleanCard({ content }: CleanCardProps) {
   return (
     <div className="flex flex-col gap-4 p-4">
       <div className="w-12 h-12 flex items-center justify-center text-gray-900">
