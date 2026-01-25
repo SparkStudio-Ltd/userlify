@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Review Message",
+    "description": "Our team carefully goes through your request and project details.",
+    "icon": "/assets/icons/ProcessSvg1.svg",
+    "order": 1
+  },
+  {
+    "id": 2,
+    "title": "Reach Out",
+    "description": "We’ll contact you within 24–48 hours to understand your goals better.",
+    "icon": "/assets/icons/ProcessSvg2.svg",
+    "order": 2
+  },
+  {
+    "id": 3,
+    "title": "Discuss",
+    "description": "We explore ideas, scope, timeline, and the best design approach.",
+    "icon": "/assets/icons/ProcessSvg3.svg",
+    "order": 3
+  },
+  {
+    "id": 4,
+    "title": "Get Started",
+    "description": "Once aligned, we kick off the project and begin designing your product.",
+    "icon": "/assets/icons/ProcessSvg4.svg",
+    "order": 4
+  }
+]
