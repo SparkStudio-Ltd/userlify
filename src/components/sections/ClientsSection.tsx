@@ -14,15 +14,10 @@ export default function ClientsSection() {
 
         const slider = sliderRef.current;
 
-        // Calculate width for 7 logos
-        const containerWidth = slider.parentElement?.clientWidth || 1472;
-        const logoWidth = containerWidth / 7;
-        const gap = 0; // No gap since we're using space-between visual
+        // Calculate width for seamless loop
+        const logoWidth = 150; // Width of each logo
+        const gap = 100; // Gap between logos
         const totalWidth = (logoWidth + gap) * clientsData.length;
-
-        // Clone logos for seamless loop
-        const firstClone = slider.innerHTML;
-        slider.innerHTML = firstClone + firstClone;
 
         // GSAP animation - left to right
         animationRef.current = gsap.fromTo(
@@ -30,9 +25,9 @@ export default function ClientsSection() {
             { x: -totalWidth },
             {
                 x: 0,
-            duration: 40,
-            ease: 'none',
-            repeat: -1,
+                duration: 40,
+                ease: 'none',
+                repeat: -1,
             }
         );
 
@@ -85,12 +80,28 @@ export default function ClientsSection() {
                     {/* Slider */}
                     <div
                         ref={sliderRef}
-                        className="flex items-center"
-                        style={{ gap: 'calc((100% - 7 * 250px) / 6)' }}
+                        className="flex items-center gap-[100px]"
                     >
+                        {/* First set of logos */}
                         {clientsData.map((client, index) => (
                             <div
-                                key={`${client.id}-${index}`}
+                                key={`first-${client.id}-${index}`}
+                                className="client-logo flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+                                style={{ width: '150px' }}
+                            >
+                                <Image
+                                    src={client.logo_url}
+                                    alt={client.name}
+                                    width={150}
+                                    height={60}
+                                    className="object-contain"
+                                />
+                            </div>
+                        ))}
+                        {/* Second set of logos for seamless loop */}
+                        {clientsData.map((client, index) => (
+                            <div
+                                key={`second-${client.id}-${index}`}
                                 className="client-logo flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
                                 style={{ width: '150px' }}
                             >
