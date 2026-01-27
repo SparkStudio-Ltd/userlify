@@ -7,9 +7,9 @@ import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 
 const floatingTags = [
-  { text: 'App Design', position: 'left-[27%] top-[20%]' },
-  { text: 'Development', position: 'right-[42%] top-[22%]' },
-  { text: 'Web Design', position: 'right-[23%] top-[33%]' },
+  { text: 'App Design', position: 'left-[27%] top-[23%]' },
+  { text: 'Development', position: 'right-[42%] top-[23%]' },
+  { text: 'Web Design', position: 'right-[23%] top-[36%]' },
 ];
 
 export function HeroSection() {
@@ -17,6 +17,7 @@ export function HeroSection() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const tagsRef = useRef<HTMLDivElement[]>([]);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const tagFactorsRef = useRef<{ x: number; y: number; duration: number }[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -38,18 +39,6 @@ export function HeroSection() {
         delay: 0.3,
       });
 
-      // Floating animation for tags
-      tagsRef.current.forEach((tag, index) => {
-        gsap.to(tag, {
-          y: 'random(-8, 8)',
-          duration: 'random(2, 3)',
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          delay: index * 0.2,
-        });
-      });
-
       // CTA animation
       gsap.from(ctaRef.current, {
         y: 30,
@@ -59,46 +48,55 @@ export function HeroSection() {
         delay: 0.6,
       });
 
-      // Anti-magnetic effect on mouse move
+      if (tagFactorsRef.current.length === 0) {
+        tagFactorsRef.current = [
+          { x: 0.07, y: 0.05, duration: 0.45 }, // App Design: follows
+          { x: -0.06, y: 0.08, duration: 0.32 }, // Development: opposes X, faster
+          { x: 0.05, y: -0.07, duration: 0.58 }, // Web Design: opposes Y, slower
+        ];
+      }
+
       const handleMouseMove = (e: MouseEvent) => {
-        tagsRef.current.forEach((tag) => {
+        if (!heroRef.current) return;
+
+        const rect = heroRef.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const offsetX = e.clientX - centerX;
+        const offsetY = e.clientY - centerY;
+
+        tagsRef.current.forEach((tag, index) => {
           if (!tag) return;
-
-          const rect = tag.getBoundingClientRect();
-          const tagCenterX = rect.left + rect.width / 2;
-          const tagCenterY = rect.top + rect.height / 2;
-
-          const distanceX = e.clientX - tagCenterX;
-          const distanceY = e.clientY - tagCenterY;
-          const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-
-          const maxDistance = 200; // pixels
-
-          if (distance < maxDistance) {
-            const force = (maxDistance - distance) / maxDistance;
-            const moveX = -distanceX * force * 0.3;
-            const moveY = -distanceY * force * 0.3;
-
-            gsap.to(tag, {
-              x: moveX,
-              duration: 0.3,
-              ease: 'power2.out',
-              overwrite: 'auto',
-            });
-          } else {
-            gsap.to(tag, {
-              x: 0,
-              duration: 0.5,
-              ease: 'power2.out',
-            });
-          }
+          const factors = tagFactorsRef.current[index] ?? { x: 0.05, y: 0.05, duration: 0.4 };
+          gsap.to(tag, {
+            x: offsetX * factors.x,
+            y: offsetY * factors.y,
+            duration: factors.duration,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
         });
       };
 
-      window.addEventListener('mousemove', handleMouseMove);
+      const handleMouseLeave = () => {
+        tagsRef.current.forEach((tag) => {
+          if (!tag) return;
+          gsap.to(tag, {
+            x: 0,
+            y: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        });
+      };
+
+      heroRef.current?.addEventListener('mousemove', handleMouseMove);
+      heroRef.current?.addEventListener('mouseleave', handleMouseLeave);
 
       return () => {
-        window.removeEventListener('mousemove', handleMouseMove);
+        heroRef.current?.removeEventListener('mousemove', handleMouseMove);
+        heroRef.current?.removeEventListener('mouseleave', handleMouseLeave);
       };
     }, heroRef);
 
