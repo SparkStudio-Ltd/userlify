@@ -33,7 +33,7 @@ export default async function Blog({
     <>
       <Header />
       <main className="w-full bg-white">
-        <div className="px-12 pt-[216px] pb-[120px]">
+        <div className="px-4 md:px-12 pt-24 md:pt-[150px] 2xl:pt-[216px] pb-16 md:pb-[120px]">
           <div className="max-w-[1472px] mx-auto">
             <BlogContentWrapper
               heading={
@@ -48,15 +48,15 @@ export default async function Blog({
 
                   {/* Title - Part 1 */}
                   <h1
-                    className="text-[72px] leading-[80px] text-[#2A0E63] italic text-center"
-                    style={{ fontFamily: 'Instrument Serif, serif', fontWeight: 400 , letterSpacing: '-4.5px'}}
+                    className="text-[36px] md:text-[72px] leading-[40px] md:leading-[80px] tracking-[-2px] md:tracking-[-4.5px] text-[#2A0E63] italic text-center"
+                    style={{ fontFamily: 'Instrument Serif, serif', fontWeight: 400}}
                   >
                     Grow Your Product
                   </h1>
 
                   {/* Title - Part 2 */}
                   <h2
-                    className="text-[60px] leading-[68px] text-[#2A0E63] text-center"
+                    className="text-[30px] md:text-[60px] leading-[34px] md:leading-[68px] text-[#2A0E63] text-center"
                     style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}
                   >
                     Articles to Help You
