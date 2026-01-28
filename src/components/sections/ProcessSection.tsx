@@ -32,9 +32,9 @@ export default function ProcessSection() {
       const sectionHeight = 860;
 
       // Start position: container is below, so first step appears at bottom
-      const startY = sectionHeight - 150; // First step starts near bottom
+      const startY = sectionHeight - 450; // First step starts near bottom
       // End position: last step exits at top
-      const endY = -(containerHeight - 150);
+      const endY = -(containerHeight - 450);
       const totalDistance = startY - endY;
 
       // Set initial position - steps start below
