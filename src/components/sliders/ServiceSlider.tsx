@@ -73,7 +73,7 @@ export default function ServiceSlider({ services }: ServiceSliderProps) {
                                 sizes="24px"
                             />
                         </div>
-                        <span className="text-[30px] leading-none font-normal whitespace-nowrap" style={{ fontFamily: 'Nohemi, sans-serif' }}>
+                        <span className="text-3xl md:text-2xl font-normal whitespace-nowrap -mb-1" style={{ fontFamily: 'Nohemi, sans-serif' }}>
                             {service.name}
                         </span>
                     </div>

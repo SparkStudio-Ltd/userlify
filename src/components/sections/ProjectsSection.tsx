@@ -51,7 +51,7 @@ export default function ProjectsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-[#030712] px-4 py-32 text-white md:px-8 lg:px-16"
+      className="relative w-full bg-[#030712] px-4 lg:px-12 py-24 lg:py-30 text-white md:px-8"
     >
       <div className="relative z-10 mx-auto max-w-[1472px]">
         {/* HEADER SECTION */}
@@ -73,7 +73,7 @@ export default function ProjectsSection() {
           </div>
 
           {/* RIGHT COLUMN */}
-          <div className="flex flex-col pl-24">
+          <div className="flex flex-col xl:pl-24 ">
             <p className="font-nav mb-6 text-base leading-relaxed text-white">
               We're proud to have designed apps and digital experiences that are live on
               the Play Store and App Store. Each project reflects our passion for
@@ -83,7 +83,7 @@ export default function ProjectsSection() {
               <Button
                 variant="primary"
                 size="lg"
-                href="/portfolio"
+                href="/portfolio/"
                 className="group text-lg"
               >
                 View All Portfolio

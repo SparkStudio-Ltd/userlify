@@ -15,7 +15,7 @@ export default function FAQSection() {
     };
 
     return (
-        <section className="w-full py-[120px] px-12 bg-white">
+        <section className="w-full py-24 lg:py-30 px-4 lg:px-12 bg-white">
             <div className="max-w-[1472px] mx-auto">
                 <div className="flex flex-col lg:flex-row gap-24 items-start">
                     {/* Left Section */}

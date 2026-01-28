@@ -88,7 +88,7 @@ export default function WhyChooseUsSection() {
     }, []);
 
     return (
-        <section className="w-full py-[120px] bg-white">
+        <section className="w-full py-24 px-4 lg:px-12 lg:py-30 bg-white">
             <div className="max-w-[1472px] mx-auto">
                 {/* Title Container */}
                 <div ref={titleRef} className="flex flex-col items-center gap-4 mb-24">

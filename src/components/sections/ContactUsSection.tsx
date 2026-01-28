@@ -144,7 +144,7 @@ export default function ContactUsSection() {
   const displayClients = clientsData.slice(0, 5);
 
   return (
-    <section className="w-full overflow-hidden bg-[#F8F8F7] px-4 py-[50px] md:px-12 md:py-[120px]">
+    <section className="w-full overflow-hidden bg-[#F8F8F7] py-24 lg:py-30 px-4 lg:px-12">
       <div className="mx-auto max-w-[1472px]">
         {/* Header */}
         <div
