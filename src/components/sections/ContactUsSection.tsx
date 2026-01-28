@@ -144,21 +144,21 @@ export default function ContactUsSection() {
   const displayClients = clientsData.slice(0, 5);
 
   return (
-    <section className="w-full bg-[#F8F8F7] px-12 py-[120px]">
+    <section className="w-full overflow-hidden bg-[#F8F8F7] px-4 py-[50px] md:px-12 md:py-[120px]">
       <div className="mx-auto max-w-[1472px]">
         {/* Header */}
         <div
           ref={headerRef}
-          className="mb-16 flex flex-col items-center gap-4 text-center"
+          className="mb-10 flex flex-col items-center gap-4 text-center md:mb-16"
         >
           <p
-            className="text-sm uppercase leading-5 tracking-[0.75px] text-primary"
+            className="text-sm uppercase tracking-[0.75px] text-primary md:leading-5"
             style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 700 }}
           >
             • CONTACT US
           </p>
 
-          <h2 className="text-[48px] leading-[56px] text-[#030712]">
+          <h2 className="text-[24px] text-[#030712] md:text-[48px] md:leading-[56px]">
             <span
               className="italic"
               style={{ fontFamily: 'Instrument Serif, serif', fontWeight: 400 }}
@@ -177,12 +177,12 @@ export default function ContactUsSection() {
           {/* Left Card - 40% (2 columns) */}
           <div
             ref={leftCardRef}
-            className="flex flex-col rounded-3xl border border-[#E8E6E6] bg-gradient-to-br from-white via-white to-[#FFF5F3] p-10 lg:col-span-2"
+            className="flex flex-col rounded-3xl border border-[#E8E6E6] bg-gradient-to-br from-white via-white to-[#FFF5F3] p-6 md:p-10 lg:col-span-2"
           >
             {/* Profile Section */}
             <div className="mb-8 flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="relative h-28 w-28 flex-shrink-0 overflow-hidden rounded-full border border-[#E8E6E6]">
+              <div className="flex items-center gap-2 md:gap-4">
+                <div className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-full border border-[#E8E6E6] md:h-28 md:w-28">
                   <Image
                     src="/assets/images/Alamin-Hossain.png"
                     alt="Alamin Hossain"
@@ -192,13 +192,13 @@ export default function ContactUsSection() {
                 </div>
                 <div className="flex flex-col">
                   <h3
-                    className="text-[21px] leading-tight text-[#030712]"
+                    className="text-base leading-tight text-[#030712] md:text-[21px]"
                     style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}
                   >
                     Alamin Hossain
                   </h3>
                   <p
-                    className="mt-1 text-[13px] leading-tight text-[#766A68]"
+                    className="mt-1 text-[12px] leading-tight text-[#766A68] md:text-[13px]"
                     style={{ fontFamily: 'Public Sans, sans-serif' }}
                   >
                     Founder at Userlify
@@ -217,7 +217,7 @@ export default function ContactUsSection() {
 
             {/* Description */}
             <p
-              className="text-[18px] leading-7 text-[#030712]"
+              className="textsm leading-7 text-[#030712] md:text-[18px]"
               style={{ fontFamily: 'Public Sans, sans-serif' }}
             >
               A growing creative UI/UX design agency dedicated to helping startups
@@ -230,7 +230,7 @@ export default function ContactUsSection() {
                 {expertiseAreas.map((area, index) => (
                   <li
                     key={index}
-                    className="text-[18px] italic leading-7 text-[#766A68]"
+                    className="text-sm italic leading-7 text-[#766A68] md:text-[18px]"
                     style={{ fontFamily: 'Public Sans, sans-serif' }}
                   >
                     • {area}
@@ -242,7 +242,7 @@ export default function ContactUsSection() {
             {/* Client Logos */}
             <div className="flex flex-wrap items-center gap-6 border-t border-[#E8E6E6] pt-8">
               {displayClients.map((client) => (
-                <div key={client.id} className="relative h-8 w-auto">
+                <div key={client.id} className="relative h-4 w-auto md:h-8">
                   <Image
                     src={client.logo_url}
                     alt={client.name}
@@ -263,13 +263,13 @@ export default function ContactUsSection() {
             {/* Form Header */}
             <div className="mb-8 text-center">
               <h3
-                className="text-[30px] leading-tight text-primary"
+                className="text-xl leading-tight text-primary md:text-[30px]"
                 style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 400 }}
               >
                 Your Future
               </h3>
               <h3
-                className="text-[30px] leading-tight text-[#030712]"
+                className="text-xl leading-tight text-[#030712] md:text-[30px]"
                 style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 400 }}
               >
                 Website Starts Here
@@ -277,13 +277,13 @@ export default function ContactUsSection() {
             </div>
 
             {/* Service Type Buttons */}
-            <div className="mb-10 flex flex-wrap gap-3">
+            <div className="mb-10 flex flex-wrap items-center justify-center gap-2 md:justify-start md:gap-3">
               {serviceTypes.map((service) => (
                 <button
                   key={service}
                   type="button"
                   onClick={() => handleServiceSelect(service)}
-                  className={`rounded-full border px-9 py-4 text-[18px] transition-all ${
+                  className={`rounded-full border px-5 py-2 text-sm transition-all md:px-9 md:py-4 md:text-[18px] ${
                     selectedService === service
                       ? 'border-primary bg-primary text-white'
                       : 'border-[#E8E6E6] bg-[#F8F8F7] text-[#030712] hover:border-primary/50'
@@ -301,7 +301,7 @@ export default function ContactUsSection() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="name"
-                  className="text-[16px] text-[#32201D]"
+                  className="text-sm text-[#32201D] md:text-[16px]"
                   style={{ fontFamily: 'Public Sans, sans-serif' }}
                 >
                   Name
@@ -313,7 +313,7 @@ export default function ContactUsSection() {
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="John Smith"
-                  className="rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-5 py-4 text-[18px] text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none"
+                  className="rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-3 py-2 text-sm text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none md:px-5 md:py-4 md:text-[18px]"
                   style={{ fontFamily: 'Public Sans, sans-serif' }}
                   required
                 />
@@ -324,7 +324,7 @@ export default function ContactUsSection() {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="email"
-                    className="text-[16px] text-[#32201D]"
+                    className="text-sm text-[#32201D] md:text-[16px]"
                     style={{ fontFamily: 'Public Sans, sans-serif' }}
                   >
                     Email Address
@@ -336,7 +336,7 @@ export default function ContactUsSection() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="john@example.com"
-                    className="rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-5 py-4 text-[18px] text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none"
+                    className="rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-3 py-2 text-sm text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none md:px-5 md:py-4 md:text-[18px]"
                     style={{ fontFamily: 'Public Sans, sans-serif' }}
                     required
                   />
@@ -345,7 +345,7 @@ export default function ContactUsSection() {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="phone"
-                    className="text-[16px] text-[#32201D]"
+                    className="text-sm text-[#32201D] md:text-[16px]"
                     style={{ fontFamily: 'Public Sans, sans-serif' }}
                   >
                     Phone/ Whatsapp
@@ -357,7 +357,7 @@ export default function ContactUsSection() {
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="(713) 123-4567"
-                    className="rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-5 py-4 text-[18px] text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none"
+                    className="rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-3 py-2 text-sm text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none md:px-5 md:py-4 md:text-[18px]"
                     style={{ fontFamily: 'Public Sans, sans-serif' }}
                     required
                   />
@@ -368,7 +368,7 @@ export default function ContactUsSection() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="message"
-                  className="text-[16px] text-[#32201D]"
+                  className="text-sm text-[#32201D] md:text-[16px]"
                   style={{ fontFamily: 'Public Sans, sans-serif' }}
                 >
                   Your Message
@@ -380,7 +380,7 @@ export default function ContactUsSection() {
                   onChange={handleInputChange}
                   placeholder="How can we assist you?"
                   rows={5}
-                  className="resize-none rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-5 py-4 text-[18px] text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none"
+                  className="resize-none rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-3 py-2 text-sm text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none md:px-5 md:py-4 md:text-[18px]"
                   style={{ fontFamily: 'Public Sans, sans-serif' }}
                   required
                 />
@@ -390,7 +390,7 @@ export default function ContactUsSection() {
               <div className="flex flex-col items-center gap-4 pt-6">
                 <button
                   type="submit"
-                  className="flex w-fit items-center gap-3 rounded-full bg-primary px-8 py-4 text-[18px] text-white transition-all hover:bg-primary-600 hover:shadow-lg active:scale-95"
+                  className="flex w-fit items-center gap-3 rounded-full bg-primary px-4 py-2 text-sm text-white transition-all hover:bg-primary-600 hover:shadow-lg active:scale-95 md:px-8 md:py-4 md:text-[18px]"
                   style={{ fontFamily: 'Public Sans, sans-serif' }}
                 >
                   Send Message
@@ -399,7 +399,7 @@ export default function ContactUsSection() {
 
                 {/* Success Message */}
                 <p
-                  className="text-[16px] text-[#32201D]"
+                  className="text-sm text-[#32201D] md:text-[16px]"
                   style={{ fontFamily: 'Public Sans, sans-serif' }}
                 >
                   We'll get back to you within 12 hours!
