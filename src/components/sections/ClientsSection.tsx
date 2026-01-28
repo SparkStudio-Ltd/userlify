@@ -51,7 +51,7 @@ export default function ClientsSection() {
     }, []);
 
     return (
-        <section className="w-full py-[120px] bg-white">
+        <section className="w-full py-[120px] bg-white overflow-hidden">
             <div className="max-w-[1472px] h-[280px] mx-auto px-4">
                 {/* Top Section - Kicker and Title */}
                 <div className="flex flex-col items-center gap-4 mb-24">
