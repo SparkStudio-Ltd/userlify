@@ -62,9 +62,9 @@ export default function ServiceSlider({ services }: ServiceSliderProps) {
                 {services.map((service) => (
                     <div
                         key={service.id}
-                        className="service-item flex-shrink-0 flex items-center gap-4 py-6 px-7 border border-[#E8E6E6] rounded-[56px]"
+                        className="service-item flex-shrink-0 flex items-center justify-center gap-4 py-6 px-7 border border-[#E8E6E6] rounded-[56px] text-center"
                     >
-                        <div className="relative w-6 h-6 flex-shrink-0">
+                        <div className="relative flex h-6 w-6 flex-shrink-0 items-center justify-center">
                             <Image
                                 src={service.icon}
                                 alt={service.name}
@@ -73,7 +73,7 @@ export default function ServiceSlider({ services }: ServiceSliderProps) {
                                 sizes="24px"
                             />
                         </div>
-                        <span className="text-[30px] font-normal whitespace-nowrap" style={{ fontFamily: 'Nohemi, sans-serif' }}>
+                        <span className="text-[30px] leading-none font-normal whitespace-nowrap" style={{ fontFamily: 'Nohemi, sans-serif' }}>
                             {service.name}
                         </span>
                     </div>

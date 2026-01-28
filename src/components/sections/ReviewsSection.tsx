@@ -50,7 +50,7 @@ export default function ReviewsSection() {
     }, []);
 
     return (
-        <section className="w-full py-[120px] bg-[#F8F8F7]">
+        <section className="w-full py-[120px] bg-[#F8F8F7] overflow-hidden">
             <div className="max-w-[1472px] mx-auto px-4">
                 {/* Top Section - Kicker and Title */}
                 <div className="flex flex-col items-center gap-4 mb-24">

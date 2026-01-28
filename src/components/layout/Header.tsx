@@ -38,7 +38,7 @@ export function Header() {
       )}
     >
       <Container>
-        <nav className="flex h-20 max-w-[1472px] items-center justify-between px-12">
+        <nav className="flex h-20 max-w-[1472px] items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Logo />
@@ -64,7 +64,7 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button href="/contact" variant="primary" size="md">
+            <Button className='px-5 py-3 text-base tracking-[-0.25px] font-medium' href="/contact">
               Get a Quote
             </Button>
           </div>

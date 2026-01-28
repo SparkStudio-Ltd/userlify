@@ -43,7 +43,7 @@ export function Footer() {
   return (
     <footer className="relative w-full h-[746px] bg-[#0B041B] overflow-hidden">
       {/* Main Footer Content */}
-      <div className="relative z-10 max-w-[1472px] mx-auto pt-[120px] px-12">
+      <div className="relative z-10 max-w-[1472px] mx-auto pt-[120px]">
         {/* Footer Columns */}
         <div className="flex justify-between gap-8">
           {/* Brand / About - 30% */}
