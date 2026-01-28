@@ -49,8 +49,8 @@ export default function BlogSection() {
     const latestPosts = blogPosts.slice(0, 2);
 
     return (
-        <section ref={sectionRef} className="w-full py-[120px] bg-[#F8F8F7]">
-            <div className="max-w-[1472px] mx-auto">
+        <section ref={sectionRef} className="w-full py-[50px] md:py-[120px] bg-[#F8F8F7]">
+            <div className="max-w-[1472px] mx-auto px-4 md:px-none">
                 <div className="flex flex-col gap-10">
                     {/* Top Section */}
                     <div className="flex flex-col items-center gap-4">
@@ -64,7 +64,7 @@ export default function BlogSection() {
 
                         {/* Title */}
                         <h2
-                            className="text-[48px] leading-[56px] font-medium text-center text-[#030712] max-w-[800px]"
+                            className="text-3xl md:text-[48px] md:leading-[56px] font-medium text-center text-[#030712] max-w-[800px]"
                             style={{ fontFamily: 'Nohemi, sans-serif' }}
                         >
                             Articles to Help You{' '}
