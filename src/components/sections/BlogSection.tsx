@@ -50,7 +50,7 @@ export default function BlogSection() {
 
     return (
         <section ref={sectionRef} className="w-full py-[120px] bg-[#F8F8F7]">
-            <div className="max-w-[1472px] mx-auto px-12">
+            <div className="max-w-[1472px] mx-auto">
                 <div className="flex flex-col gap-10">
                     {/* Top Section */}
                     <div className="flex flex-col items-center gap-4">

@@ -100,7 +100,7 @@ export default function CTASection() {
             <div className="w-full flex flex-col lg:flex-row gap-10 items-center h-full">
                 {/* Left Section */}
                 <div
-                    className="flex flex-col gap-10 px-16 lg:gap-8"
+                    className="flex flex-col gap-10 lg:gap-8"
                     style={{
                         marginLeft: 'calc((100vw - 1472px) / 2)',
                         marginRight: 'auto'
