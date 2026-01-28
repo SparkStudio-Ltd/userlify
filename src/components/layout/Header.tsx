@@ -38,7 +38,7 @@ export function Header() {
       )}
     >
       <Container>
-        <nav className="flex h-20 items-center justify-between">
+        <nav className="flex h-20 max-w-[1472px] items-center justify-between px-12">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Logo />
