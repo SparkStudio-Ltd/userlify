@@ -87,7 +87,7 @@ export default function ShareCard({ blogUrl, title }: ShareCardProps) {
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-12 h-12 flex items-center justify-center rounded-[10px] bg-white border border-[#E8E6E6] text-[#030712] hover:bg-[#EA7B69] hover:text-white hover:border-[#EA7B69] transition-all"
+                            className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-[10px] bg-white border border-[#E8E6E6] text-[#030712] hover:bg-[#EA7B69] hover:text-white hover:border-[#EA7B69] transition-all"
                             aria-label={`Share on ${link.name}`}
                         >
                             {link.icon}
@@ -108,12 +108,12 @@ export default function ShareCard({ blogUrl, title }: ShareCardProps) {
                             type="text"
                             value={blogUrl}
                             readOnly
-                            className="w-full px-3 py-6 pr-16 rounded-[10px] bg-white border border-[#E8E6E6] text-[#030712] text-lg truncate"
+                            className="w-full px-2 md:px-3 py-3 md:py-6 pr-16 rounded-[10px] bg-white border border-[#E8E6E6] text-[#030712] text-lg truncate"
                             style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                         />
                         <button
                             onClick={handleCopy}
-                            className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-[10px] bg-white border border-[#E8E6E6] text-[#030712] hover:bg-[#EA7B69] hover:text-white hover:border-[#EA7B69] transition-all"
+                            className="absolute right-2 top-1/2 -translate-y-1/2 w-9 md:w-12 h-9 md:h-12 flex items-center justify-center rounded-[10px] bg-white border border-[#E8E6E6] text-[#030712] hover:bg-[#EA7B69] hover:text-white hover:border-[#EA7B69] transition-all"
                             aria-label="Copy link"
                         >
                             {copied ? (

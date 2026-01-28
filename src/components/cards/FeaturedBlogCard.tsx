@@ -31,12 +31,12 @@ export default function FeaturedBlogCard({
             </div>
 
             {/* Right: Content */}
-            <div className="flex flex-col justify-center gap-6 p-8 md:p-12 bg-[#F9FAFB]">
+            <div className="flex flex-col justify-center gap-3 md:gap-6 p-6 md:p-12 bg-[#F9FAFB]">
                 {/* Read Time */}
                 <div className="flex items-center gap-4">
-                    <img src='/assets/icons/clock_icon.svg' alt="clock icon" />
+                    <img src='/assets/icons/clock_icon.svg' alt="clock icon" className='h-4' />
                     <span
-                        className="text-base leading-6 tracking-[-0.25px] text-[#030712]"
+                        className="text-sm md:text-base md:leading-6 tracking-[-0.25px] text-[#030712]"
                         style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                     >
                         {readTime}
@@ -45,7 +45,7 @@ export default function FeaturedBlogCard({
 
                 {/* Title */}
                 <h3
-                    className="text-[32px] leading-[40px] text-[#030712]"
+                    className="text-xl md:text-[32px] md:leading-[40px] text-[#030712]"
                     style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}
                 >
                     {title}
@@ -53,7 +53,7 @@ export default function FeaturedBlogCard({
 
                 {/* Excerpt */}
                 <p
-                    className="text-base leading-6 text-[#6B7280]"
+                    className="text-sm leading-6 text-[#6B7280]"
                     style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                 >
                     {excerpt}

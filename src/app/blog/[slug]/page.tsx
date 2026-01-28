@@ -49,11 +49,11 @@ export default async function BlogPost({ params }: BlogPageProps) {
         <>
             <Header />
             <main className="w-full bg-white">
-                <div className="px-12 pt-[216px] pb-[120px]">
+                <div className="px-4 md:px-12 pt-24 md:pt-[150px] 2xl:pt-[216px] pb-16 md:pb-[120px]">
                     <div className="max-w-[954px] mx-auto">
-                        <article className="flex flex-col gap-10">
+                        <article className="flex flex-col gap-4 md:gap-10">
                             {/* Breadcrumb */}
-                            <nav className="flex items-center gap-2 text-sm">
+                            <nav className="flex items-center gap-2 text-[12px] md:text-sm">
                                 <Link
                                     href="/"
                                     className="text-[#030712] hover:text-[#EA7B69] transition-colors"
@@ -80,7 +80,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
 
                             {/* Title */}
                             <h1
-                                className="text-[60px] leading-[68px] text-[#2A0E63]"
+                                className="text-[30px] md:text-[60px] leading-[34px] md:leading-[68px] text-[#2A0E63]"
                                 style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}
                             >
                                 {post.title}
@@ -91,7 +91,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                 {post.topics.map((topic, topicIndex) => (
                                     <span
                                         key={`${topic}-${topicIndex}`}
-                                        className="px-4 py-2 rounded-full bg-[#F8F8F7] border border-[#E8E6E6] text-[#030712] text-[13px]"
+                                        className="px-2 md:px-4 py-1 md:py-2 rounded-full bg-[#F8F8F7] border border-[#E8E6E6] text-[#030712] text-[10px] md:text-[13px]"
                                         style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                                     >
                                         {topic}
@@ -113,8 +113,8 @@ export default async function BlogPost({ params }: BlogPageProps) {
                             {/* Author & Read Time */}
                             <div className="flex items-center justify-between">
                                 {/* Author */}
-                                <div className="flex items-center gap-4">
-                                    <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                                <div className="flex items-center gap-2 md:gap-4">
+                                    <div className="relative w-8 h-8 md:w-12 md:h-12 rounded-full overflow-hidden">
                                         <Image
                                             src={post.author.avatar}
                                             alt={post.author.name}
@@ -123,7 +123,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                         />
                                     </div>
                                     <span
-                                        className="text-[#030712] text-base"
+                                        className="text-[#030712] text-sm md:text-base"
                                         style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 500 }}
                                     >
                                         {post.author.name}
@@ -131,34 +131,16 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                 </div>
 
                                 {/* Read Time */}
-                                <div className="flex items-center gap-3">
-                                    <img src="/assets/icons/clock_icon.svg" alt="clock" />
+                                <div className="flex items-center gap-2 md:gap-3">
+                                    <img src="/assets/icons/clock_icon.svg" alt="clock" className='h-4' />
                                     <span
-                                        className="text-[#030712] text-base"
+                                        className="text-[#030712] text-sm md:text-base"
                                         style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                                     >
                                         {post.read_time}
                                     </span>
                                 </div>
                             </div>
-
-                            {/* Introduction */}
-                            {post.content.intro && (
-                                <div className="flex flex-col gap-6">
-                                    <h2
-                                        className="text-[30px] leading-[38px] text-[#030712]"
-                                        style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 400 }}
-                                    >
-                                        Introduction
-                                    </h2>
-                                    <p
-                                        className="text-[18px] leading-[28px] text-[#030712]"
-                                        style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
-                                    >
-                                        {post.content.intro}
-                                    </p>
-                                </div>
-                            )}
 
                             {/* Content Sections */}
                             {post.content.sections.map((section, index) => {
@@ -168,7 +150,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                         return section.value ? (
                                             <h2
                                                 key={index}
-                                                className="text-[30px] leading-[38px] text-[#030712]"
+                                                className="text-2xl md:text-[30px] md:leading-[38px] text-[#030712]"
                                                 style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 400 }}
                                             >
                                                 {section.value}
@@ -179,7 +161,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                         return section.value ? (
                                             <h3
                                                 key={index}
-                                                className="text-[20px] leading-[28px] text-[#030712]"
+                                                className="text-base font-semibold md:text-[20px] md:leading-[28px] text-[#030712]"
                                                 style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                                             >
                                                 — {section.value}
@@ -190,7 +172,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                         return section.value ? (
                                             <p
                                                 key={index}
-                                                className="text-[18px] leading-[28px] text-[#030712]"
+                                                className="text-base md:text-[18px] md:leading-[28px] text-[#030712]"
                                                 style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                                             >
                                                 {section.value}
@@ -203,7 +185,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                                 {(section.items as string[]).map((item: string, itemIndex: number) => (
                                                     <li
                                                         key={itemIndex}
-                                                        className="text-[18px] leading-[28px] text-[#030712] list-disc"
+                                                        className="text-base md:text-[18px] md:leading-[28px] text-[#030712] list-disc"
                                                         style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                                                     >
                                                         {item}
@@ -226,9 +208,9 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                     
                                     case 'quote':
                                         return section.value ? (
-                                            <blockquote key={index} className="relative p-8 bg-[#F9FAFB] rounded-[24px] border-l-4 border-[#EA7B69]">
+                                            <blockquote key={index} className="relative p-4 md:p-8 bg-[#F9FAFB] rounded-[24px] border-l-4 border-[#EA7B69]">
                                                 <p
-                                                    className="text-[20px] leading-[32px] text-[#030712] italic"
+                                                    className="text-base md:text-[20px] md:leading-[32px] text-[#030712] italic"
                                                     style={{ fontFamily: 'Instrument Serif, serif', fontWeight: 400 }}
                                                 >
                                                     "{section.value}"
@@ -242,7 +224,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
                             })}
 
                             {/* Author & Share Cards */}
-                            <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mt-10">
+                            <div className="grid grid-cols-1 md:grid-cols-5 gap-5 md:gap-8 mt-5 md:mt-10">
                                 {/* Author Card - 60% (3 columns) */}
                                 <div className="md:col-span-3">
                                     <AuthorCard

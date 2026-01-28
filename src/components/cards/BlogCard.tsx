@@ -29,13 +29,12 @@ export default function BlogCard({
             </div>
 
             {/* Content */}
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3 md:gap-6">
                 {/* Read Time */}
                 <div className="flex items-center gap-4">
-                    <img src='/assets/icons/clock_icon.svg'>
-                    </img>
+                    <img src='/assets/icons/clock_icon.svg' alt="clock icon" className='h-4' />
                     <span
-                        className="text-base leading-6 tracking-[-0.25px] text-[#030712]"
+                        className="text-sm md:text-base md:leading-6 tracking-[-0.25px] text-[#030712]"
                         style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                     >
                         {readTime}
@@ -44,7 +43,7 @@ export default function BlogCard({
 
                 {/* Title */}
                 <h3
-                    className="text-2xl leading-7 text-[#030712]"
+                    className="text-xl md:text-2xl md:leading-7 text-[#030712]"
                     style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}
                 >
                     {title}
@@ -56,7 +55,7 @@ export default function BlogCard({
                     className="inline-flex items-center gap-2 text-[#EA7B69] hover:opacity-80 transition-opacity"
                 >
                     <span
-                        className="text-lg leading-7 tracking-[-0.4px]"
+                        className="md:text-lg leading-7 tracking-[-0.4px]"
                         style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 500 }}
                     >
                         Read More

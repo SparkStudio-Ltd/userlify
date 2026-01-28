@@ -20,7 +20,7 @@ export default function AuthorCard({ name, role, avatar, bio }: AuthorCardProps)
             <div className="flex flex-col gap-6 relative h-full">
                 {/* Author Info with Label and LinkedIn */}
                 <div className="flex items-center gap-4">
-                    <div className="relative w-28 h-28 rounded-full overflow-hidden border border-[#E8E6E6] flex-shrink-0">
+                    <div className="relative w-16 md:w-28 h-16 md:h-28 rounded-full overflow-hidden border border-[#E8E6E6] flex-shrink-0">
                         <Image
                             src={avatar}
                             alt={name}
@@ -30,19 +30,19 @@ export default function AuthorCard({ name, role, avatar, bio }: AuthorCardProps)
                     </div>
                     <div className="flex-1 flex flex-col gap-1">
                         <p
-                            className="text-[#030712] text-sm uppercase tracking-[0.75px]"
+                            className="text-[#030712] text-[12px] md:text-sm uppercase tracking-[0.75px]"
                             style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 700 }}
                         >
                             AUTHOR
                         </p>
                         <h3
-                            className="text-[#030712] text-xl leading-6"
+                            className="text-[#030712] text-base md:text-xl leading-6"
                             style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}
                         >
                             {name}
                         </h3>
                         <p
-                            className="text-[#6B7280] text-sm"
+                            className="text-[#6B7280] text-[12px] md:text-sm"
                             style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                         >
                             {role}
@@ -61,7 +61,7 @@ export default function AuthorCard({ name, role, avatar, bio }: AuthorCardProps)
 
                 {/* Bio */}
                 <p
-                    className="text-[#030712] text-base leading-6"
+                    className="text-[#030712] text-[14px] md:text-base leading-6"
                     style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                 >
                     {bio}

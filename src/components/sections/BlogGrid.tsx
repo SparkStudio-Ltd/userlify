@@ -81,7 +81,7 @@ export default function BlogGrid({ posts }: BlogGridProps) {
 
             {/* Remaining Posts - 2 Column Grid */}
             {remainingPosts.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-10">
                     {remainingPosts.map((post) => (
                         <div key={post.id} className="blog-card-item">
                             <BlogCard
