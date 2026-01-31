@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function OurTeamSection() {
     return (
         <main className="w-full bg-neutral-50 py-30">
-            <div className="mx-auto max-w-[1472px] px-4">
+            <div className="mx-auto max-w-[1472px] px-4 md:px-8 lg:px-12 2xl:px-0">
                 {/* Top Section */}
                 <div className="mb-24 flex flex-col items-center gap-4">
                     {/* Kicker */}
@@ -23,7 +23,7 @@ export default function OurTeamSection() {
                 </div>
 
                 {/* Team Cards Grid */}
-                <div className="grid justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="flex flex-wrap justify-center items-center gap-6">
                     {teamData.map((member) => {
                         const hasValidImage = member.image.startsWith('/assets/images/');
 
@@ -34,7 +34,7 @@ export default function OurTeamSection() {
                             >
                                 {/* Image Container */}
                                 <div
-                                    className="relative h-[295px] w-full overflow-hidden rounded-3xl"
+                                    className="relative aspect-[42/37] overflow-hidden rounded-3xl"
                                     style={{
                                         background: 'linear-gradient(180deg, #FFFFFF 0%, #FDEFED 100%)',
                                     }}
