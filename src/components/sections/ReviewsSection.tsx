@@ -51,7 +51,7 @@ export default function ReviewsSection() {
 
     return (
         <section className="w-full px-4 lg:px-12 py-24 lg:py-30 bg-[#F8F8F7] overflow-hidden">
-            <div className="max-w-[1472px] mx-auto">
+            <div className="max-w-[1472px] mx-auto ">
                 {/* Top Section - Kicker and Title */}
                 <div className="flex flex-col items-center gap-4 mb-24">
                     {/* Kicker */}
@@ -79,7 +79,7 @@ export default function ReviewsSection() {
                 </div>
 
                 {/* Bottom Section - Text and Slider */}
-                <div className="flex flex-col lg:flex-row gap-24 md:gap-16 items-center">
+                <div className="flex flex-col lg:flex-row gap-24 md:gap-16 items-center justify-between">
                     {/* Left Container - Text */}
                     <div className="lg:w-[300px] flex-shrink-0 hidden lg:block">
                         <h3
