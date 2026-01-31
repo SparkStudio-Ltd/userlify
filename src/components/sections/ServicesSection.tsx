@@ -103,7 +103,7 @@ export default function ServicesSection() {
                        
                         {/* Title */}
                     <h2
-                        className="text-[48px] leading-[56px] font-medium  text-white w-[34rem]"
+                        className="text-[48px] leading-[56px] font-medium  text-white md:w-[34rem]"
                         style={{ fontFamily: 'Nohemi, sans-serif' }}
                     >
                         Design Agency Turning {' '}

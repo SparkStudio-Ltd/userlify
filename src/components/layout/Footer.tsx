@@ -1,4 +1,3 @@
-
 import { FooterLogo } from '@/components/ui/FooterLogo';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -41,18 +40,20 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full py-24 px-4 md:px-12 h-[746px] bg-[#0B041B] overflow-hidden">
+    // Changed fixed height h-[746px] to min-h to accommodate mobile stacking
+    <footer className="relative w-full py-24  px-4 md:px-12 min-h-screen md:min-h-[746px] bg-[#0B041B] overflow-hidden flex flex-col justify-between">
+      
       {/* Main Footer Content */}
-      <div className="relative z-10 max-w-[1472px] mx-auto pt-[120px]">
+      <div className="relative z-10 max-w-[1472px] mx-auto w-full">
+        
         {/* Footer Columns */}
-        <div className="flex justify-between gap-8">
+        {/* Added text-center for mobile, md:text-left for desktop */}
+        <div className="flex flex-col md:flex-row gap-12 md:gap-8 text-center md:text-left">
+          
           {/* Brand / About - 30% */}
-          <div className="w-[25%]">
-
-
+          {/* Added items-center for mobile to center the logo */}
+          <div className="w-full md:w-[25%] flex flex-col items-center md:items-start">
             <FooterLogo />
-
-
             <p
               className="mt-6 text-white"
               style={{
@@ -69,7 +70,7 @@ export function Footer() {
           </div>
 
           {/* Services - 14% */}
-          <div className="w-[16.66%]">
+          <div className="w-full md:w-[16.66%]">
             <h3
               className="text-white mb-4"
               style={{
@@ -102,7 +103,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links - 14% */}
-          <div className="w-[16.66%]">
+          <div className="w-full md:w-[16.66%]">
             <h3
               className="text-white mb-4"
               style={{
@@ -135,7 +136,7 @@ export function Footer() {
           </div>
 
           {/* Company - 14% */}
-          <div className="w-[16.66%]">
+          <div className="w-full md:w-[16.66%]">
             <h3
               className="text-white mb-4"
               style={{
@@ -167,8 +168,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact - 14% */}
-          <div className="w-[25%]">
+          {/* Contact - 25% */}
+          <div className="w-full md:w-[25%]">
             <h3
               className="text-white mb-4"
               style={{
@@ -181,7 +182,11 @@ export function Footer() {
             </h3>
             <ul className="space-y-4">
               {contactInfo.map((info, index) => (
-                <li key={index} className="flex items-start gap-2">
+                <li 
+                    key={index} 
+                    // Added justify-center for mobile, md:justify-start for desktop
+                    className="flex items-start justify-center md:justify-start gap-2"
+                >
                   <Image src={info.icon} alt="" width={24} height={24} className="mt-0.5" />
                   <span
                     className="text-white"
@@ -202,9 +207,10 @@ export function Footer() {
         </div>
 
         {/* Footer Bottom Row */}
-        <div className="flex justify-between items-center mt-20 pb-8">
-          {/* Copyright - 70% */}
-          <div className="w-[70%]">
+        {/* Changed to flex-col-reverse for mobile (Copyright at bottom) or standard flex-col */}
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center mt-12 md:mt-20 pb-8 gap-8 md:gap-0">
+          {/* Copyright */}
+          <div className="w-full md:w-[70%] text-center md:text-left">
             <p
               className="text-white"
               style={{
@@ -219,8 +225,9 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Social Icons - 30% */}
-          <div className="w-[25%] flex justify-end gap-[43px]">
+          {/* Social Icons */}
+          {/* Centered on mobile, aligned right on desktop */}
+          <div className="w-full md:w-[25%] flex justify-center md:justify-end gap-4 md:gap-[43px]">
             {socialLinks.map((social) => (
               <Link
                 key={social.name}
@@ -240,25 +247,30 @@ export function Footer() {
       <div
         className="absolute left-1/2 -translate-x-1/2 pointer-events-none select-none overflow-hidden"
         style={{
-          width: '1472px',
-          height: '306px',
-          top: '90%',
-          transform: 'translate(-50%, -50%)',
+          width: '100%', // Changed from fixed px to %
+          maxWidth: '1472px',
+          height: 'auto', // Allow auto height
+          bottom: '0', // Position at bottom
+          top: 'auto', // Reset top
+          transform: 'translateX(-50%)', // Center horizontally
         }}
       >
         <div
-          className="text-transparent bg-clip-text"
+          className="text-transparent bg-clip-text text-center"
           style={{
             fontFamily: 'Nohemi, sans-serif',
             fontWeight: 700,
-            fontSize: '306px',
-            lineHeight: '306px',
-            letterSpacing: '8px',
+            // Responsive font size using Clamp or VW units
+            fontSize: 'clamp(60px, 15vw, 306px)',
+            lineHeight: '1',
+            letterSpacing: 'clamp(2px, 1vw, 8px)',
             opacity: 0.2,
             background: 'linear-gradient(90deg, #0B041B 0%, #E86A54 20%, #E86A54 80%, #0B041B 100%)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
+            // Added margin to push it partially off-screen if that was the intended "cut-off" look
+            marginBottom: '-0.1em' 
           }}
         >
           USERLIFY
