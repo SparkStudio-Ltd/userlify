@@ -23,14 +23,14 @@ export default function OurTeamSection() {
                 </div>
 
                 {/* Team Cards Grid */}
-                <div className="flex flex-wrap justify-center items-center gap-6">
+                <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
                     {teamData.map((member) => {
                         const hasValidImage = member.image.startsWith('/assets/images/');
 
                         return (
                             <div
                                 key={member.id}
-                                className="flex h-[380px] w-[350px] flex-col gap-4 rounded-[32px] border border-[#E8E6E6] bg-white px-2 pb-4 pt-2"
+                                className="flex h-auto w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-24px)] xl:w-[calc(25%-24px)] flex-col gap-4 rounded-[32px] border border-[#E8E6E6] bg-white px-2 pb-4 pt-2"
                             >
                                 {/* Image Container */}
                                 <div
