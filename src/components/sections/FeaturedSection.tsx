@@ -72,17 +72,28 @@ export default function StatsSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-[#FFFBF9] overflow-hidden py-24 px-4 md:px-12 flex flex-col items-center"
-    >
+      className="relative w-full bg-[#FFFBF9] overflow-hidden px-4 lg:px-12 md:px-8 py-24 lg:py-30 flex flex-col items-center"
+      >
+        
       {/* HEADER */}
-      <div className="text-center z-20 mb-12 relative px-4">
-        <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
-          {stats_section.heading}
-        </h2>
-        <p className="text-2xl md:text-3xl font-serif italic text-gray-800">
-          {stats_section.subheading}
-        </p>
-      </div>
+      <div  className="flex flex-col items-center gap-4 mb-24">
+                    {/* Kicker */}
+                    <p
+                        className="text-[#EA7B69] text-sm leading-5 tracking-[0.75px] uppercase font-bold"
+                        style={{ fontFamily: 'Public Sans, sans-serif' }}
+                    >
+                        • Stats
+                    </p>
+
+                    {/* Title */}
+                    <h2
+                        className="text-[48px] leading-[56px] font-medium text-center text-[#030712]"
+                        style={{ fontFamily: 'Nohemi, sans-serif' }}
+                    >
+                        Real Products, Real Impact {' '}
+                        <span className="italic font-serif block">Designed by Userlify</span>
+                    </h2>
+        </div>
 
       {/* MAIN CONTENT AREA - Matches the SVG Viewbox aspect ratio */}
       <div className="relative w-full max-w-[1472px] mx-auto aspect-[1472/1478]">

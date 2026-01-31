@@ -41,7 +41,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full h-[746px] bg-[#0B041B] overflow-hidden">
+    <footer className="relative w-full py-24 px-4 md:px-12 h-[746px] bg-[#0B041B] overflow-hidden">
       {/* Main Footer Content */}
       <div className="relative z-10 max-w-[1472px] mx-auto pt-[120px]">
         {/* Footer Columns */}

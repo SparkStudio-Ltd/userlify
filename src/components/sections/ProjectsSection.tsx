@@ -51,25 +51,29 @@ export default function ProjectsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-[#030712] px-4 lg:px-12 py-24 lg:py-30 text-white md:px-8"
+      className="relative w-full bg-[#030712] px-4 lg:px-12 md:px-8 py-24 lg:py-30 text-white "
     >
       <div className="relative z-10 mx-auto max-w-[1472px]">
         {/* HEADER SECTION */}
         <div className="mb-20 grid gap-8 lg:grid-cols-2 lg:gap-[250px]">
           {/* LEFT COLUMN */}
-          <div>
-            <div className="mb-4 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-primary" />
-              <span className="font-nohemi text-sm font-medium uppercase tracking-wider text-primary">
-                WHAT WE DO
-              </span>
-            </div>
-            <h2 className="font-nohemi mb-3 text-5xl font-medium leading-tight text-white">
-              Real Products, Real Impact
-            </h2>
-            <p className="font-instrumentSerif text-5xl leading-tight text-white">
-              Designed by Userlify
-            </p>
+          <div className='flex flex-col gap-4' >
+            {/* Kicker */}
+                    <p
+                        className="text-[#EA7B69] text-sm leading-5 tracking-[0.75px] uppercase font-bold"
+                        style={{ fontFamily: 'Public Sans, sans-serif' }}
+                    >
+                        • Stats
+                    </p>
+
+                    {/* Title */}
+                    <h2
+                        className="text-[48px] leading-[56px] font-medium text-white"
+                        style={{ fontFamily: 'Nohemi, sans-serif' }}
+                    >
+                        Real Products, Real Impact {' '}
+                        <span className="italic font-serif block">Designed by Userlify</span>
+                    </h2>
           </div>
 
           {/* RIGHT COLUMN */}

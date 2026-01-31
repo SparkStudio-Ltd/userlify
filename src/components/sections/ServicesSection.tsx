@@ -90,7 +90,7 @@ export default function ServicesSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full bg-[#030712] py-32 px-4 md:px-8 lg:px-16 min-h-screen text-white"
+            className="relative w-full bg-[#030712] py-32 px-4 md:px-8 lg:px-12 min-h-screen text-white"
         >
             {/* BACKGROUND LAYERS */}
 
@@ -99,13 +99,16 @@ export default function ServicesSection() {
 
                     {/* LEFT CONTENT (Sticky) */}
                     {/* Added 'h-fit' to ensure it takes only necessary height for sticky calculation */}
-                    <div className="lg:w-1/2 flex flex-col justify-start pt-4 lg:sticky lg:top-64 h-fit">
-                        <h2 className="text-white text-5xl font-[500] mb-6 leading-tight">
-                            Design Agency Turning <br />
-                            <span className="italic font-serif font-[400]">
-                                Startup Ideas into Real
-                            </span>
-                        </h2>
+                    <div className="lg:w-1/2 flex flex-col justify-start lg:sticky lg:top-64 h-fit">
+                       
+                        {/* Title */}
+                    <h2
+                        className="text-[48px] leading-[56px] font-medium  text-white w-[34rem]"
+                        style={{ fontFamily: 'Nohemi, sans-serif' }}
+                    >
+                        Design Agency Turning {' '}
+                        <span className="italic font-serif ">Startup Ideas into Real</span>
+                    </h2>
                         <p
                             className="text-gray-300 text-lg leading-relaxed mb-8"
                             style={{ fontFamily: 'Public Sans, sans-serif' }}
