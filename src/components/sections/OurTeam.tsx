@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function OurTeamSection() {
     return (
         <main className="w-full bg-neutral-50 py-30">
-            <div className="mx-auto max-w-[1472px] px-4">
+            <div className="mx-auto max-w-[1472px] px-4 md:px-8 lg:px-12 2xl:px-0">
                 {/* Top Section */}
                 <div className="mb-24 flex flex-col items-center gap-4">
                     {/* Kicker */}
@@ -23,18 +23,18 @@ export default function OurTeamSection() {
                 </div>
 
                 {/* Team Cards Grid */}
-                <div className="grid justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
                     {teamData.map((member) => {
                         const hasValidImage = member.image.startsWith('/assets/images/');
 
                         return (
                             <div
                                 key={member.id}
-                                className="flex h-[380px] w-[350px] flex-col gap-4 rounded-[32px] border border-[#E8E6E6] bg-white px-2 pb-4 pt-2"
+                                className="flex h-auto w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-24px)] xl:w-[calc(25%-24px)] flex-col gap-4 rounded-[32px] border border-[#E8E6E6] bg-white px-2 pb-4 pt-2"
                             >
                                 {/* Image Container */}
                                 <div
-                                    className="relative h-[295px] w-full overflow-hidden rounded-3xl"
+                                    className="relative aspect-[42/37] overflow-hidden rounded-3xl"
                                     style={{
                                         background: 'linear-gradient(180deg, #FFFFFF 0%, #FDEFED 100%)',
                                     }}

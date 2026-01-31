@@ -2,8 +2,6 @@
 
 import servicesData from '@/../public/data/about-why-choose-us.json';
 import { AboutChooseCard } from '@/components/cards';
-import { ArrowUpRight } from '@/components/icons';
-import { Button } from '@/components/ui';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -24,9 +22,8 @@ export default function AboutWhyChooseSection() {
     const blobRef = useRef(null);
 
     useGSAP(() => {
-        // ---------------------------------------------------------
-        // 1. BACKGROUND DECORATION ANIMATIONS
-        // ---------------------------------------------------------
+// 1. BACKGROUND DECORATION ANIMATIONS
+
         gsap.to(starRef1.current, {
             scale: 1.2,
             opacity: 1,
@@ -57,9 +54,7 @@ export default function AboutWhyChooseSection() {
             repeat: -1
         });
 
-        // ---------------------------------------------------------
         // 2. CARD REVEAL ANIMATION (Blur <-> Clear)
-        // ---------------------------------------------------------
 
         const cards = gsap.utils.toArray('.card-item');
 
@@ -91,7 +86,7 @@ export default function AboutWhyChooseSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full bg-white py-32 px-4 md:px-8 lg:px-16 min-h-screen text-white"
+            className="relative w-full bg-white py-32 px-4 md:px-8 lg:px-12 min-h-screen text-white"
         >
             {/* BACKGROUND LAYERS */}
 
@@ -117,7 +112,7 @@ export default function AboutWhyChooseSection() {
                     </div>
 
                     {/* RIGHT CONTENT (Sticky) */}
-                    {/* Added 'h-fit' to ensure it takes only necessary height for sticky calculation */}
+
                     <div className="lg:w-1/2 flex flex-col justify-start pt-4 lg:sticky lg:top-64 h-fit">
                         {/* Top Section */}
                         <div className="flex flex-col gap-16">
