@@ -101,7 +101,13 @@ export default function ReviewsSection() {
                     </div>
 
                     {/* Right Container - Slider */}
-                    <div className="flex-1 overflow-hidden max-w-[calc(332px*3+80px)]">
+                    <div className="flex-1 overflow-hidden max-w-[calc(332px*3+80px)] relative">
+                        {/* Left Gradient Shadow */}
+                        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
+
+                        {/* Right Gradient Shadow */}
+                        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#F8F8F7] to-transparent z-10 pointer-events-none" />
+
                         {/* Slider */}
                         <div ref={sliderRef} className="flex gap-10 items-stretch">
                             {reviewsData.map((review, index) => (
