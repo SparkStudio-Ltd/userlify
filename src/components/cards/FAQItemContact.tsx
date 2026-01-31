@@ -11,7 +11,7 @@ interface FAQItemProps {
 
 export default function FAQItemContact({ question, answer, isOpen, onToggle }: FAQItemProps) {
     return (
-        <div className="bg-white p-[25px] border border-[#D8D5D4] rounded-[24px] w-full lg:w-[600px] transition-all duration-300">
+        <div className="bg-white p-[25px] border border-[#D8D5D4] rounded-[24px] w-full 2xl:w-[600px] transition-all duration-300">
             <button
                 onClick={onToggle}
                 className="w-full flex items-center justify-between gap-6 text-left"
