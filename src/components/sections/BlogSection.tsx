@@ -62,13 +62,12 @@ export default function BlogSection() {
                             • BLOG
                         </p>
 
-                        {/* Title */}
                         <h2
-                            className="text-3xl md:text-[48px] md:leading-[56px] font-medium text-center text-[#030712] max-w-[800px]"
+                            className="text-center text-[48px] leading-tight md:leading-[56px] font-medium text-[#030712]"
                             style={{ fontFamily: 'Nohemi, sans-serif' }}
                         >
                             Articles to Help You{' '}
-                            <span className="italic font-serif block">
+                            <span className="italic inline font-serif tracking-tighter">
                                 Grow Your Product
                             </span>
                         </h2>

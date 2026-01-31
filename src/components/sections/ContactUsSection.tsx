@@ -158,7 +158,7 @@ export default function ContactUsSection() {
             • CONTACT US
           </p>
 
-          <h2 className="text-[24px] text-[#030712] md:text-[48px] md:leading-[56px]">
+          {/* <h2 className="text-[24px] text-[#030712] md:text-[48px] md:leading-[56px]">
             <span
               className="italic"
               style={{ fontFamily: 'Instrument Serif, serif', fontWeight: 400 }}
@@ -169,7 +169,16 @@ export default function ContactUsSection() {
             <span style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}>
               into a Beautiful Reality
             </span>
-          </h2>
+          </h2> */}
+          <h2
+                            className="text-center text-[48px] leading-tight md:leading-[56px] font-medium text-[#030712]"
+                            style={{ fontFamily: 'Nohemi, sans-serif' }}
+                        >
+                            <span className="italic inline font-serif tracking-tighter">
+                                Turn Your Product Idea{' '}
+                            </span>
+                             into a Beautiful Reality
+                        </h2>
         </div>
 
         {/* Two Column Layout */}
