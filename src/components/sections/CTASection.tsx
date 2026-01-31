@@ -88,11 +88,11 @@ export default function CTASection() {
                         </p>
 
                         <h2
-                            className="text-white text-3xl sm:text-4xl lg:text-[48px] leading-[1.15] lg:leading-[56px] tracking-[-0.5px]"
+                            className="text-white text-[48px] leading-[1.15] lg:leading-[56px] tracking-[-0.5px]"
                             style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}
                         >
                             Ready to Build a Product{' '}
-                            <span className="italic font-serif block">
+                            <span className="italic font-serif md:block">
                                 Your Users Will Love?
                             </span>
                         </h2>
@@ -124,7 +124,7 @@ export default function CTASection() {
 
                 {/* Right Section - Animated Sliders */}
                 {/* Ensure right side touches edge by using full remaining width */}
-                <div className="w-full lg:w-[55%] flex gap-4 sm:gap-6 lg:gap-8 h-[420px] sm:h-[520px] lg:h-[720px] overflow-hidden pr-0 px-4">
+                <div className="w-full lg:w-[55%] flex gap-4 sm:gap-6 lg:gap-8 h-[420px] sm:h-[520px] lg:h-[720px] overflow-hidden">
                     <div className="flex-1 overflow-hidden">
                         <div ref={slider1Ref} className="flex flex-col gap-4 sm:gap-6 lg:gap-8">
                             {images.map((src, index) => (
