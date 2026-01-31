@@ -76,7 +76,15 @@ export default function ClientsSection() {
                 </div>
 
                 {/* Logo Slider Container */}
-                <div className="flex items-center overflow-hidden">
+                <div className="relative flex items-center overflow-hidden">
+
+                    {/* Left Gradient Shadow */}
+                    <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+
+                    {/* Right Gradient Shadow */}
+                    <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+
                     {/* Slider */}
                     <div
                         ref={sliderRef}
