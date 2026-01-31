@@ -34,7 +34,7 @@ export function Header() {
     <header
       className={cn(
         'fixed left-0 right-0 top-0 z-50 transition-all duration-300 px-4 md:px-12',
-        isScrolled ? 'bg-white/90 shadow-soft backdrop-blur-md' : 'bg-transparent'
+        isScrolled || isMobileMenuOpen ? 'bg-white/90 shadow-soft backdrop-blur-md' : 'bg-transparent'
       )}
     >
       <Container>
@@ -95,19 +95,19 @@ export function Header() {
         <div
           className={cn(
             'overflow-hidden transition-all duration-300 md:hidden',
-            isMobileMenuOpen ? 'max-h-80' : 'max-h-0'
+            isMobileMenuOpen ? 'min-h-[22rem]' : 'max-h-0'
           )}
         >
-          <div className="space-y-1 pb-6 pt-2">
+          <div className="flex flex-col items-center justify-center ">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  'font-nav block rounded-lg px-4 py-3 text-sm font-medium transition-colors',
+                  'font-nav block w-full text-center rounded-lg px-6 py-3 text-lg font-medium transition-colors',
                   pathname === item.href
-                    ? 'bg-white text-gray-950'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-950'
+                    ? 'bg-[#EA7B69] text-white' // Active: Orange Background + White Text
+                    : 'text-gray-600 hover:bg-[#EA7B69] hover:text-white' // Hover: Orange Background + White Text
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -115,7 +115,7 @@ export function Header() {
               </Link>
             ))}
             <div className="pt-4">
-              <Button href="/get-quote" variant="primary" size="md" className="w-full">
+              <Button href="/get-quote" variant="primary" size="lg" className="w-full">
                 Get a Quote
               </Button>
             </div>
@@ -125,3 +125,5 @@ export function Header() {
     </header>
   );
 }
+
+

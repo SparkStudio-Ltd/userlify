@@ -106,7 +106,7 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="bg-gradient-hero relative overflow-hidden"
+      className="bg-gradient-hero relative overflow-hidden w-full py-24 px-4 md:px-12"
     >
       {/* Background gradient orb */}
       <div className="absolute -left-40 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-gradient-to-br from-primary-200/40 via-primary-100/20 to-transparent blur-3xl" />
@@ -131,10 +131,10 @@ export function HeroSection() {
           {/* Main heading */}
           <h1
             ref={headingRef}
-            className="max-w-4xl font-heading text-display-2 font-medium leading-tight text-accent-950 md:text-display-1"
+            className="max-w-4xl font-heading text-display-1 font-medium leading-tight text-accent-950 md:text-display-1"
           >
-            Design Agency <span className="block">Turning Startup Ideas</span>
-            <span className="block">
+            Design Agency <span className="md:block">Turning Startup Ideas </span>
+            <span className="md:block">
               into <span className="font-serif italic text-primary">Real Products</span>
             </span>
           </h1>

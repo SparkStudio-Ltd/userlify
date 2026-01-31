@@ -41,7 +41,7 @@ export function Footer() {
 
   return (
     // Changed fixed height h-[746px] to min-h to accommodate mobile stacking
-    <footer className="relative w-full py-24  px-4 md:px-12 min-h-screen md:min-h-[746px] bg-[#0B041B] overflow-hidden flex flex-col justify-between">
+    <footer className="relative w-full py-24 px-4 md:px-12 min-h-screen md:min-h-[746px] bg-[#0B041B] overflow-hidden flex flex-col justify-between">
       
       {/* Main Footer Content */}
       <div className="relative z-10 max-w-[1472px] mx-auto w-full">
