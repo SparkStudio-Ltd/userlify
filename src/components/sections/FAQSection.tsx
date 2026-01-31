@@ -15,11 +15,11 @@ export default function FAQSection() {
     };
 
     return (
-        <section className="w-full py-24 lg:py-30 px-4 lg:px-12 bg-white">
-            <div className="max-w-[1472px] mx-auto">
-                <div className="flex flex-col lg:flex-row gap-24 items-start">
+        <section className="w-full py-24 px-4 md:px-12 bg-white">
+            <div className="max-w-[1472px] mx-auto flex flex-col lg:flex-row gap-24 lg:gap-8 items-start">
+                
                     {/* Left Section */}
-                    <div className="w-full lg:w-[59.24%] flex flex-col gap-10">
+                    <div className="w-full  flex flex-col gap-10">
                         {/* Kicker */}
                         <div className='flex flex-col gap-4'>
                             <p
@@ -62,19 +62,28 @@ export default function FAQSection() {
                             </Button>
                         </div>
 
-                        {/* Image */}
-                        <div className="relative w-full h-[512px] rounded-[24px] overflow-hidden">
+                        {/* <Image
+                                src="/assets/images/faq_image.png"
+                                alt="FAQ"
+                                width={100}
+                                height={100}
+                                className="object-cover"
+                            /> */}
+
+                            <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[512px] rounded-[24px] overflow-hidden bg-gray-100 mt-auto z-0">
                             <Image
                                 src="/assets/images/faq_image.png"
                                 alt="FAQ"
                                 fill
                                 className="object-cover"
+                                sizes="(max-width: 1024px) 100vw, 50vw"
                             />
                         </div>
+
                     </div>
 
                     {/* Right Section - FAQ Accordion */}
-                    <div className="w-full lg:w-[40.76%] flex flex-col gap-6 items-end">
+                    <div className="w-full  flex flex-col gap-6 items-end">
                         {faqData.faq.map((faq: { question: string; answer: string }, index: number) => (
                             <FAQItem
                                 key={index}
@@ -85,8 +94,8 @@ export default function FAQSection() {
                             />
                         ))}
                     </div>
-                </div>
             </div>
         </section>
     );
 }
+
