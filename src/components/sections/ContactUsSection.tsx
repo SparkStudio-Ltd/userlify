@@ -154,16 +154,10 @@ export default function ContactUsSection() {
     setErrorMessage('');
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_CONTACT_URL;
-
-      if (!apiUrl) {
-        throw new Error('API URL is not configured. Please check your .env.local file.');
-      }
-
-      const response = await fetch(apiUrl, {
+      // Call our internal API route instead of external API directly
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
-          accept: '*/*',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -175,10 +169,11 @@ export default function ContactUsSection() {
         }),
       });
 
+      const data = await response.json();
+
       // Check for successful response (200-299 range)
       if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        throw new Error(data.error || 'Failed to send message');
       }
 
       // Success - clear form and session storage
@@ -349,11 +344,10 @@ export default function ContactUsSection() {
                   key={service}
                   type="button"
                   onClick={() => handleServiceSelect(service)}
-                  className={`rounded-full border px-5 py-2 text-sm transition-all md:px-9 md:py-4 md:text-[18px] ${
-                    selectedService === service
+                  className={`rounded-full border px-5 py-2 text-sm transition-all md:px-9 md:py-4 md:text-[18px] ${selectedService === service
                       ? 'border-primary bg-primary text-white'
                       : 'border-[#E8E6E6] bg-[#F8F8F7] text-[#030712] hover:border-primary/50'
-                  }`}
+                    }`}
                   style={{ fontFamily: 'Public Sans, sans-serif' }}
                 >
                   {service}
