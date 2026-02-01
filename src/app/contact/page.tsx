@@ -231,30 +231,26 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main className="w-full bg-white px-4 pb-12 pt-24 sm:px-6 sm:pb-16 sm:pt-32 md:px-8 md:pb-20 md:pt-40 lg:px-12 lg:pb-[120px] lg:pt-[216px]">
+      <main className="overflow-hidden w-full bg-white px-4 pb-12 pt-24 sm:px-6 sm:pb-16 sm:pt-32 md:px-8 md:pb-20 md:pt-40 lg:px-12 lg:pb-[120px] lg:pt-[216px]">
         {/* Two Column Layout */}
         <div className="mx-auto grid w-full max-w-[1472px] grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-5">
           {/* Left Card - 40% (2 columns) */}
-          <div ref={leftCardRef} className="flex flex-col sm:p-8 md:p-10 lg:col-span-2">
-            <div ref={headerRef} className="max-w-full lg:max-w-[520px]">
+          <div ref={leftCardRef} className="flex flex-col lg:col-span-2">
+            <div ref={headerRef} className="flex flex-col max-w-full lg:max-w-[520px] gap-4">
               <p
                 className="text-sm uppercase tracking-[0.75px] text-primary"
                 style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 700 }}
               >
                 • CONTACT
               </p>
-              <h1 className="mt-4 text-[32px] leading-[36px] text-[#2A0E63] sm:text-[40px] sm:leading-[44px] md:text-[50px] md:leading-[54px] lg:text-[60px] lg:leading-[64px]">
-                <span style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}>
-                  Let's Take the
-                </span>
-                <br />
-                <span
-                  className="font-serif text-[36px] italic leading-[40px] tracking-[-2px] sm:text-[48px] sm:leading-[52px] md:text-[60px] md:leading-[68px] lg:text-[72px] lg:leading-[80px]"
-                  style={{ fontWeight: 400 }}
-                >
-                  First Step Together
-                </span>
-              </h1>
+
+              <h2
+                className="text-6xl leading-[1.15] tracking-[-0.5px] text-[#2A0E63] lg:leading-[56px]"
+                style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}
+              >
+                Let's Take the{' '}
+                <span className="md:block font-serif italic">First Step Together</span>
+              </h2>
             </div>
 
             <div className="mt-8 grid gap-6 sm:mt-10 sm:gap-8 md:mt-12 md:gap-10 lg:mt-14">

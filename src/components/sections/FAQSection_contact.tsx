@@ -17,9 +17,9 @@ export default function FAQSectionContact() {
     return (
         <section className="w-full py-16 lg:py-32 px-4 lg:px-12 bg-neutral-50">
             <div className="max-w-[1472px] mx-auto">
-                <div className="flex flex-col lg:flex-row gap-24 items-start">
+                <div className="flex flex-col lg:flex-row gap-16 items-start">
                     {/* Left Section */}
-                    <div className="w-full lg:w-[59.24%] flex flex-col gap-10">
+                    <div className="w-full  flex flex-col gap-10">
                         {/* Kicker */}
                         <div className='flex flex-col gap-4 '>
                             <p
@@ -74,7 +74,7 @@ export default function FAQSectionContact() {
                     </div>
 
                     {/* Right Section - FAQ Accordion */}
-                    <div className="w-full lg:w-[40.76%] flex flex-col gap-6 items-end">
+                    <div className="w-full flex flex-col gap-6 items-end">
                         {faqData.faq.map((faq: { question: string; answer: string }, index: number) => (
                             <FAQItemContact
                                 key={index}
