@@ -65,6 +65,9 @@ export default function ContactPage() {
     message:
       typeof window !== 'undefined' ? sessionStorage.getItem('contactMessage') || '' : '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     // Animate header
@@ -154,19 +157,75 @@ export default function ContactPage() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission locally for now
-    console.log('Form submitted:', { ...formData, service: selectedService });
 
-    // if (typeof window !== 'undefined') {
-    //     sessionStorage.removeItem('contactService');
-    //     sessionStorage.removeItem('contactName');
-    //     sessionStorage.removeItem('contactEmail');
-    //     sessionStorage.removeItem('contactPhone');
-    //     sessionStorage.removeItem('contactMessage');
-    // }
-    // router.push('/thank-you');
+    // Validate that a service is selected
+    if (!selectedService) {
+      setErrorMessage('Please select a service type');
+      setSubmitStatus('error');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_CONTACT_URL;
+
+      if (!apiUrl) {
+        throw new Error('API URL is not configured. Please check your .env.local file.');
+      }
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          accept: '*/*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: selectedService,
+          message: formData.message,
+        }),
+      });
+
+      // Check for successful response (200-299 range)
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+      }
+
+      // Success - clear form and session storage
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setSelectedService('');
+
+      if (typeof window !== 'undefined') {
+        sessionStorage.removeItem('contactName');
+        sessionStorage.removeItem('contactEmail');
+        sessionStorage.removeItem('contactPhone');
+        sessionStorage.removeItem('contactMessage');
+        sessionStorage.removeItem('contactService');
+      }
+
+      // Redirect to thank-you page after a brief delay
+      setTimeout(() => {
+        router.push('/thank-you');
+      }, 1500);
+    } catch (error) {
+      setSubmitStatus('error');
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage('Failed to send message. Please try again later.');
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -176,10 +235,7 @@ export default function ContactPage() {
         {/* Two Column Layout */}
         <div className="mx-auto grid w-full max-w-[1472px] grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-5">
           {/* Left Card - 40% (2 columns) */}
-          <div
-            ref={leftCardRef}
-            className="flex flex-col sm:p-8 md:p-10 lg:col-span-2"
-          >
+          <div ref={leftCardRef} className="flex flex-col sm:p-8 md:p-10 lg:col-span-2">
             <div ref={headerRef} className="max-w-full lg:max-w-[520px]">
               <p
                 className="text-sm uppercase tracking-[0.75px] text-primary"
@@ -202,7 +258,7 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-8 grid gap-6 sm:mt-10 sm:gap-8 md:mt-12 md:gap-10 lg:mt-14">
-              <div className="flex md:grid gap-6 sm:grid-cols-2 sm:gap-8 md:gap-10">
+              <div className="flex gap-6 sm:grid-cols-2 sm:gap-8 md:grid md:gap-10">
                 {locations.map((location, index) => (
                   <div key={location.id} className="flex flex-col gap-3">
                     <div className="flex h-10 w-10 items-center justify-center">
@@ -423,20 +479,39 @@ export default function ContactPage() {
               <div className="flex flex-col items-center gap-4 pt-6">
                 <button
                   type="submit"
-                  className="flex w-fit items-center gap-3 rounded-full bg-primary px-8 py-4 text-[18px] text-white transition-all hover:bg-primary-600 hover:shadow-lg active:scale-95"
+                  disabled={isSubmitting}
+                  className="flex w-fit items-center gap-3 rounded-full bg-primary px-8 py-4 text-[18px] text-white transition-all hover:bg-primary-600 hover:shadow-lg active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
                   style={{ fontFamily: 'Public Sans, sans-serif' }}
                 >
-                  Send Message
-                  <FaArrowRight size={16} />
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {!isSubmitting && <FaArrowRight size={16} />}
                 </button>
 
-                {/* Success Message */}
-                <p
-                  className="text-[16px] text-[#32201D]"
-                  style={{ fontFamily: 'Public Sans, sans-serif' }}
-                >
-                  We'll get back to you within 12 hours!
-                </p>
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <p
+                    className="text-[16px] text-green-600"
+                    style={{ fontFamily: 'Public Sans, sans-serif' }}
+                  >
+                    ✓ Message sent successfully! We'll get back to you within 12 hours.
+                  </p>
+                )}
+                {submitStatus === 'error' && (
+                  <p
+                    className="text-[16px] text-red-600"
+                    style={{ fontFamily: 'Public Sans, sans-serif' }}
+                  >
+                    ✗ {errorMessage}
+                  </p>
+                )}
+                {submitStatus === 'idle' && !isSubmitting && (
+                  <p
+                    className="text-[16px] text-[#32201D]"
+                    style={{ fontFamily: 'Public Sans, sans-serif' }}
+                  >
+                    We'll get back to you within 12 hours!
+                  </p>
+                )}
               </div>
             </form>
           </div>

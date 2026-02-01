@@ -4,6 +4,7 @@ import clientsData from '@/../public/data/clients.json';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { FaArrowRight, FaLinkedinIn } from 'react-icons/fa';
 
@@ -28,6 +29,7 @@ const expertiseAreas = [
 ];
 
 export default function ContactUsSection() {
+  const router = useRouter();
   const headerRef = useRef<HTMLDivElement>(null);
   const leftCardRef = useRef<HTMLDivElement>(null);
   const rightCardRef = useRef<HTMLDivElement>(null);
@@ -45,6 +47,9 @@ export default function ContactUsSection() {
     message:
       typeof window !== 'undefined' ? sessionStorage.getItem('contactMessage') || '' : '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     // Animate header
@@ -134,17 +139,82 @@ export default function ContactUsSection() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission locally for now
-    console.log('Form submitted:', { ...formData, service: selectedService });
+
+    // Validate that a service is selected
+    if (!selectedService) {
+      setErrorMessage('Please select a service type');
+      setSubmitStatus('error');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_CONTACT_URL;
+
+      if (!apiUrl) {
+        throw new Error('API URL is not configured. Please check your .env.local file.');
+      }
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          accept: '*/*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: selectedService,
+          message: formData.message,
+        }),
+      });
+
+      // Check for successful response (200-299 range)
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+      }
+
+      // Success - clear form and session storage
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setSelectedService('');
+
+      if (typeof window !== 'undefined') {
+        sessionStorage.removeItem('contactName');
+        sessionStorage.removeItem('contactEmail');
+        sessionStorage.removeItem('contactPhone');
+        sessionStorage.removeItem('contactMessage');
+        sessionStorage.removeItem('contactService');
+      }
+
+      // Redirect to thank-you page after a brief delay
+      setTimeout(() => {
+        router.push('/thank-you');
+      }, 1500);
+    } catch (error) {
+      setSubmitStatus('error');
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage('Failed to send message. Please try again later.');
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Get first 5 clients for logo display
   const displayClients = clientsData.slice(0, 5);
 
   return (
-    <section className="w-full overflow-hidden bg-[#F8F8F7] py-24 lg:py-30 px-4 lg:px-12">
+    <section className="w-full overflow-hidden bg-[#F8F8F7] px-4 py-24 lg:px-12 lg:py-30">
       <div className="mx-auto max-w-[1472px]">
         {/* Header */}
         <div
@@ -158,14 +228,14 @@ export default function ContactUsSection() {
             • CONTACT US
           </p>
           <h2
-                            className="text-center text-[48px] leading-tight md:leading-[56px] font-medium text-[#030712]"
-                            style={{ fontFamily: 'Nohemi, sans-serif' }}
-                        >
-                            <span className="italic font-serif tracking-tighter block">
-                                Turn Your Product Idea {' '}
-                            </span>
-                             into a Beautiful Reality
-                        </h2>
+            className="text-center text-[48px] font-medium leading-tight text-[#030712] md:leading-[56px]"
+            style={{ fontFamily: 'Nohemi, sans-serif' }}
+          >
+            <span className="block font-serif italic tracking-tighter">
+              Turn Your Product Idea{' '}
+            </span>
+            into a Beautiful Reality
+          </h2>
         </div>
 
         {/* Two Column Layout */}
@@ -386,20 +456,39 @@ export default function ContactUsSection() {
               <div className="flex flex-col items-center gap-4 pt-6">
                 <button
                   type="submit"
-                  className="flex w-fit items-center gap-3 rounded-full bg-primary px-4 py-2 text-sm text-white transition-all hover:bg-primary-600 hover:shadow-lg active:scale-95 md:px-8 md:py-4 md:text-[18px]"
+                  disabled={isSubmitting}
+                  className="flex w-fit items-center gap-3 rounded-full bg-primary px-4 py-2 text-sm text-white transition-all hover:bg-primary-600 hover:shadow-lg active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 md:px-8 md:py-4 md:text-[18px]"
                   style={{ fontFamily: 'Public Sans, sans-serif' }}
                 >
-                  Send Message
-                  <FaArrowRight size={16} />
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {!isSubmitting && <FaArrowRight size={16} />}
                 </button>
 
-                {/* Success Message */}
-                <p
-                  className="text-sm text-[#32201D] md:text-[16px]"
-                  style={{ fontFamily: 'Public Sans, sans-serif' }}
-                >
-                  We'll get back to you within 12 hours!
-                </p>
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <p
+                    className="text-sm text-green-600 md:text-[16px]"
+                    style={{ fontFamily: 'Public Sans, sans-serif' }}
+                  >
+                    ✓ Message sent successfully! We'll get back to you within 12 hours.
+                  </p>
+                )}
+                {submitStatus === 'error' && (
+                  <p
+                    className="text-sm text-red-600 md:text-[16px]"
+                    style={{ fontFamily: 'Public Sans, sans-serif' }}
+                  >
+                    ✗ {errorMessage}
+                  </p>
+                )}
+                {submitStatus === 'idle' && !isSubmitting && (
+                  <p
+                    className="text-sm text-[#32201D] md:text-[16px]"
+                    style={{ fontFamily: 'Public Sans, sans-serif' }}
+                  >
+                    We'll get back to you within 12 hours!
+                  </p>
+                )}
               </div>
             </form>
           </div>
