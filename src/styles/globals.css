@@ -141,3 +141,14 @@
     animation-delay: 500ms;
   }
 }
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px !important;
+  }
+
+  h2 {
+    font-size: 30px !important;
+  }
+}
