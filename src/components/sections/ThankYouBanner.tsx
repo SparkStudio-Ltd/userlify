@@ -8,10 +8,10 @@ import { FaArrowRight } from 'react-icons/fa';
 export default function ThankYouBannerSection() {
 
     return (
-        <main className="flex min-h-[952px] w-full items-center bg-white">
-            <section className="mx-auto flex h-[952px] w-full max-w-[1920px] items-center justify-center gap-16">
-                <div className="flex h-[616px] w-full max-w-[1472px] flex-col items-center gap-16 rounded-[40px] bg-[#F8F8F7] px-8 py-24 sm:px-12">
-                    <div className="flex h-[208px] w-[208px] items-center justify-center rounded-full bg-white p-10">
+        <main className="flex min-h-[800px] md:min-h-[950px] w-full items-center bg-white">
+            <section className="mx-auto px-4 flex  w-full max-w-[1920px] items-center justify-center gap-16">
+                <div className="flex  w-full max-w-[1472px] flex-col items-center gap-16 rounded-[40px] bg-[#F8F8F7] px-8 py-24 sm:px-12">
+                    <div className="flex h-[150px] w-[150px] md-h-[208px] md-w-[208px] items-center justify-center rounded-full bg-white p-10">
                         <Image
                             src="/assets/icons/checkmark-badgeSvg.svg"
                             alt="Success"
