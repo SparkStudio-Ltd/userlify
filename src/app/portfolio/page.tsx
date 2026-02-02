@@ -3,8 +3,7 @@
 import projectsData from '@/../public/data/projects.json';
 import { ProjectCard } from '@/components/cards';
 import { Footer, Header } from '@/components/layout';
-import { ContactUsSection, CTASection } from '@/components/sections';
-import ReviewSectionPortfolio from '@/components/sections/ReviewSectionPortfolio';
+import { ContactUsSection, CTASection, ReviewsSection } from '@/components/sections';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
@@ -506,7 +505,7 @@ export default function PortfolioPage() {
 
                 </section>
 
-                <ReviewSectionPortfolio/>
+                <ReviewsSection/>
 
                 {/* Projects Section - Single Row */}
                 <section className="relative w-full bg-[#030712] px-4 py-16 text-white md:px-8 md:py-24 lg:px-16 lg:py-32">
