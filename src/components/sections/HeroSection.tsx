@@ -19,6 +19,10 @@ export function HeroSection() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const tagFactorsRef = useRef<{ x: number; y: number; duration: number }[]>([]);
 
+    // Refs for the new background orbs
+  const orb1Ref = useRef<HTMLDivElement>(null);
+  const orb2Ref = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Heading animation
@@ -37,6 +41,26 @@ export function HeroSection() {
         stagger: 0.15,
         ease: 'power2.out',
         delay: 0.3,
+      });
+
+      //  Background Orbs Floating Animation (Moving Gradient)
+      gsap.to(orb1Ref.current, {
+        x: -50,
+        y: 50,
+        duration: 6,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+      gsap.to(orb2Ref.current, {
+        x: 50,
+        y: -50,
+        duration: 7,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: 1,
       });
 
       // CTA animation
@@ -106,13 +130,33 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="bg-gradient-hero relative overflow-hidden w-full py-1 md:py-24 px-4 md:px-12"
+      className="bg-white relative overflow-hidden w-full py-1 md:py-24 px-4 md:px-12"
     >
       {/* Background gradient orb */}
-      <div className="absolute -left-40 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-gradient-to-br from-primary-200/40 via-primary-100/20 to-transparent blur-3xl" />
+      {/* Top Right Moving Gradient */}
+      <div 
+        ref={orb1Ref}
+        className="absolute -top-[20%] -right-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full opacity-40 pointer-events-none"
+        style={{
+          background: '#E86A54',
+          filter: 'blur(120px)', 
+          transform: 'translateZ(0)', // Hardware acceleration
+        }}
+      />
+
+      {/* Bottom Left Moving Gradient */}
+      <div 
+        ref={orb2Ref}
+        className="absolute -bottom-[20%] -left-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full opacity-40 pointer-events-none"
+        style={{
+          background: '#E86A54',
+          filter: 'blur(120px)',
+          transform: 'translateZ(0)',
+        }}
+      />
 
       <Container className="relative">
-        <div className="flex min-h-[694px] flex-col items-center justify-center mx-auto text-center">
+        <div className="flex min-h-[492px] flex-col items-center justify-center mx-auto text-center">
           {/* Floating Tags */}
           <div className="absolute inset-0 hidden lg:block">
             {floatingTags.map((tag, index) => (
@@ -145,7 +189,7 @@ export function HeroSection() {
               Start Your Project
               <ArrowUpRight className="h-5 w-5" />
             </Button>
-            <Button href="/case-study" variant="secondary" size="lg">
+            <Button href="/case-study" variant="secondary" size="lg" className="shadow-[0px_0px_0px_1px_#14141F1F,0px_1px_3px_0px_#14141F1F]">
               View Our Work
               <ArrowUpRight className="h-5 w-5" />
             </Button>
@@ -155,3 +199,7 @@ export function HeroSection() {
     </section>
   );
 }
+
+
+
+

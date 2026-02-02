@@ -1,7 +1,7 @@
-
-
 'use client';
 
+import { ArrowUpRight } from '@/components/icons';
+import { Button } from '@/components/ui';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
@@ -106,19 +106,10 @@ export default function CTASection() {
                     </div>
 
                     <div className="mt-4">
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center gap-3 bg-white text-[#030712] py-3 sm:py-[18px] px-6 sm:px-8 rounded-full hover:opacity-90 transition-opacity"
-                            style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 500 }}
-                        >
-                            <span className="text-base sm:text-lg leading-7">Contact Us</span>
-                            <Image
-                                src="/assets/icons/arrow_right.svg"
-                                alt="Arrow"
-                                width={20}
-                                height={20}
-                            />
-                        </Link>
+                        <Button href="/contact" variant="cta" size="lg">
+                                      Contact Us
+                                <ArrowUpRight className="h-5 w-5" />
+                        </Button>
                     </div>
                 </div>
 

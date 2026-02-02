@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'cta';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   className?: string;
@@ -12,12 +12,16 @@ interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
 }
 
+// border border-gray-950/20
+
 const variants = {
   primary:
-    'bg-primary text-white shadow-button hover:bg-primary-600 hover:shadow-lg active:scale-95',
+    'bg-primary text-white hover:bg-primary-600 hover:shadow-lg active:scale-95',
   secondary:
-    'border border-gray-950/20 bg-white/80 text-gray-950 backdrop-blur-sm hover:bg-white hover:border-gray-950/40',
+    'bg-[#FFFFFF] text-[#493936] hover:bg-white hover:border-[#E86A54]',
   ghost: 'text-gray-950 hover:bg-gray-50',
+  cta: 'text-[#493936] bg-[white] hover:border-primary'
+
 };
 
 const sizes = {
