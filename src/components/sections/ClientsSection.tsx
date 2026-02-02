@@ -60,7 +60,7 @@ export default function ClientsSection() {
                         className="text-[#EA7B69] text-sm leading-5 tracking-[0.75px] uppercase font-bold"
                         style={{ fontFamily: 'Public Sans, sans-serif' }}
                     >
-                        • CLIENT LOGO
+                        • CLIENTS
                     </p>
 
                     {/* Title */}
