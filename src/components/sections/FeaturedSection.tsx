@@ -116,19 +116,19 @@ export default function StatsSection() {
           style={{ fontFamily: 'Nohemi, sans-serif' }}
         >
           Real Products, Real Impact {' '}
-          <span className="italic font-serif block">Designed by Userlify</span>
+          <span className="italic font-serif md:block">Designed by Userlify</span>
         </h2>
       </div>
 
-      {/* ============================================== */}
+
       {/* 📱 MOBILE VIEW (Visible below lg breakpoint)   */}
-      {/* ============================================== */}
+      
       <div 
         ref={mobileWrapperRef}
-        className="block lg:hidden w-full max-w-md flex flex-col gap-6"
+        className=" md:hidden w-full md:max-w-md flex flex-col gap-6 "
       >
         {stat_items.map((item, index) => (
-          <div key={index} className="mobile-card w-full">
+          <div key={index} className="mobile-card w-full bg-white rounded-2xl">
              {/* We can add a connecting line visual here if desired, otherwise just stacked cards */}
              <CleanCard content={item} />
           </div>
@@ -136,12 +136,11 @@ export default function StatsSection() {
       </div>
 
 
-      {/* ============================================== */}
-      {/* 🖥️ DESKTOP VIEW (Visible lg and up)            */}
-      {/* ============================================== */}
+      {/* DESKTOP VIEW (Visible lg and up) */}
+   
       <div 
         ref={desktopWrapperRef}
-        className="hidden lg:block relative w-full max-w-[1472px] mx-auto aspect-[1472/1478]"
+        className="hidden md:block relative w-full max-w-[1472px] mx-auto aspect-[1472/1478]"
       >
         {/* --- 1. UNIFIED SVG LAYER --- */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">

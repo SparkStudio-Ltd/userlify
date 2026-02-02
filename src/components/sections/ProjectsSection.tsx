@@ -72,7 +72,7 @@ export default function ProjectsSection() {
                         style={{ fontFamily: 'Nohemi, sans-serif' }}
                     >
                         Real Products, Real Impact {' '}
-                        <span className="italic font-serif block">Designed by Userlify</span>
+                        <span className="italic font-serif md:block">Designed by Userlify</span>
                     </h2>
           </div>
 
