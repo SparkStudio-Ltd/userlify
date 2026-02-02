@@ -51,7 +51,7 @@ export default function ImageSlider({ slides }: ImageSliderProps) {
                 {slides.map((slide) => (
                     <div
                         key={slide.id}
-                        className="slide-item flex-shrink-0 py-6 px-4"
+                        className="slide-item flex-shrink-0 py-6"
                     >
                         <div className="relative w-[280px] h-[392px] rounded-[24px] overflow-hidden">
                             <Image

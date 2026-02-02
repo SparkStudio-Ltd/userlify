@@ -4,7 +4,7 @@ import { ImageSlider, ServiceSlider } from '@/components/sliders';
 
 export default function SliderSection() {
     return (
-        <section className="w-full py-16 bg-white">
+        <section className="w-full pt-0 pb-16 bg-white">
             <div className="w-full">
                 {/* Image Slider - Right to Left */}
                 <ImageSlider slides={imageSliderData.slides} />
