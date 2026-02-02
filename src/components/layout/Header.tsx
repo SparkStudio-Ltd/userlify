@@ -45,7 +45,7 @@ export function Header() {
             <Logo />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop navigation */}
           <div className="hidden items-center gap-1 rounded-full bg-gray-50 px-2.5 py-2.5 md:flex">
             {navigation.map((item) => (
               <Link
