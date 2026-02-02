@@ -106,7 +106,7 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="bg-gradient-hero relative overflow-hidden w-full py-24 px-4 md:px-12"
+      className="bg-gradient-hero relative overflow-hidden w-full py-1 md:py-24 px-4 md:px-12"
     >
       {/* Background gradient orb */}
       <div className="absolute -left-40 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-gradient-to-br from-primary-200/40 via-primary-100/20 to-transparent blur-3xl" />
@@ -149,15 +149,6 @@ export function HeroSection() {
               View Our Work
               <ArrowUpRight className="h-5 w-5" />
             </Button>
-          </div>
-
-          {/* Mobile Tags */}
-          <div className="mt-12 flex flex-wrap justify-center gap-3 lg:hidden">
-            {floatingTags.map((tag) => (
-              <div key={tag.text} className="tag">
-                {tag.text}
-              </div>
-            ))}
           </div>
         </div>
       </Container>
