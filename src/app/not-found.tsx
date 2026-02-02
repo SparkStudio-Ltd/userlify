@@ -31,7 +31,7 @@ export default function NotFound() {
             alt="Page not found"
             width={120}
             height={120}
-            className="mb-10"
+            className="mb-10 w-[80px] h-[80px] md:w-[120px] md:h-[120px]"
           />
 
           {/* Text Content */}
@@ -39,7 +39,7 @@ export default function NotFound() {
             <h1 className="text-center font-heading text-[72px] font-bold leading-[80px] text-primary">
               404
             </h1>
-            <p className="text-center font-serif text-[72px] font-normal italic leading-[80px] tracking-[-2px] text-[#2A0E63]">
+            <p className="text-center font-serif text-[36px] md:text-[72px] font-normal italic leading-[80px] tracking-[-2px] text-[#2A0E63]">
               Page not found
             </p>
           </div>
@@ -70,33 +70,33 @@ export default function NotFound() {
           </p>
         </div> */}
 
-              <div
-        className="absolute left-1/2 -translate-x-1/2 pointer-events-none select-none overflow-hidden"
-        style={{
-          width: '1472px',
-          height: '306px',
-          top: '92%',
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
         <div
-          className="text-transparent bg-clip-text"
+          className="absolute left-1/2 -translate-x-1/2 pointer-events-none select-none overflow-hidden"
           style={{
-            fontFamily: 'Nohemi, sans-serif',
-            fontWeight: 700,
-            fontSize: '306px',
-            lineHeight: '306px',
-            letterSpacing: '8px',
-            opacity: 0.2,
-            background: 'linear-gradient(90deg, #FFFFFF 0%, #E86A54 20%, #E86A54 80%, #FFFFFF 100%)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            width: '1472px',
+            height: '306px',
+            top: '92%',
+            transform: 'translate(-50%, -50%)',
           }}
         >
-          USERLIFY
+          <div
+            className="text-transparent bg-clip-text"
+            style={{
+              fontFamily: 'Nohemi, sans-serif',
+              fontWeight: 700,
+              fontSize: '306px',
+              lineHeight: '306px',
+              letterSpacing: '8px',
+              opacity: 0.2,
+              background: 'linear-gradient(90deg, #FFFFFF 0%, #E86A54 20%, #E86A54 80%, #FFFFFF 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            USERLIFY
+          </div>
         </div>
-      </div>
       </main>
     </div>
   );
