@@ -37,7 +37,7 @@ export default function WhyChooseUsCard({
                     className={`w-20 h-20 rounded-full flex justify-center items-center transition-all duration-300 ${
                         variant === 'highlight'
                             ? 'border border-white/30 group-hover:bg-white/20 group-hover:border-0'
-                            : 'border border-[#C5AEF4] group-hover:bg-[#ee9587] group-hover:border-0'
+                            : 'border border-[#030712] group-hover:bg-[#ee9587] group-hover:border-[#ee9587]'
                     }`}
                 >
                     <div className="w-10 h-10 relative flex-shrink-0">
