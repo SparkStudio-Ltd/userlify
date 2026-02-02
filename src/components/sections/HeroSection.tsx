@@ -7,9 +7,9 @@ import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 
 const floatingTags = [
-  { text: 'App Design', position: 'left-[27%] top-[23%]' },
-  { text: 'Development', position: 'right-[42%] top-[23%]' },
-  { text: 'Web Design', position: 'right-[23%] top-[36%]' },
+  { text: 'App Design', position: 'left-[27%] top-[12%]' },
+  { text: 'Development', position: 'right-[42%] top-[12%]' },
+  { text: 'Web Design', position: 'right-[23%] top-[30%]' },
 ];
 
 export function HeroSection() {
@@ -130,7 +130,7 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="bg-white relative overflow-hidden w-full py-1 md:py-24 px-4 md:px-12"
+      className="bg-white relative overflow-hidden w-full pb-1 pt-11 md:py-24 px-4 md:px-12"
     >
       {/* Background gradient orb */}
       {/* Top Right Moving Gradient */}
@@ -184,12 +184,12 @@ export function HeroSection() {
           </h1>
 
           {/* CTA Buttons */}
-          <div ref={ctaRef} className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6">
+          <div ref={ctaRef} className="mt-8 md:mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6">
             <Button href="/get-quote" variant="primary" size="lg">
               Start Your Project
               <ArrowUpRight className="h-5 w-5" />
             </Button>
-            <Button href="/case-study" variant="secondary" size="lg" className="shadow-[0px_0px_0px_1px_#14141F1F,0px_1px_3px_0px_#14141F1F]">
+            <Button href="/case-study" variant="secondary" size="lg">
               View Our Work
               <ArrowUpRight className="h-5 w-5" />
             </Button>

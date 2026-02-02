@@ -17,8 +17,7 @@ interface ButtonProps {
 const variants = {
   primary:
     'bg-primary text-white hover:bg-primary-600 hover:shadow-lg active:scale-95',
-  secondary:
-    'bg-[#FFFFFF] text-[#493936] hover:bg-white hover:border-[#E86A54]',
+  secondary: 'bg-white text-[#493936] shadow-[0px_0px_0px_1px_#14141F1F,0px_1px_3px_0px_#14141F1F] hover:bg-white hover:shadow-[0px_0px_0px_1px_#E86A54,0px_1px_3px_0px_#14141F1F]',
   ghost: 'text-gray-950 hover:bg-gray-50',
   cta: 'text-[#493936] bg-[white] hover:border-primary'
 

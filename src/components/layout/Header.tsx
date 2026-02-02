@@ -35,7 +35,7 @@ export function Header() {
     <header
       className={cn(
         'fixed left-0 right-0 top-0 z-50 transition-all duration-300 px-4 md:px-12',
-        isScrolled || isMobileMenuOpen ? 'bg-white/90 shadow-soft backdrop-blur-md' : 'bg-transparent'
+        isScrolled || isMobileMenuOpen ? 'bg-white shadow-soft backdrop-blur-md' : 'bg-transparent'
       )}
     >
       <Container>
@@ -46,15 +46,15 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-1 rounded-full bg-gray-50 px-2 py-1.5 md:flex">
+          <div className="hidden items-center gap-1 rounded-full bg-gray-50 px-2.5 py-2.5 md:flex">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  'font-nav rounded-full px-5 py-2 text-sm font-medium transition-colors',
+                  'font-nav rounded-full px-5 py-2 text-base font-medium transition-colors',
                   pathname === item.href
-                    ? 'bg-white text-gray-950'
+                    ? 'bg-white text-gray-950 shadow-[0px_2px_2px_0px_#0000000A]'
                     : 'text-gray-600 hover:text-gray-950'
                 )}
               >

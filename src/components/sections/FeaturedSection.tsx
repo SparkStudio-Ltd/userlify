@@ -4,9 +4,8 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Image from 'next/image';
 import { useRef } from 'react';
-import content from '../../../public/data/featured-section.json';
+import content from '../../../public/data/featured-section.json'; // Adjust path if needed
 import CleanCard from '@/components/cards/CleanCard';
 
 if (typeof window !== 'undefined') {
@@ -14,13 +13,25 @@ if (typeof window !== 'undefined') {
 }
 
 export default function StatsSection() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  // We use a main container for the section
+  const mainContainerRef = useRef<HTMLElement | null>(null);
+  
+  // Refs specific to Desktop Animation
+  const desktopWrapperRef = useRef<HTMLDivElement | null>(null);
   const pathRef = useRef<SVGPathElement | null>(null);
+  
+  // Refs specific to Mobile Animation
+  const mobileWrapperRef = useRef<HTMLDivElement | null>(null);
+
   const { stats_section, stat_items } = content;
 
+  // --- DESKTOP ANIMATION LOGIC ---
   useGSAP(() => {
-    if (!pathRef.current) return;
+    if (!pathRef.current || !desktopWrapperRef.current) return;
 
+    // Only run this logic if we are roughly in desktop view or just let ScrollTrigger handle it
+    // Note: matchMedia in GSAP is great, but scoping to the desktop wrapper works too.
+    
     const length = pathRef.current.getTotalLength();
 
     gsap.set(pathRef.current, {
@@ -32,25 +43,16 @@ export default function StatsSection() {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: containerRef.current,
+        trigger: desktopWrapperRef.current, // Trigger based on the desktop wrapper
         start: 'top 40%',
         end: 'bottom 100%',
         scrub: 1.5,
       }
     });
 
-    tl.to(pathRef.current, {
-      strokeDashoffset: 0,
-      duration: 5,
-      ease: 'none'
-    });
-
-    tl.to(pathRef.current, {
-      strokeWidth: 6,
-      duration: 5,
-      ease: 'none'
-    }, 0);
-
+    tl.to(pathRef.current, { strokeDashoffset: 0, duration: 5, ease: 'none' });
+    tl.to(pathRef.current, { strokeWidth: 6, duration: 5, ease: 'none' }, 0);
+    
     tl.to('.moving-dot', {
       motionPath: {
         path: pathRef.current,
@@ -61,43 +63,86 @@ export default function StatsSection() {
       ease: 'none'
     }, 0);
 
-    // Reveal Cards
+    // Reveal Cards (Desktop)
     tl.fromTo('.anim-item-1', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 0.1);
     tl.fromTo('.anim-item-2', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 1.3);
     tl.fromTo('.anim-item-3', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 2.6);
     tl.fromTo('.anim-item-4', { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 3.9);
 
-  }, { scope: containerRef });
+  }, { scope: desktopWrapperRef }); // Scope specifically to desktop wrapper
+
+
+  // --- MOBILE ANIMATION LOGIC (Simple Fade Up) ---
+  useGSAP(() => {
+    if(!mobileWrapperRef.current) return;
+
+    // Simple stagger reveal for mobile cards
+    const mobileCards = gsap.utils.toArray('.mobile-card');
+    
+    gsap.fromTo(mobileCards, 
+      { autoAlpha: 0, y: 50 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: mobileWrapperRef.current,
+          start: 'top 75%',
+        }
+      }
+    );
+  }, { scope: mobileWrapperRef });
+
 
   return (
     <section
-      ref={containerRef}
-      className="relative w-full bg-[#FFFBF9] overflow-hidden px-4 lg:px-12 md:px-8 py-24 lg:py-30 flex flex-col items-center"
+      ref={mainContainerRef}
+      className="relative w-full bg-[#F8F8F7] overflow-hidden px-4 lg:px-12 md:px-8 py-24 lg:py-30 flex flex-col items-center"
+    >
+      
+      {/* --- SHARED HEADER (Visible on both) --- */}
+      <div className="flex flex-col items-center gap-4 mb-16 lg:mb-24">
+        <p
+          className="text-[#EA7B69] text-sm leading-5 tracking-[0.75px] uppercase font-bold"
+          style={{ fontFamily: 'Public Sans, sans-serif' }}
+        >
+          • Stats
+        </p>
+
+        <h2
+          className="text-[36px] lg:text-[48px] leading-[44px] lg:leading-[56px] font-medium text-center text-[#030712]"
+          style={{ fontFamily: 'Nohemi, sans-serif' }}
+        >
+          Real Products, Real Impact {' '}
+          <span className="italic font-serif block">Designed by Userlify</span>
+        </h2>
+      </div>
+
+      {/* ============================================== */}
+      {/* 📱 MOBILE VIEW (Visible below lg breakpoint)   */}
+      {/* ============================================== */}
+      <div 
+        ref={mobileWrapperRef}
+        className="block lg:hidden w-full max-w-md flex flex-col gap-6"
       >
-        
-      {/* HEADER */}
-      <div  className="flex flex-col items-center gap-4 mb-24">
-                    {/* Kicker */}
-                    <p
-                        className="text-[#EA7B69] text-sm leading-5 tracking-[0.75px] uppercase font-bold"
-                        style={{ fontFamily: 'Public Sans, sans-serif' }}
-                    >
-                        • Stats
-                    </p>
+        {stat_items.map((item, index) => (
+          <div key={index} className="mobile-card w-full">
+             {/* We can add a connecting line visual here if desired, otherwise just stacked cards */}
+             <CleanCard content={item} />
+          </div>
+        ))}
+      </div>
 
-                    {/* Title */}
-                    <h2
-                        className="text-[48px] leading-[56px] font-medium text-center text-[#030712]"
-                        style={{ fontFamily: 'Nohemi, sans-serif' }}
-                    >
-                        Real Products, Real Impact {' '}
-                        <span className="italic font-serif block">Designed by Userlify</span>
-                    </h2>
-        </div>
 
-      {/* MAIN CONTENT AREA - Matches the SVG Viewbox aspect ratio */}
-      <div className="relative w-full max-w-[1472px] mx-auto aspect-[1472/1478]">
-        
+      {/* ============================================== */}
+      {/* 🖥️ DESKTOP VIEW (Visible lg and up)            */}
+      {/* ============================================== */}
+      <div 
+        ref={desktopWrapperRef}
+        className="hidden lg:block relative w-full max-w-[1472px] mx-auto aspect-[1472/1478]"
+      >
         {/* --- 1. UNIFIED SVG LAYER --- */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
           <svg
@@ -150,8 +195,5 @@ export default function StatsSection() {
         </div>
       </div>
     </section>
-   
   );
 }
-
-// ... CleanCard component remains the same
