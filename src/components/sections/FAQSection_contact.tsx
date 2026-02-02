@@ -50,15 +50,10 @@ export default function FAQSectionContact() {
                         </div>
 
                         {/* Button */}
-                        <div className='gap-3'>
-                            <Button
-                                variant="primary"
-                                size="lg"
-                                href="/portfolio"
-                                className="group text-lg py-[18px] px-8"
-                            >
+                        <div>
+                            <Button href="/Contact" variant="primary" size="lg">
                                 Contact Us
-                                <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+                                <ArrowUpRight className="h-5 w-5" />
                             </Button>
                         </div>
 
