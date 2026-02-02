@@ -124,7 +124,7 @@ export default function CTASection() {
 
                 {/* Right Section - Animated Sliders */}
                 {/* Ensure right side touches edge by using full remaining width */}
-                <div className="w-full lg:w-[55%] flex gap-4 sm:gap-6 lg:gap-8 h-[420px] sm:h-[520px] lg:h-[720px] overflow-hidden">
+                <div className="w-full lg:w-[55%] flex gap-4 sm:gap-6 lg:gap-8 h-[420px] sm:h-[520px] lg:h-[720px] overflow-hidden px-4 md:px-0">
                     <div className="flex-1 overflow-hidden">
                         <div ref={slider1Ref} className="flex flex-col gap-4 sm:gap-6 lg:gap-8">
                             {images.map((src, index) => (
