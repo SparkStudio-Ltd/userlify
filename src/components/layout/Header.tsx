@@ -1,5 +1,6 @@
 'use client';
 
+import { Menu, X } from '@/components/icons';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { Logo } from '@/components/ui/Logo';
@@ -72,22 +73,11 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/80 backdrop-blur-sm md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-950 backdrop-blur-sm md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            <span
-              className={cn(
-                'block h-0.5 w-5 bg-gray-950 transition-all duration-300',
-                isMobileMenuOpen && 'translate-y-[3px] rotate-45'
-              )}
-            />
-            <span
-              className={cn(
-                'absolute block h-0.5 w-5 bg-gray-950 transition-all duration-300',
-                isMobileMenuOpen ? '-rotate-45' : 'translate-y-[6px]'
-              )}
-            />
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </nav>
 
@@ -106,8 +96,8 @@ export function Header() {
                 className={cn(
                   'font-nav block w-full text-center rounded-lg px-6 py-3 text-lg font-medium transition-colors',
                   pathname === item.href
-                    ? 'bg-[#EA7B69] text-white' // Active: Orange Background + White Text
-                    : 'text-gray-600 hover:bg-[#EA7B69] hover:text-white' // Hover: Orange Background + White Text
+                    ? 'text-primary' // Active: Primary Text
+                    : 'text-gray-600 hover:text-primary' // Hover: Primary Text
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
