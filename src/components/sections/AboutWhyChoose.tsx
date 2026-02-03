@@ -87,7 +87,7 @@ export default function AboutWhyChooseSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full bg-white py-32 px-4 md:px-8 lg:px-12 min-h-screen text-white"
+            className="relative w-full bg-white py-12 md:py-32 px-4 md:px-8 lg:px-12 min-h-screen text-white"
         >
             {/* BACKGROUND LAYERS */}
 
@@ -95,7 +95,7 @@ export default function AboutWhyChooseSection() {
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
 
                     {/* LEFT CONTENT (Scrolling List) */}
-                    <div ref={containerRef} className="lg:w-1/2 w-full flex flex-col gap-8">
+                    <div ref={containerRef} className="lg:w-1/2 w-full flex flex-col gap-8 order-2 lg:order-1">
                         {servicesData.cards.map((card) => (
                             <div
                                 key={card.id}
@@ -114,7 +114,7 @@ export default function AboutWhyChooseSection() {
 
                     {/* RIGHT CONTENT (Sticky) */}
 
-                    <div className="lg:w-1/2 flex flex-col justify-start pt-4 lg:sticky lg:top-64 h-fit">
+                    <div className="lg:w-1/2 flex flex-col justify-start pt-4 lg:sticky lg:top-64 h-fit order-1 lg:order-2">
                         {/* Top Section */}
                         <div className="flex flex-col gap-16">
                             <div>
