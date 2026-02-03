@@ -8,10 +8,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { useRef } from 'react';
 
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
-
 export default function AboutWhyChooseSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -22,7 +18,8 @@ export default function AboutWhyChooseSection() {
     const blobRef = useRef(null);
 
     useGSAP(() => {
-// 1. BACKGROUND DECORATION ANIMATIONS
+        gsap.registerPlugin(ScrollTrigger);
+        // 1. BACKGROUND DECORATION ANIMATIONS
 
         gsap.to(starRef1.current, {
             scale: 1.2,
@@ -56,7 +53,10 @@ export default function AboutWhyChooseSection() {
 
         // 2. CARD REVEAL ANIMATION (Blur <-> Clear)
 
-        const cards = gsap.utils.toArray('.card-item');
+        const cards = gsap.utils.toArray<HTMLElement>('.card-item', sectionRef.current || undefined);
+
+        // Ensure cards are visible even if ScrollTrigger fails to initialize.
+        gsap.set(cards, { opacity: 1, filter: "none", y: 0 });
 
         cards.forEach((card) => {
             gsap.fromTo(card as Element,
@@ -70,6 +70,7 @@ export default function AboutWhyChooseSection() {
                     opacity: 1,
                     y: 0,
                     ease: "power3.out",
+                    immediateRender: false,
                     scrollTrigger: {
                         trigger: card as Element,
                         start: "top 85%", // Animation starts when card hits 85% of viewport
