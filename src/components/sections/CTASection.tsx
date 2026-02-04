@@ -69,10 +69,7 @@ export default function CTASection() {
     return (
         <section
             ref={sectionRef}
-            // FIXED: Changed 48px to 16px in the calculation.
-            // This pulls the content left by 32px to match your header logo alignment.
-            // Formula: max(16px, (Screen_Width - Container_Width) / 2 + Base_Padding)
-            className="w-full bg-primary overflow-hidden flex items-center pt-12 pb-0 sm:py-20 lg:py-0 lg:min-h-[720px] pl-0 lg:pl-[max(48px,calc((100%-1472px)/2))] pr-0"
+            className="w-full bg-primary overflow-hidden flex items-center pt-12 pb-0 sm:py-20 lg:py-0 min-h-[30rem] pl-0 lg:pl-[max(48px,calc((100%-1472px)/2))] pr-0"
         >
             <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-12 items-center">
                 
@@ -114,7 +111,7 @@ export default function CTASection() {
 
                 {/* Right Section - Animated Sliders */}
                 {/* Ensure right side touches edge by using full remaining width */}
-                <div className="w-full lg:w-[55%] flex gap-4 sm:gap-6 lg:gap-8 h-[420px] sm:h-[520px] lg:h-[720px] overflow-hidden px-4 md:px-0">
+                <div className="w-full lg:w-[55%] flex gap-4 sm:gap-6 lg:gap-8 h-[420px] sm:h-[520px] min-h-[45rem] overflow-hidden px-4 md:px-0">
                     <div className="flex-1 overflow-hidden">
                         <div ref={slider1Ref} className="flex flex-col gap-4 sm:gap-6 lg:gap-8">
                             {images.map((src, index) => (

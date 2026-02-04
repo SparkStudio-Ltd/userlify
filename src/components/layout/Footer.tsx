@@ -41,18 +41,16 @@ export function Footer() {
 
   return (
     // Changed fixed height h-[746px] to min-h to accommodate mobile stacking
-    <footer className="relative w-full py-24 px-4 md:px-12 min-h-screen md:min-h-[746px] bg-[#0B041B] overflow-hidden flex flex-col justify-between">
-      
+    <footer className="relative w-full py-24 md:pt-24  px-4 md:px-12 min-h-screen md:min-h-[746px] bg-[#0B041B] overflow-hidden flex flex-col justify-between">
+
       {/* Main Footer Content */}
       <div className="relative z-10 max-w-[1472px] mx-auto w-full">
-        
+
         {/* Footer Columns */}
-        {/* Added text-center for mobile, md:text-left for desktop */}
-        <div className="flex flex-col md:flex-row gap-12 md:gap-8 text-center md:text-left">
-          
+        <div className="flex flex-col md:flex-row gap-12 md:gap-8 text-left">
+
           {/* Brand / About - 30% */}
-          {/* Added items-center for mobile to center the logo */}
-          <div className="w-full md:w-[25%] flex flex-col items-center md:items-start">
+          <div className="w-full md:w-[25%] flex flex-col items-start">
             <FooterLogo />
             <p
               className="mt-6 text-white"
@@ -69,70 +67,73 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Services - 14% */}
-          <div className="w-full md:w-[16.66%]">
-            <h3
-              className="text-white mb-4"
-              style={{
-                fontFamily: 'Nohemi, sans-serif',
-                fontSize: '21px',
-                lineHeight: '21px',
-              }}
-            >
-              Services
-            </h3>
-            <ul className="space-y-4">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-white hover:text-[#EA7B69] transition-colors"
-                    style={{
-                      fontFamily: 'Public Sans, sans-serif',
-                      fontWeight: 400,
-                      fontSize: '16px',
-                      lineHeight: '24px',
-                      letterSpacing: '-0.25px',
-                    }}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Services & Quick Links Row on Mobile */}
+          <div className="flex flex-row md:contents gap-8 md:gap-0 w-full md:w-auto">
+            {/* Services - 14% */}
+            <div className="w-1/2 md:w-[16.66%]">
+              <h3
+                className="text-white mb-4"
+                style={{
+                  fontFamily: 'Nohemi, sans-serif',
+                  fontSize: '21px',
+                  lineHeight: '21px',
+                }}
+              >
+                Services
+              </h3>
+              <ul className="space-y-4">
+                {footerLinks.services.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-white hover:text-[#EA7B69] transition-colors"
+                      style={{
+                        fontFamily: 'Public Sans, sans-serif',
+                        fontWeight: 400,
+                        fontSize: '16px',
+                        lineHeight: '24px',
+                        letterSpacing: '-0.25px',
+                      }}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Quick Links - 14% */}
-          <div className="w-full md:w-[16.66%]">
-            <h3
-              className="text-white mb-4"
-              style={{
-                fontFamily: 'Nohemi, sans-serif',
-                fontSize: '21px',
-                lineHeight: '21px',
-              }}
-            >
-              Quick Links
-            </h3>
-            <ul className="space-y-4">
-              {footerLinks.quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-white hover:text-[#EA7B69] transition-colors"
-                    style={{
-                      fontFamily: 'Public Sans, sans-serif',
-                      fontWeight: 400,
-                      fontSize: '16px',
-                      lineHeight: '24px',
-                      letterSpacing: '-0.25px',
-                    }}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {/* Quick Links - 14% */}
+            <div className="w-1/2 md:w-[16.66%]">
+              <h3
+                className="text-white mb-4"
+                style={{
+                  fontFamily: 'Nohemi, sans-serif',
+                  fontSize: '21px',
+                  lineHeight: '21px',
+                }}
+              >
+                Quick Links
+              </h3>
+              <ul className="space-y-4">
+                {footerLinks.quickLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-white hover:text-[#EA7B69] transition-colors"
+                      style={{
+                        fontFamily: 'Public Sans, sans-serif',
+                        fontWeight: 400,
+                        fontSize: '16px',
+                        lineHeight: '24px',
+                        letterSpacing: '-0.25px',
+                      }}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Company - 14% */}
@@ -182,10 +183,9 @@ export function Footer() {
             </h3>
             <ul className="space-y-4">
               {contactInfo.map((info, index) => (
-                <li 
-                    key={index} 
-                    // Added justify-center for mobile, md:justify-start for desktop
-                    className="flex items-start justify-center md:justify-start gap-2"
+                <li
+                  key={index}
+                  className="flex items-start justify-start gap-2"
                 >
                   <Image src={info.icon} alt="" width={24} height={24} className="mt-0.5" />
                   <span
@@ -226,8 +226,7 @@ export function Footer() {
           </div>
 
           {/* Social Icons */}
-          {/* Centered on mobile, aligned right on desktop */}
-          <div className="w-full md:w-[25%] flex justify-center md:justify-end gap-4 md:gap-[43px]">
+          <div className="w-full md:w-[25%] flex justify-start md:justify-end gap-4 md:gap-[43px]">
             {socialLinks.map((social) => (
               <Link
                 key={social.name}
@@ -270,7 +269,7 @@ export function Footer() {
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             // Added margin to push it partially off-screen if that was the intended "cut-off" look
-            marginBottom: '-0.1em' 
+            marginBottom: '-0.23em'
           }}
         >
           USERLIFY

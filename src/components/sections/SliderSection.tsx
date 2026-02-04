@@ -10,7 +10,7 @@ export default function SliderSection() {
                 <ImageSlider slides={imageSliderData.slides} />
 
                 {/* Gap between sliders - 96px */}
-                <div className="h-18 md:h-24" />
+                <div className="h-0 md:h-24" />
 
                 {/* Service Slider - Left to Right */}
                 <ServiceSlider services={serviceSliderData.services} />

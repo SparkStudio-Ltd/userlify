@@ -1,97 +1,102 @@
 import { Header } from '@/components/layout/Header';
-import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="relative flex flex-1 flex-col items-center justify-center bg-white overflow-hidden">
-        {/* Background Gradient Images */}
-        <div
-          className="pointer-events-none absolute left-0 top-0 h-full w-[35vw]"
-          style={{
-            background:
-              'radial-gradient(60% 50% at 0% 50%, rgba(232, 106, 84, 0.18) 0%, rgba(232, 106, 84, 0) 70%)',
-          }}
-        />
-        <div
-          className="pointer-events-none absolute right-0 top-0 h-full w-[35vw]"
-          style={{
-            background:
-              'radial-gradient(60% 50% at 100% 50%, rgba(232, 106, 84, 0.18) 0%, rgba(232, 106, 84, 0) 70%)',
-          }}
-        />
-
-        {/* Content */}
-        <div className="relative z-10 flex flex-1 flex-col items-center top-40 px-4">
+      <main className="relative flex flex-1 flex-col items-center justify-center bg-white overflow-hidden px-4">
+        {/* Content Container */}
+        <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-[400px]">
           {/* Icon */}
           <Image
             src="/assets/icons/unlink.svg"
             alt="Page not found"
             width={120}
             height={120}
-            className="mb-10 w-[80px] h-[80px] md:w-[120px] md:h-[120px]"
+            className="mb-8 opacity-30"
           />
 
-          {/* Text Content */}
-          <div className="flex flex-col items-center">
-            <h1 className="text-center font-heading text-[72px] font-bold leading-[80px] text-primary">
-              404
-            </h1>
-            <p className="text-center font-serif text-[36px] md:text-[72px] font-normal italic leading-[80px] tracking-[-2px] text-[#2A0E63]">
-              Page not found
-            </p>
-          </div>
-
-          {/* Buttons */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Button variant="primary" size="lg" href="/">
-              Back to Home
-            </Button>
-            <Button variant="secondary" size="lg" href="/contact">
-              I need help
-            </Button>
-          </div>
-        </div>
-
-        {/* USERLIFY Text at Bottom */}
-        {/* <div className="flex w-full justify-center overflow-hidden">
-          <p
-            className="whitespace-nowrap font-heading text-[306px] font-bold leading-[306px] tracking-[8px] opacity-20"
+          {/* 404 Text */}
+          <h1
+            className="text-[#EA7B69] text-center mb-2"
             style={{
-              background: 'linear-gradient(90deg, #FFFFFF 0%, #E86A54 20%, #E86A54 80%, #FFFFFF 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              fontFamily: 'Nohemi, sans-serif',
+              fontSize: '48px',
+              fontWeight: 700,
+              lineHeight: '1',
             }}
           >
-            USERLIFY
-          </p>
-        </div> */}
+            404
+          </h1>
 
+          {/* Page not found Text */}
+          <p
+            className="text-[#2A0E63] text-center mb-10"
+            style={{
+              fontFamily: 'Cormorant, serif',
+              fontSize: '36px',
+              fontWeight: 400,
+              fontStyle: 'italic',
+              lineHeight: '1.2',
+            }}
+          >
+            Page not found
+          </p>
+
+          {/* Back to Home Button */}
+          <Link
+            href="/"
+            className="w-full max-w-[200px] h-[50px] bg-[#EA7B69] hover:bg-[#d96956] text-white rounded-full flex items-center justify-center transition-colors mb-4"
+            style={{
+              fontFamily: 'Nohemi, sans-serif',
+              fontSize: '16px',
+              fontWeight: 500,
+            }}
+          >
+            Back to Home
+          </Link>
+
+          {/* I need help Button */}
+          <Link
+            href="/contact"
+            className="w-full max-w-[200px] h-[50px] bg-transparent hover:bg-gray-50 text-[#2A0E63] rounded-full flex items-center justify-center transition-colors border border-gray-200"
+            style={{
+              fontFamily: 'Nohemi, sans-serif',
+              fontSize: '16px',
+              fontWeight: 500,
+            }}
+          >
+            I need help
+          </Link>
+        </div>
+
+        {/* USERLIFY Background Text */}
         <div
           className="absolute left-1/2 -translate-x-1/2 pointer-events-none select-none overflow-hidden"
           style={{
-            width: '1472px',
-            height: '306px',
-            top: '92%',
-            transform: 'translate(-50%, -50%)',
+            width: '100%',
+            maxWidth: '1472px',
+            height: 'auto',
+            bottom: '0',
+            transform: 'translateX(-50%)',
           }}
         >
           <div
-            className="text-transparent bg-clip-text"
+            className="text-transparent bg-clip-text text-center"
             style={{
               fontFamily: 'Nohemi, sans-serif',
               fontWeight: 700,
-              fontSize: '306px',
-              lineHeight: '306px',
-              letterSpacing: '8px',
-              opacity: 0.2,
+              fontSize: 'clamp(80px, 20vw, 306px)',
+              lineHeight: '1',
+              letterSpacing: 'clamp(2px, 1vw, 8px)',
+              opacity: 0.05,
               background: 'linear-gradient(90deg, #FFFFFF 0%, #E86A54 20%, #E86A54 80%, #FFFFFF 100%)',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
+              marginBottom: '-0.25em',
             }}
           >
             USERLIFY
