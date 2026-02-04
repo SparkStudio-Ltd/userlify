@@ -51,10 +51,10 @@ export default function ClientsSection() {
     }, []);
 
     return (
-        <section className="w-full py-[120px] bg-white overflow-hidden">
-            <div className="max-w-[1472px] h-[280px] mx-auto px-4">
+        <section className="w-full py-24 md:py-[120px] bg-white overflow-hidden">
+            <div className="max-w-[1472px] h-auto md:h-[280px] mx-auto px-4">
                 {/* Top Section - Kicker and Title */}
-                <div className="flex flex-col items-center gap-4 mb-24">
+                <div className="flex flex-col items-center gap-3 md:gap-4 mb-10 md:mb-24">
                     {/* Kicker */}
                     <p
                         className="text-[#EA7B69] text-sm leading-5 tracking-[0.75px] uppercase font-bold"
@@ -88,7 +88,7 @@ export default function ClientsSection() {
                     {/* Slider */}
                     <div
                         ref={sliderRef}
-                        className="flex items-center gap-[100px]"
+                        className="flex items-center gap-5 md:gap-[100px]"
                     >
                         {/* First set of logos */}
                         {clientsData.map((client, index) => (
