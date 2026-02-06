@@ -1,5 +1,7 @@
 'use client';
 
+import { ArrowRight } from '@/components/icons';
+import { Button } from '@/components/ui';
 import gsap from 'gsap';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -360,8 +362,8 @@ export default function ContactPageContent() {
                                 type="button"
                                 onClick={() => handleServiceSelect(service)}
                                 className={`rounded-full border px-4 py-3 text-[14px] transition-all sm:px-6 sm:py-4 sm:text-[16px] md:px-9 md:text-[18px] ${selectedService === service
-                                        ? 'border-primary bg-primary text-white'
-                                        : 'border-[#E8E6E6] bg-[#F8F8F7] text-[#030712] hover:border-primary/50'
+                                    ? 'border-primary bg-primary text-white'
+                                    : 'border-[#E8E6E6] bg-[#F8F8F7] text-[#030712] hover:border-primary/50'
                                     }`}
                                 style={{ fontFamily: 'Public Sans, sans-serif' }}
                             >
@@ -463,15 +465,16 @@ export default function ContactPageContent() {
 
                         {/* Submit Button */}
                         <div className="flex flex-col items-center gap-4 pt-6">
-                            <button
+                            <Button
                                 type="submit"
+                                size="lg"
+                                variant="primary"
                                 disabled={isSubmitting}
-                                className="flex w-fit items-center gap-3 rounded-full bg-primary px-8 py-4 text-[18px] text-white transition-all hover:bg-primary-600 hover:shadow-lg active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
-                                style={{ fontFamily: 'Public Sans, sans-serif' }}
+                                className="gap-3"
                             >
                                 {isSubmitting ? 'Sending...' : 'Send Message'}
-                                {!isSubmitting && <FaArrowRight size={16} />}
-                            </button>
+                                {!isSubmitting && <ArrowRight className="h-5 w-5" />}
+                            </Button>
 
                             {/* Status Messages */}
                             {submitStatus === 'success' && (

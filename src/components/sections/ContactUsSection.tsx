@@ -4,9 +4,11 @@ import clientsData from '@/../public/data/clients.json';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import { ArrowRight } from '@/components/icons';
+import { Button } from '@/components/ui';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { FaArrowRight, FaLinkedinIn } from 'react-icons/fa';
+import { FaLinkedinIn } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -448,15 +450,16 @@ export default function ContactUsSection() {
 
               {/* Submit Button */}
               <div className="flex flex-col items-center gap-4 pt-6">
-                <button
+                <Button
                   type="submit"
+                  size="lg"
+                  variant="primary"
                   disabled={isSubmitting}
-                  className="flex w-fit items-center gap-3 rounded-full bg-primary px-4 py-2 text-sm text-white transition-all hover:bg-primary-600 hover:shadow-lg active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 md:px-8 md:py-4 md:text-[18px]"
-                  style={{ fontFamily: 'Public Sans, sans-serif' }}
+                  className="gap-3"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
-                  {!isSubmitting && <FaArrowRight size={16} />}
-                </button>
+                  {!isSubmitting && <ArrowRight className="h-5 w-5" />}
+                </Button>
 
                 {/* Status Messages */}
                 {submitStatus === 'success' && (
