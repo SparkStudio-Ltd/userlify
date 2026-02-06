@@ -46,7 +46,7 @@ export default function ImageSlider({ slides }: ImageSliderProps) {
     }, [slides]);
 
     return (
-        <div className="overflow-hidden w-full">
+        <div className="overflow-hidden w-full pt-8">
             <div ref={sliderRef} className="flex gap-[40px]">
                 {slides.map((slide) => (
                     <div
