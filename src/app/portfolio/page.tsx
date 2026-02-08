@@ -203,7 +203,7 @@ export default function PortfolioPage() {
                         className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-2 lg:grid-cols-4"
                     >
                         {projectDetails.map((detail, index) => (
-                            <div key={index} className="flex flex-col gap-2 border-l-[3px] border-[#E86A54 ]">
+                            <div key={index} className="flex flex-col gap-2 border-l-[3px] border-[#E86A54]">
                                 <p
                                     className="pl-3 text-xs tracking-wide text-[#030712] lg:text-sm"
                                     style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
