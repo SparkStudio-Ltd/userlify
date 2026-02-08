@@ -14,10 +14,10 @@ export default function AuthorCard({ name, role, avatar, bio }: AuthorCardProps)
         <div 
             className="relative rounded-[32px] p-10 overflow-hidden border border-[#E8E6E6] h-full"
             style={{
-                background: 'rgba(248, 248, 247, 0.5)',
+                background: 'linear-gradient(180deg, #F8F8F8 40%, #F1F0FA 100%)',
             }}
         >
-            <div className="flex flex-col gap-6 relative h-full">
+            <div className="flex flex-col gap-6 relative h-full justify-between">
                 {/* Author Info with Label and LinkedIn */}
                 <div className="flex items-center gap-4">
                     <div className="relative w-16 md:w-28 h-16 md:h-28 rounded-full overflow-hidden border border-[#E8E6E6] flex-shrink-0">
@@ -61,7 +61,7 @@ export default function AuthorCard({ name, role, avatar, bio }: AuthorCardProps)
 
                 {/* Bio */}
                 <p
-                    className="text-[#030712] text-[14px] md:text-base leading-6"
+                    className="text-[#030712] text-[14px] md:text-[18px] leading-6"
                     style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                 >
                     {bio}
