@@ -65,9 +65,9 @@ export default function ShareCard({ blogUrl, title }: ShareCardProps) {
 
     return (
         <div
-            className="relative rounded-[32px] p-10 overflow-hidden border border-[#FEE2E2] h-full"
+            className="relative rounded-[32px] p-10 overflow-hidden border border-[#E8E6E6] h-full"
             style={{
-                background: 'rgba(254, 242, 242, 0.4)',
+                background: 'linear-gradient(180deg, #F9ECEC 0%, #FFFFFF 72%)',
             }}
         >
             <div className="flex flex-col gap-6 h-full items-center">

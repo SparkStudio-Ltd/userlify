@@ -224,9 +224,9 @@ export default async function BlogPost({ params }: BlogPageProps) {
                             })}
 
                             {/* Author & Share Cards */}
-                            <div className="grid grid-cols-1 md:grid-cols-5 gap-5 md:gap-8 mt-5 md:mt-10">
+                            <div className="grid grid-cols-1 md:grid-cols-5 items-stretch gap-5 md:gap-8 mt-5 md:mt-10">
                                 {/* Author Card - 60% (3 columns) */}
-                                <div className="md:col-span-3">
+                                <div className="h-full md:col-span-3">
                                     <AuthorCard
                                         name={post.author.name}
                                         role={post.author.role}
@@ -236,7 +236,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                 </div>
 
                                 {/* Share Card - 40% (2 columns) */}
-                                <div className="md:col-span-2">
+                                <div className="h-full md:col-span-2">
                                     <ShareCard blogUrl={blogUrl} title={post.title} />
                                 </div>
                             </div>
