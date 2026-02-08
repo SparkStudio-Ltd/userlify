@@ -79,9 +79,9 @@ export default function AboutPage() {
       <div ref={aboutTopRef}>
         <AboutTopSection />
       </div>
-      <div ref={ourTeamRef}>
+      {/* <div ref={ourTeamRef}>
         <OurTeamSection />
-      </div>
+      </div> */}
       <div ref={aboutWhyChooseRef}>
         <AboutWhyChooseSection />
       </div>

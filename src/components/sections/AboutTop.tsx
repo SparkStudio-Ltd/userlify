@@ -19,22 +19,22 @@ export default function AboutTopSection() {
               </h1>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 md:gap-12 lg:gap-16">
-              <div className="overflow-hidden rounded-2xl md:rounded-4xl shadow-soft-lg">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch gap-8 md:gap-12 lg:gap-16">
+              <div className="h-full overflow-hidden rounded-2xl md:rounded-4xl shadow-soft-lg">
                 <Image
                   src="/assets/images/about_image.png"
                   alt="Design preview"
                   width={832}
                   height={482}
-                  className="w-full h-auto lg:h-[470px] object-cover"
+                  className="h-full w-full object-cover"
                   priority
                 />
               </div>
 
-              <div className="relative">
+              <div className="relative h-full">
                 <div className="absolute -left-2 md:-left-6 -top-4 md:-top-8 h-[300px] w-[300px] md:h-[650px] md:w-[700px] rounded-full bg-gradient-to-br from-[#F6B9A4] via-[#F9D6C7] to-transparent blur-3xl opacity-70" />
-                <div className="relative flex flex-col gap-6 md:gap-10 rounded-2xl md:rounded-3xl bg-white p-6 md:p-10 shadow-soft-lg">
-                  <div className="flex h-20 w-20 items-center justify-center gap-2 rounded-[99px] bg-[#F2EDFD]">
+                <div className="relative flex h-full flex-col gap-6 md:gap-10 rounded-2xl md:rounded-3xl bg-white p-6 md:p-10 shadow-soft-lg">
+                  <div className="flex h-20 w-20 items-center justify-center gap-2 rounded-[99px] bg-[#FDEFED]">
                     <Image
                       src="/assets/icons/whySvg1.svg"
                       alt="idea icon"
@@ -44,14 +44,7 @@ export default function AboutTopSection() {
                     />
                   </div>
                   <h2 className="font-heading text-[18px] md:text-[20px] lg:text-[24px] font-medium leading-[26px] md:leading-[28px] lg:leading-[28px] tracking-[0px] text-[#030712]">
-                    Userlify is a growing creative UI/UX
-                    <br />
-                    Design Agency Built
-                    <br />
-                    for{' '}
-                    <span className="font-serif text-[18px] md:text-[20px] lg:text-[24px] font-normal italic">
-                      Startup Growth
-                    </span>
+                    Userlify is a growing creative UI/UX design service company helping startups turn ideas
                   </h2>
                   <p className="font-nav text-[14px] md:text-[16px] lg:text-[18px] font-normal leading-[22px] md:leading-[26px] lg:leading-[28px] tracking-[-0.4px] text-[#030712]">
                     Userlify is a growing creative UI/UX design service company helping startups
