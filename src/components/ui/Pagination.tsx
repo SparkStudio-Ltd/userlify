@@ -38,21 +38,22 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
     const pages = getPageNumbers();
 
     return (
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-3">
             {/* Previous Button */}
             <Link
                 href={currentPage > 1 ? `/blog?page=${currentPage - 1}` : '#'}
-                className={`flex items-center gap-2 px-4 py-2 text-sm leading-5 tracking-[-0.25px] transition-colors ${
+                className={`group flex h-11 items-center gap-2 rounded-full border px-5 text-sm leading-5 tracking-[-0.25px] transition-all ${
                     currentPage === 1
-                        ? 'text-[#9CA3AF] cursor-not-allowed pointer-events-none'
-                        : 'text-[#030712] hover:text-[#EA7B69]'
+                        ? 'border-[#D1D5DB] text-[#9CA3AF] cursor-not-allowed pointer-events-none'
+                        : 'border-[#D1D5DB] text-[#030712] hover:bg-[#EA7B69] hover:text-white hover:border-[#EA7B69]'
                 }`}
                 style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                 aria-disabled={currentPage === 1}
             >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <span
+                    className="h-3 w-[18px] shrink-0 rotate-180 bg-current [-webkit-mask:url('/assets/icons/blogArrowVector.svg')_center/contain_no-repeat] [mask:url('/assets/icons/blogArrowVector.svg')_center/contain_no-repeat]"
+                    aria-hidden="true"
+                />
                 Prev
             </Link>
 
@@ -61,13 +62,13 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
                 {pages.map((page, index) => {
                     if (page === '...') {
                         return (
-                            <span
+                            <div
                                 key={`ellipsis-${index}`}
-                                className="px-3 py-2 text-sm leading-5 text-[#9CA3AF]"
+                                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D1D5DB] text-[#030712] text-sm leading-5"
                                 style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                             >
                                 ...
-                            </span>
+                            </div>
                         );
                     }
 
@@ -78,10 +79,10 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
                         <Link
                             key={pageNumber}
                             href={`/blog?page=${pageNumber}`}
-                            className={`min-w-[40px] h-[40px] flex items-center justify-center rounded-full text-sm leading-5 transition-all ${
+                            className={`flex h-11 w-11 items-center justify-center rounded-full border text-sm leading-5 transition-all ${
                                 isActive
-                                    ? 'bg-[#EA7B69] text-white'
-                                    : 'bg-transparent text-[#030712] hover:bg-[#F3F4F6]'
+                                    ? 'border-[#EA7B69] bg-[#EA7B69] text-white'
+                                    : 'border-[#D1D5DB] bg-transparent text-[#030712] hover:bg-[#EA7B69] hover:text-white hover:border-[#EA7B69]'
                             }`}
                             style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: isActive ? 600 : 400 }}
                         >
@@ -94,18 +95,19 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
             {/* Next Button */}
             <Link
                 href={currentPage < totalPages ? `/blog?page=${currentPage + 1}` : '#'}
-                className={`flex items-center gap-2 px-4 py-2 text-sm leading-5 tracking-[-0.25px] transition-colors ${
+                className={`group flex h-11 items-center gap-2 rounded-full border px-5 text-sm leading-5 tracking-[-0.25px] transition-all ${
                     currentPage === totalPages
-                        ? 'text-[#9CA3AF] cursor-not-allowed pointer-events-none'
-                        : 'text-[#030712] hover:text-[#EA7B69]'
+                        ? 'border-[#D1D5DB] text-[#9CA3AF] cursor-not-allowed pointer-events-none'
+                        : 'border-[#D1D5DB] text-[#030712] hover:bg-[#EA7B69] hover:text-white hover:border-[#EA7B69]'
                 }`}
                 style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                 aria-disabled={currentPage === totalPages}
             >
                 Next
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <span
+                    className="h-3 w-[18px] shrink-0 bg-current [-webkit-mask:url('/assets/icons/blogArrowVector.svg')_center/contain_no-repeat] [mask:url('/assets/icons/blogArrowVector.svg')_center/contain_no-repeat]"
+                    aria-hidden="true"
+                />
             </Link>
         </div>
     );
