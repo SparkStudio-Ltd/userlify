@@ -13,7 +13,7 @@ export default function ServiceCard({
 }: ServiceCardProps) {
     return (
         <div
-            className="w-full h-full bg-white border border-[#E2D7F9] rounded-[32px] p-6"
+            className="w-full h-full bg-white border border-[#D8D5D4] rounded-[32px] p-6"
         >
             {/* Icon */}
             <div className="w-20 h-20 mb-6 relative border border-[#E86A54] rounded-[99px] flex items-center justify-center">

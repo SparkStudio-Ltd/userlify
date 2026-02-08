@@ -18,7 +18,7 @@ export default function WhyChooseUsCard({
             className={`group flex flex-col rounded-[32px] border p-6 relative overflow-hidden transition-all duration-300 h-full ${
                 variant === 'highlight'
                     ? 'bg-[#EA7B69] border-[#EA7B69] text-white hover:bg-[#EA7B69]'
-                    : 'bg-white border-[#E2D7F9] hover:border-[#EA7B69]'
+                    : 'bg-white border-[#D8D5D4] hover:border-[#EA7B69]'
             }`}
         >
             {/* Hover Background Image */}
