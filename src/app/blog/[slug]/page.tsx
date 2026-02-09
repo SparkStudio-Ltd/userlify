@@ -50,28 +50,47 @@ export default async function BlogPost({ params }: BlogPageProps) {
             <Header />
             <main className="w-full bg-white">
                 <div className="px-4 md:px-12 pt-24 md:pt-[150px] 2xl:pt-[216px] pb-16 md:pb-[120px]">
-                    <div className="max-w-[954px] mx-auto">
+                    <div className="max-w-[1472px] mx-auto">
                         <article className="flex flex-col gap-4 md:gap-10">
                             {/* Breadcrumb */}
-                            <nav className="flex items-center gap-2 text-[12px] md:text-sm">
+                            <nav className="w-full mx-auto flex items-center justify-start text-left gap-2 md:gap-4">
+                                <Image
+                                    src="/assets/icons/homeSvg.svg"
+                                    alt="Home"
+                                    width={20}
+                                    height={20}
+                                    className="w-[18px] h-[18px] md:w-[20px] md:h-[20px]"
+                                />
                                 <Link
                                     href="/"
-                                    className="text-[#030712] hover:text-[#EA7B69] transition-colors"
+                                    className="text-[#766A68] hover:text-[#030712] transition-colors tracking-[0.75px] text-[14px] leading-none"
                                     style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 700 }}
                                 >
                                     HOME
                                 </Link>
-                                <span className="text-[#030712]">&gt;</span>
+                                <Image
+                                    src="/assets/icons/breadcrumbVector.svg"
+                                    alt=""
+                                    width={7}
+                                    height={11}
+                                    aria-hidden="true"
+                                />
                                 <Link
                                     href="/blog"
-                                    className="text-[#030712] hover:text-[#EA7B69] transition-colors"
+                                    className="text-[#766A68] hover:text-[#030712] transition-colors tracking-[0.75px] text-[14px] leading-none"
                                     style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 700 }}
                                 >
                                     BLOGS
                                 </Link>
-                                <span className="text-[#030712]">&gt;</span>
+                                <Image
+                                    src="/assets/icons/breadcrumbVector.svg"
+                                    alt=""
+                                    width={7}
+                                    height={11}
+                                    aria-hidden="true"
+                                />
                                 <span
-                                    className="text-[#030712] uppercase"
+                                    className="text-[#030712] uppercase tracking-[0.75px] text-[14px] leading-none"
                                     style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 700 }}
                                 >
                                     DESIGN
@@ -110,8 +129,9 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                 />
                             </div>
 
+                           
                             {/* Author & Read Time */}
-                            <div className="flex items-center justify-between">
+                            <div className="w-full max-w-[960px] mx-auto flex items-center justify-between">
                                 {/* Author */}
                                 <div className="flex items-center gap-2 md:gap-4">
                                     <div className="relative w-8 h-8 md:w-12 md:h-12 rounded-full overflow-hidden">
@@ -143,88 +163,90 @@ export default async function BlogPost({ params }: BlogPageProps) {
                             </div>
 
                             {/* Content Sections */}
-                            {post.content.sections.map((section, index) => {
-                                // Render based on section type
-                                switch (section.type) {
-                                    case 'heading':
-                                        return section.value ? (
-                                            <h2
-                                                key={index}
-                                                className="text-2xl md:text-[30px] md:leading-[38px] text-[#030712]"
-                                                style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 400 }}
-                                            >
-                                                {section.value}
-                                            </h2>
-                                        ) : null;
-                                    
-                                    case 'subheading':
-                                        return section.value ? (
-                                            <h3
-                                                key={index}
-                                                className="text-base font-semibold md:text-[20px] md:leading-[28px] text-[#030712]"
-                                                style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
-                                            >
-                                                — {section.value}
-                                            </h3>
-                                        ) : null;
-                                    
-                                    case 'paragraph':
-                                        return section.value ? (
-                                            <p
-                                                key={index}
-                                                className="text-base md:text-[18px] md:leading-[28px] text-[#030712]"
-                                                style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
-                                            >
-                                                {section.value}
-                                            </p>
-                                        ) : null;
-                                    
-                                    case 'list':
-                                        return 'items' in section && section.items && Array.isArray(section.items) ? (
-                                            <ul key={index} className="flex flex-col gap-3 pl-6">
-                                                {(section.items as string[]).map((item: string, itemIndex: number) => (
-                                                    <li
-                                                        key={itemIndex}
-                                                        className="text-base md:text-[18px] md:leading-[28px] text-[#030712] list-disc"
-                                                        style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
-                                                    >
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        ) : null;
-                                    
-                                    case 'image':
-                                        return section.src ? (
-                                            <div key={index} className="relative w-full aspect-[16/9] rounded-[24px] overflow-hidden">
-                                                <Image
-                                                    src={section.src}
-                                                    alt={section.alt || 'Blog image'}
-                                                    fill
-                                                    className="object-cover"
-                                                />
-                                            </div>
-                                        ) : null;
-                                    
-                                    case 'quote':
-                                        return section.value ? (
-                                            <blockquote key={index} className="relative p-4 md:p-8 bg-[#F9FAFB] rounded-[24px] border-l-4 border-[#EA7B69]">
-                                                <p
-                                                    className="text-base md:text-[20px] md:leading-[32px] text-[#030712] italic"
-                                                    style={{ fontFamily: 'Instrument Serif, serif', fontWeight: 400 }}
+                            <div className="w-full max-w-[960px] mx-auto flex flex-col gap-4 md:gap-10">
+                                {post.content.sections.map((section, index) => {
+                                    // Render based on section type
+                                    switch (section.type) {
+                                        case 'heading':
+                                            return section.value ? (
+                                                <h2
+                                                    key={index}
+                                                    className="text-2xl md:text-[30px] md:leading-[38px] text-[#030712]"
+                                                    style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 400 }}
                                                 >
-                                                    "{section.value}"
+                                                    {section.value}
+                                                </h2>
+                                            ) : null;
+                                        
+                                        case 'subheading':
+                                            return section.value ? (
+                                                <h3
+                                                    key={index}
+                                                    className="text-base font-semibold md:text-[20px] md:leading-[28px] text-[#030712]"
+                                                    style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
+                                                >
+                                                    — {section.value}
+                                                </h3>
+                                            ) : null;
+                                        
+                                        case 'paragraph':
+                                            return section.value ? (
+                                                <p
+                                                    key={index}
+                                                    className="text-base md:text-[18px] md:leading-[28px] text-[#030712]"
+                                                    style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
+                                                >
+                                                    {section.value}
                                                 </p>
-                                            </blockquote>
-                                        ) : null;
-                                    
-                                    default:
-                                        return null;
-                                }
-                            })}
+                                            ) : null;
+                                        
+                                        case 'list':
+                                            return 'items' in section && section.items && Array.isArray(section.items) ? (
+                                                <ul key={index} className="flex flex-col gap-3 pl-6">
+                                                    {(section.items as string[]).map((item: string, itemIndex: number) => (
+                                                        <li
+                                                            key={itemIndex}
+                                                            className="text-base md:text-[18px] md:leading-[28px] text-[#030712] list-disc"
+                                                            style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
+                                                        >
+                                                            {item}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            ) : null;
+                                        
+                                        case 'image':
+                                            return section.src ? (
+                                                <div key={index} className="relative w-full aspect-[16/9] rounded-[24px] overflow-hidden">
+                                                    <Image
+                                                        src={section.src}
+                                                        alt={section.alt || 'Blog image'}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                            ) : null;
+                                        
+                                        case 'quote':
+                                            return section.value ? (
+                                                <blockquote key={index} className="relative p-4 md:p-8 bg-[#F9FAFB] rounded-[24px] border-l-4 border-[#EA7B69]">
+                                                    <p
+                                                        className="text-base md:text-[20px] md:leading-[32px] text-[#030712] italic"
+                                                        style={{ fontFamily: 'Instrument Serif, serif', fontWeight: 400 }}
+                                                    >
+                                                        "{section.value}"
+                                                    </p>
+                                                </blockquote>
+                                            ) : null;
+                                        
+                                        default:
+                                            return null;
+                                    }
+                                })}
+                            </div>
 
                             {/* Author & Share Cards */}
-                            <div className="grid grid-cols-1 md:grid-cols-5 items-stretch gap-5 md:gap-8 mt-5 md:mt-10">
+                            <div className="w-full max-w-[960px] mx-auto grid grid-cols-1 md:grid-cols-5 items-stretch gap-5 md:gap-8 mt-5 md:mt-10">
                                 {/* Author Card - 60% (3 columns) */}
                                 <div className="h-full md:col-span-3">
                                     <AuthorCard
@@ -240,6 +262,7 @@ export default async function BlogPost({ params }: BlogPageProps) {
                                     <ShareCard blogUrl={blogUrl} title={post.title} />
                                 </div>
                             </div>
+                            
                         </article>
                     </div>
                 </div>
