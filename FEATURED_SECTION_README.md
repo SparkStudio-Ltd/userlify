@@ -2,7 +2,7 @@
 
 ## Overview
 
-A modern, high-conversion SaaS website section with split-screen layout, glassmorphism effects, and GSAP animation's.
+A modern, high-conversion SaaS website section with split-screen layout, glassmorphism effect's, and GSAP animation's.
 
 ## Features
 
