@@ -95,7 +95,7 @@ export default function ShareCard({ blogUrl, title }: ShareCardProps) {
                             type="text"
                             value={blogUrl}
                             readOnly
-                            className="w-full px-4 md:px-3 py-3 md:py-[14px] rounded-[10px] bg-white border border-[#E8E6E6] text-[#030712] text-lg truncate"
+                            className="w-full px-3 md:px-4 py-3 md:py-4 rounded-[10px] bg-white border border-[#E8E6E6] text-[#030712] text-lg truncate"
                             style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 400 }}
                         />
                         <button
