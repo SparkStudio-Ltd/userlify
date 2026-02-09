@@ -128,28 +128,42 @@ export default function PortfolioPage() {
                     className="mx-auto max-w-[1216px] px-4 pt-32 pb-16 md:px-8 lg:px-16 lg:pt-40 lg:pb-24"
                 >
                     {/* Breadcrumb */}
-                    <div
-                        ref={breadcrumbRef}
-                        className="mb-6 flex items-center gap-2 text-sm lg:mb-8"
-                    >
+                    <nav className="w-full pb-6 mx-auto flex items-center justify-start text-left gap-2 md:gap-4">
+                        <Image
+                            src="/assets/icons/homeSvg.svg"
+                            alt="Home"
+                            width={20}
+                            height={20}
+                            className="w-[18px] h-[18px] md:w-[20px] md:h-[20px]"
+                        />
                         <Link
                             href="/"
-                            className="font-public-sans text-[#766A68] transition-colors hover:text-primary"
+                            className="text-[#766A68] hover:text-[#030712] transition-colors tracking-[0.75px] text-[14px] leading-none"
+                            style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 700 }}
                         >
                             HOME
                         </Link>
-                        <span className="text-[#766A68]">/</span>
-                        <Link
-                            href="/case-study"
-                            className="font-public-sans text-[#766A68] transition-colors hover:text-primary"
+                        <Image
+                            src="/assets/icons/breadcrumbVector.svg"
+                            alt=""
+                            width={7}
+                            height={11}
+                            aria-hidden="true"
+                        />
+                        {/* <Link
+                            href="/blog"
+                            className="text-[#766A68] hover:text-[#030712] transition-colors tracking-[0.75px] text-[14px] leading-none"
+                            style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 700 }}
                         >
-                            CASE STUDY
-                        </Link>
-                        <span className="text-[#766A68]">/</span>
-                        <span className="font-public-sans font-medium text-[#030712]">
-                            CASE STUDY DETAILS
+                            BLOGS
+                        </Link> */}
+                        <span
+                            className="text-[#030712] uppercase tracking-[0.75px] text-[14px] leading-none"
+                            style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 700 }}
+                        >
+                            Case Study Details
                         </span>
-                    </div>
+                    </nav>
 
                     {/* Title */}
                     <h1
@@ -505,7 +519,7 @@ export default function PortfolioPage() {
 
                 </section>
 
-                <ReviewsSection/>
+                <ReviewsSection />
 
                 {/* Projects Section - Single Row */}
                 <section className="relative w-full bg-[#030712] px-4 py-16 text-white md:px-8 md:py-24 lg:px-16 lg:py-32">
