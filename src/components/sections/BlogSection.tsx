@@ -49,7 +49,7 @@ export default function BlogSection() {
     const latestPosts = blogPosts.slice(0, 2);
 
     return (
-        <section ref={sectionRef} className="w-full py-24 px-4 md:px-12 bg-[#F8F8F7]">
+        <section ref={sectionRef} className="w-full py-24 md:py-30 px-4 md:px-12 bg-[#F8F8F7]">
             <div className="max-w-[1472px] mx-auto md:px-none">
                 <div className="flex flex-col gap-10">
                     {/* Top Section */}

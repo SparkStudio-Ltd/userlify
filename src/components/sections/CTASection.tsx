@@ -69,7 +69,7 @@ export default function CTASection() {
     return (
         <section
             ref={sectionRef}
-            className="w-full bg-primary overflow-hidden flex items-center pt-12 pb-0 sm:py-20 lg:py-0 pl-0 lg:pl-[max(48px,calc((100%-1472px)/2))] pr-0"
+            className="w-full bg-primary overflow-hidden flex items-center pt-24 pb-0 sm:py-20 lg:py-0 pl-0 lg:pl-[max(48px,calc((100%-1472px)/2))] pr-0"
         >
             <div className="w-full flex flex-col lg:flex-row gap-10 lg:gap-12 items-center">
                 

@@ -131,7 +131,7 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="bg-white relative overflow-hidden w-full pb-16 pt-11 md:pb-18  md:pt-24 px-0">
+      className="bg-white relative overflow-hidden w-full pb-16 pt-11 md:pb-20  md:pt-24 px-0">
       <div>
         <div ref={orb1Ref} className="absolute -top-[20%] -right-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full opacity-40 pointer-events-none" 
         style={{
@@ -144,7 +144,7 @@ export function HeroSection() {
         {/* Bottom Left Moving Gradient */}
         <div
           ref={orb2Ref}
-          className="absolute -bottom-[20%] -left-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full opacity-40 pointer-events-none"
+          className="absolute bottom-[15%] -left-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full opacity-40 pointer-events-none"
           style={{
             background: '#E86A54',
             filter: 'blur(120px)',

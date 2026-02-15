@@ -90,7 +90,7 @@ export default function ServicesSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full bg-[#030712] py-32 px-4 md:px-8 lg:px-12 min-h-screen text-white"
+            className="relative w-full bg-[#030712] py-24 md:py-30 px-4 md:px-8 lg:px-12 min-h-screen text-white"
         >
             {/* BACKGROUND LAYERS */}
 
