@@ -18,7 +18,7 @@ export default function FeaturedBlogCard({
     excerpt,
 }: FeaturedBlogCardProps) {
     return (
-        <div className="group grid grid-cols-1 md:grid-cols-2 gap-0 rounded-[32px] overflow-hidden border border-[#E8E6E6]">
+        <Link href={`/blog/${slug}`} className="group grid grid-cols-1 md:grid-cols-2 gap-0 rounded-[32px] overflow-hidden border border-[#E8E6E6] cursor-pointer">
             {/* Left: Cover Image */}
             <div className="relative w-full aspect-[3/2]">
                 <Image
@@ -73,6 +73,6 @@ export default function FeaturedBlogCard({
                     <ArrowUpRight className="w-5 h-5"/>
                 </Link>
             </div>
-        </div>
+        </Link>
     );
 }
