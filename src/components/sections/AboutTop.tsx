@@ -101,8 +101,8 @@ export default function AboutTopSection() {
               </div>
             </div>
 
-            <div className="flex flex-col justify-between rounded-2xl bg-[#F8F8F7] p-6 md:p-8 gap-4 md:gap-2 min-h-[250px] md:h-[276px]">
-              <p className="font-nav text-[14px] md:text-[20px] font-normal italic leading-[22px] md:leading-[36px] tracking-[-0.6px] text-[#030712]">
+            <div className="flex flex-col justify-between rounded-2xl bg-[#F8F8F7] p-6 md:p-8 gap-4 md:gap-2 min-h-[250px] md:h-[276px] lg:h-auto lg:min-h-[300px]">
+              <p className="font-nav text-[14px] md:text-[20px] lg:text-[18px] font-normal italic leading-[22px] md:leading-[36px] lg:leading-[32px] tracking-[-0.6px] text-[#030712]">
                 We’re proud to have designed apps and digital experiences that are live on the
                 Play Store and App Store. Each project reflects our passion for usability,
                 creativity, and measurable business growth.
@@ -114,10 +114,10 @@ export default function AboutTopSection() {
                     alt="Signature"
                     width={73}
                     height={56}
-                    className="h-[40px] md:h-[56px] w-auto"
+                    className="h-[40px] md:h-[56px] lg:h-[48px] w-auto"
                   />
                   <div className="text-right">
-                    <p className="font-nav text-[14px] md:text-[21px] font-normal italic leading-[22px] md:leading-[36px] tracking-[-0.6px] text-[#030712]">
+                    <p className="font-nav text-[14px] md:text-[21px] lg:text-[18px] font-normal italic leading-[22px] md:leading-[36px] lg:leading-[32px] tracking-[-0.6px] text-[#030712]">
                       Alamin Hossain
                     </p>
                     <p className="font-nav text-[11px] md:text-[13px] font-medium leading-[16px] md:leading-[20px] tracking-[0px] text-[#030712]">
