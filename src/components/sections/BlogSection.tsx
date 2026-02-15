@@ -67,7 +67,7 @@ export default function BlogSection() {
                             style={{ fontFamily: 'Nohemi, sans-serif' }}
                         >
                             Articles to Help You{' '}
-                            <span className="italic inline font-serif tracking-tighter">
+                            <span className="italic block font-serif tracking-tighter">
                                 Grow Your Product
                             </span>
                         </h2>

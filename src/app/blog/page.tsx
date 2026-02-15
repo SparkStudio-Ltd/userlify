@@ -38,14 +38,6 @@ export default async function Blog({
             <BlogContentWrapper
               heading={
                 <div className="flex flex-col items-center pb-10">
-                  {/* Kicker */}
-                  <p
-                    className="text-[#EA7B69] text-[14px] leading-5 tracking-[0.75px] uppercase"
-                    style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 700 }}
-                  >
-                    • BLOG
-                  </p>
-
                   {/* Title - Part 1 */}
                   <h1
                     className="text-[36px] md:text-[72px] leading-[40px] md:leading-[80px] tracking-[-2px] md:tracking-[-4.5px] text-[#2A0E63] italic text-center"

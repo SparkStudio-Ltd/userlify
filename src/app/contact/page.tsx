@@ -1,12 +1,11 @@
 import { Footer, Header } from '@/components/layout';
-import { CTASection, FAQSectionContact } from '@/components/sections';
-import ContactPageContent from '@/components/sections/ContactPageContent';
+import { ContactUsSection, CTASection, FAQSectionContact } from '@/components/sections';
 
 export default function ContactPage() {
   return (
     <>
       <Header />
-      <ContactPageContent />
+      <ContactUsSection />
       <FAQSectionContact />
       <CTASection />
       <Footer />

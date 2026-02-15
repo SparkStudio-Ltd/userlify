@@ -1,11 +1,11 @@
 'use client';
 
 import clientsData from '@/../public/data/clients.json';
+import { ArrowRight } from '@/components/icons';
+import { Button } from '@/components/ui';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
-import { ArrowRight } from '@/components/icons';
-import { Button } from '@/components/ui';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { FaLinkedinIn } from 'react-icons/fa';
@@ -36,8 +36,10 @@ export default function ContactUsSection() {
   const leftCardRef = useRef<HTMLDivElement>(null);
   const rightCardRef = useRef<HTMLDivElement>(null);
 
-  const [selectedService, setSelectedService] = useState(
-    typeof window !== 'undefined' ? sessionStorage.getItem('contactService') || '' : ''
+  const [selectedServices, setSelectedServices] = useState<string[]>(
+    typeof window !== 'undefined'
+      ? JSON.parse(sessionStorage.getItem('contactServices') || '[]')
+      : []
   );
   const [formData, setFormData] = useState({
     name:
@@ -122,10 +124,16 @@ export default function ContactUsSection() {
   }, []);
 
   const handleServiceSelect = (service: string) => {
-    setSelectedService(service);
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('contactService', service);
-    }
+    setSelectedServices((prev) => {
+      const isSelected = prev.includes(service);
+      const updated = isSelected ? prev.filter((s) => s !== service) : [...prev, service];
+
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('contactServices', JSON.stringify(updated));
+      }
+
+      return updated;
+    });
   };
 
   const handleInputChange = (
@@ -144,9 +152,9 @@ export default function ContactUsSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate that a service is selected
-    if (!selectedService) {
-      setErrorMessage('Please select a service type');
+    // Validate that at least one service is selected
+    if (selectedServices.length === 0) {
+      setErrorMessage('Please select at least one service type');
       setSubmitStatus('error');
       return;
     }
@@ -166,7 +174,7 @@ export default function ContactUsSection() {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          service: selectedService,
+          services: selectedServices,
           message: formData.message,
         }),
       });
@@ -181,14 +189,14 @@ export default function ContactUsSection() {
       // Success - clear form and session storage
       setSubmitStatus('success');
       setFormData({ name: '', email: '', phone: '', message: '' });
-      setSelectedService('');
+      setSelectedServices([]);
 
       if (typeof window !== 'undefined') {
         sessionStorage.removeItem('contactName');
         sessionStorage.removeItem('contactEmail');
         sessionStorage.removeItem('contactPhone');
         sessionStorage.removeItem('contactMessage');
-        sessionStorage.removeItem('contactService');
+        sessionStorage.removeItem('contactServices');
       }
 
       // Redirect to thank-you page after a brief delay
@@ -321,7 +329,7 @@ export default function ContactUsSection() {
           {/* Right Form - 60% (3 columns) */}
           <div
             ref={rightCardRef}
-            className="flex flex-col rounded-3xl border border-[#E8E6E6] bg-white p-10 lg:col-span-3"
+            className="flex flex-col rounded-3xl border border-[#E8E6E6] bg-white p-6 lg:col-span-3 lg:p-10"
           >
             {/* Form Header */}
             <div className="mb-8 text-center">
@@ -346,10 +354,11 @@ export default function ContactUsSection() {
                   key={service}
                   type="button"
                   onClick={() => handleServiceSelect(service)}
-                  className={`rounded-full border px-5 py-2 text-sm transition-all md:px-9 md:py-4 md:text-[18px] ${selectedService === service
+                  className={`rounded-full border px-5 py-2 text-sm transition-all duration-300 ease-in-out md:px-9 md:py-4 md:text-[18px] ${
+                    selectedServices.includes(service)
                       ? 'border-primary bg-primary text-white'
-                      : 'border-[#E8E6E6] bg-[#F8F8F7] text-[#030712] hover:border-primary/50'
-                    }`}
+                      : 'border-[#E8E6E6] bg-[#F8F8F7] text-[#030712] hover:border-primary hover:bg-primary hover:text-white'
+                  }`}
                   style={{ fontFamily: 'Public Sans, sans-serif' }}
                 >
                   {service}

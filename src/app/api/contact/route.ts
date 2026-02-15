@@ -3,12 +3,17 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, service, message } = body;
+    const { name, email, phone, services, message } = body;
 
     // Validate required fields
-    if (!name || !email || !phone || !service || !message) {
+    if (!name || !email || !phone || !services || !message) {
+      return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
+    }
+
+    // Validate services is an array with at least one item
+    if (!Array.isArray(services) || services.length === 0) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: 'At least one service must be selected' },
         { status: 400 }
       );
     }
@@ -18,10 +23,7 @@ export async function POST(request: NextRequest) {
 
     if (!apiUrl) {
       console.error('CONTACT_URL environment variable is not configured');
-      return NextResponse.json(
-        { error: 'Server configuration error' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
     }
 
     // Forward the request to the external API
@@ -35,7 +37,7 @@ export async function POST(request: NextRequest) {
         name,
         email,
         phone,
-        service,
+        service: services.join(', '), // Send as comma-separated string for compatibility
         message,
       }),
     });
