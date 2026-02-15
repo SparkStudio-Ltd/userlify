@@ -107,9 +107,9 @@ export default function ContactPageContent() {
   }, []);
 
   return (
-    <main className="w-full overflow-hidden bg-white px-4 pb-12 pt-24 sm:px-6 sm:pb-16 sm:pt-32 md:px-8 md:pb-20 md:pt-40 lg:px-12 lg:pb-[120px] lg:pt-[216px]">
+    <main className="w-full overflow-hidden bg-white px-4 py-28 pb-12 sm:px-6 sm:pb-16 md:px-8 md:pb-20 md:pt-44 lg:px-12 lg:pb-[120px]">
       {/* Two Column Layout */}
-      <div className="mx-auto grid w-full max-w-[1472px] grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-5">
+      <div className="mx-auto grid w-full max-w-[1472px] grid-cols-1 gap-10 sm:gap-8 lg:grid-cols-5">
         {/* Left Card - 40% (2 columns) */}
         <div ref={leftCardRef} className="flex flex-col lg:col-span-2">
           <div
@@ -123,13 +123,15 @@ export default function ContactPageContent() {
               • CONTACT
             </p>
 
-            <h2
-              className="text-6xl leading-[1.15] tracking-[-0.5px] text-[#2A0E63] lg:leading-[56px]"
-              style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}
+            <h1
+              className="text-[40px] font-bold leading-[48px] tracking-[0px] text-[#2A0E63] md:text-[56px] md:leading-[64px] lg:text-[72px] lg:leading-[80px]"
+              style={{ fontFamily: 'Nohemi, sans-serif' }}
             >
               Let's Take the{' '}
-              <span className="font-serif italic md:block">First Step Together</span>
-            </h2>
+              <span className="block font-serif font-normal italic text-[#E86A54]">
+                First Step Together
+              </span>
+            </h1>
           </div>
 
           <div className="mt-8 grid gap-6 sm:mt-10 sm:gap-8 md:mt-12 md:gap-10 lg:mt-14">
