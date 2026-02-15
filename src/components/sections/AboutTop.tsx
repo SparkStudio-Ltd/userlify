@@ -6,17 +6,20 @@ import Image from 'next/image';
 export default function AboutTopSection() {
 
   return (
-    <main className="min-h-screen bg-white py-12 md:py-20 lg:py-30 overflow-hidden">
-      <section className="section">
+    <main className="bg-white pb-12 md:pb-20 lg:pb-24 overflow-hidden">
+
+      <section className="py-28 md:pt-44">
         <div className="mx-auto w-full max-w-[1472px] px-4 md:px-8 lg:px-12 2xl:px-0">
           <div className="flex flex-col gap-8 md:gap-16 lg:gap-24">
             <div className="mx-auto text-center md:w-[774px]">
-              <h1 className="font-heading text-[40px] md:text-[56px] lg:text-[72px] font-medium leading-[48px] md:leading-[64px] lg:leading-[80px] tracking-[0px] text-[#2A0E63]">
-                A Creative UI/UX Design Agency Built for{' '}
-                <span className="font-serif text-[40px] md:text-[56px] lg:text-[72px] font-normal italic leading-[48px] md:leading-[64px] lg:leading-[80px] tracking-[-2px]">
-                  Startup Growth
+
+              <h1 className="font-heading text-[40px] md:text-[56px] lg:text-[72px] leading-[48px] md:leading-[64px] lg:leading-[80px] tracking-[0px] text-[#2A0E63] font-bold" style={{ fontFamily: 'Instrument Serif, sans-serif'}}>
+                <span className="block font-serif text-[40px] md:text-[56px] lg:text-[72px] font-normal italic leading-[48px] md:leading-[64px] lg:leading-[80px] tracking-[-2px] text-[#E86A54]">
+                  A Creative UI/UX{' '}
                 </span>
+                Design Agency
               </h1>
+
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch gap-8 md:gap-12 lg:gap-16">

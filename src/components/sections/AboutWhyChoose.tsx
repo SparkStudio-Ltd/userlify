@@ -87,7 +87,7 @@ export default function AboutWhyChooseSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative w-full bg-white py-12 md:py-32 px-4 md:px-8 lg:px-12 min-h-screen text-white"
+            className="relative w-full bg-white pt-12 pb-24 md:py-24 px-4 md:px-8 lg:px-12 text-white"
         >
             {/* BACKGROUND LAYERS */}
 
@@ -117,7 +117,7 @@ export default function AboutWhyChooseSection() {
                     <div className="lg:w-1/2 flex flex-col justify-start pt-4 lg:sticky lg:top-64 h-fit order-1 lg:order-2">
                         {/* Top Section */}
                         <div className="flex flex-col gap-16">
-                            <div>
+                            <div className="flex flex-col gap-4">
                                 {/* Kicker */}
                                 <p
                                     className="text-[#EA7B69] text-sm leading-5 tracking-[0.75px] uppercase font-bold"
