@@ -22,7 +22,7 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
-        <SliderSection />
+        {/* <SliderSection /> */}
         <FeaturedSection /> 
         <ServicesSection />
         <WhyChooseUsSection />
