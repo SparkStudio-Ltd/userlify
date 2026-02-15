@@ -1,4 +1,3 @@
-import { ArrowUpRight } from '@/components/icons';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -16,7 +15,7 @@ export default function BlogCard({
     readTime,
 }: BlogCardProps) {
     return (
-        <div className="group flex flex-col gap-8">
+        <Link href={`/blog/${slug}`} className="group flex flex-col gap-8 cursor-pointer">
             {/* Cover Image */}
             <div className="relative w-full aspect-[3/2] border border-[#E8E6E6] rounded-[32px] overflow-hidden">
                 <Image
@@ -48,21 +47,7 @@ export default function BlogCard({
                 >
                     {title}
                 </h3>
-
-                {/* Read More Button */}
-                <Link
-                    href={`/blog/${slug}`}
-                    className="inline-flex items-center gap-2 text-[#EA7B69] hover:opacity-80 transition-opacity"
-                >
-                    <span
-                        className="md:text-lg leading-7 tracking-[-0.4px]"
-                        style={{ fontFamily: 'Public Sans, sans-serif', fontWeight: 500 }}
-                    >
-                        Read More
-                    </span>
-                    <ArrowUpRight className="w-5 h-5"/>
-                </Link>
             </div>
-        </div>
+        </Link>
     );
 }
