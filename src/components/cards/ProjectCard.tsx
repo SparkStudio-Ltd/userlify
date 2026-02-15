@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface ProjectCardProps {
   title: string;
@@ -15,7 +16,7 @@ export function ProjectCard({
   tags,
 }: ProjectCardProps) {
   return (
-    <div className="card-item group relative flex h-full flex-col overflow-hidden border border-[#2D2F33] rounded-3xl bg-[#0e0f10] transition-all duration-500 hover:scale-[1.02]">
+    <Link href="/portfolio" className="card-item group relative flex h-full flex-col overflow-hidden border border-[#2D2F33] rounded-3xl bg-[#0e0f10] transition-all duration-500 hover:scale-[1.02] cursor-pointer">
       {/* Image Container */}
       <div className="relative h-[488px] w-full flex-shrink-0 overflow-hidden">
         <Image
@@ -48,6 +49,6 @@ export function ProjectCard({
           {description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
