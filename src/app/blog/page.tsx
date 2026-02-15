@@ -33,26 +33,20 @@ export default async function Blog({
     <>
       <Header />
       <main className="w-full bg-white">
-        <div className="px-4 md:px-12 pt-24 md:pt-[150px] 2xl:pt-[216px] pb-16 md:pb-[120px]">
+        <div className="px-4 md:px-12  pb-24 md:pb-30 py-28 md:pt-44">
           <div className="max-w-[1472px] mx-auto">
             <BlogContentWrapper
               heading={
-                <div className="flex flex-col items-center pb-10">
-                  {/* Title - Part 1 */}
-                  <h1
-                    className="text-[36px] md:text-[72px] leading-[40px] md:leading-[80px] tracking-[-2px] md:tracking-[-4.5px] text-[#2A0E63] italic text-center"
-                    style={{ fontFamily: 'Instrument Serif, serif', fontWeight: 400}}
-                  >
-                    Grow Your Product
+                <div className="flex flex-col items-center pb-24">
+
+                  <h1 className="font-heading text-[40px] md:text-[56px] lg:text-[72px] leading-[48px] md:leading-[64px] lg:leading-[80px] tracking-[0px] text-[#2A0E63] font-bold" style={{ fontFamily: 'Nohemi, sans-serif' }}>
+                    <span className="block text-center font-serif font-normal italic  text-[#E86A54]">
+                      Grow Your Product{' '}
+                    </span>
+                    Articles to Help You
                   </h1>
 
-                  {/* Title - Part 2 */}
-                  <h2
-                    className="text-[30px] md:text-[60px] leading-[34px] md:leading-[68px] text-[#2A0E63] text-center"
-                    style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 500 }}
-                  >
-                    Articles to Help You
-                  </h2>
+
                 </div>
               }
               content={

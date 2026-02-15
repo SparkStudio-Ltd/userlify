@@ -13,8 +13,8 @@ export default function AboutTopSection() {
           <div className="flex flex-col gap-8 md:gap-16 lg:gap-24">
             <div className="mx-auto text-center md:w-[774px]">
 
-              <h1 className="font-heading text-[40px] md:text-[56px] lg:text-[72px] leading-[48px] md:leading-[64px] lg:leading-[80px] tracking-[0px] text-[#2A0E63] font-bold" style={{ fontFamily: 'Instrument Serif, sans-serif'}}>
-                <span className="block font-serif text-[40px] md:text-[56px] lg:text-[72px] font-normal italic leading-[48px] md:leading-[64px] lg:leading-[80px] tracking-[-2px] text-[#E86A54]">
+              <h1 className="font-heading text-[40px] md:text-[56px] lg:text-[72px] leading-[48px] md:leading-[64px] lg:leading-[80px] tracking-[0px] text-[#2A0E63] font-bold" style={{ fontFamily: 'Nohemi, sans-serif'}}>
+                <span className="block font-serif font-normal italic leading-[48px] md:leading-[64px] lg:leading-[80px] tracking-[-2px] text-[#E86A54]">
                   A Creative UI/UX{' '}
                 </span>
                 Design Agency
