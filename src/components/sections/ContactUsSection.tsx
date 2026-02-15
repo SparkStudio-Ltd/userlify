@@ -1,26 +1,14 @@
 'use client';
 
 import clientsData from '@/../public/data/clients.json';
-import { ArrowRight } from '@/components/icons';
-import { Button } from '@/components/ui';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { FaLinkedinIn } from 'react-icons/fa';
+import ContactForm from './ContactForm';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const serviceTypes = [
-  'UI/UX Design',
-  'Mobile Design',
-  'Web Design',
-  'Product Design',
-  'Brand Design',
-  'SaaS Design',
-  'E-commerce Design',
-];
 
 const expertiseAreas = [
   'Automobile Technology',
@@ -31,29 +19,9 @@ const expertiseAreas = [
 ];
 
 export default function ContactUsSection() {
-  const router = useRouter();
   const headerRef = useRef<HTMLDivElement>(null);
   const leftCardRef = useRef<HTMLDivElement>(null);
   const rightCardRef = useRef<HTMLDivElement>(null);
-
-  const [selectedServices, setSelectedServices] = useState<string[]>(
-    typeof window !== 'undefined'
-      ? JSON.parse(sessionStorage.getItem('contactServices') || '[]')
-      : []
-  );
-  const [formData, setFormData] = useState({
-    name:
-      typeof window !== 'undefined' ? sessionStorage.getItem('contactName') || '' : '',
-    email:
-      typeof window !== 'undefined' ? sessionStorage.getItem('contactEmail') || '' : '',
-    phone:
-      typeof window !== 'undefined' ? sessionStorage.getItem('contactPhone') || '' : '',
-    message:
-      typeof window !== 'undefined' ? sessionStorage.getItem('contactMessage') || '' : '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     // Animate header
@@ -122,98 +90,6 @@ export default function ContactUsSection() {
       );
     }
   }, []);
-
-  const handleServiceSelect = (service: string) => {
-    setSelectedServices((prev) => {
-      const isSelected = prev.includes(service);
-      const updated = isSelected ? prev.filter((s) => s !== service) : [...prev, service];
-
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('contactServices', JSON.stringify(updated));
-      }
-
-      return updated;
-    });
-  };
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem(
-        `contact${name.charAt(0).toUpperCase() + name.slice(1)}`,
-        value
-      );
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Validate that at least one service is selected
-    if (selectedServices.length === 0) {
-      setErrorMessage('Please select at least one service type');
-      setSubmitStatus('error');
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-    setErrorMessage('');
-
-    try {
-      // Call our internal API route instead of external API directly
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          services: selectedServices,
-          message: formData.message,
-        }),
-      });
-
-      const data = await response.json();
-
-      // Check for successful response (200-299 range)
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
-      }
-
-      // Success - clear form and session storage
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', message: '' });
-      setSelectedServices([]);
-
-      if (typeof window !== 'undefined') {
-        sessionStorage.removeItem('contactName');
-        sessionStorage.removeItem('contactEmail');
-        sessionStorage.removeItem('contactPhone');
-        sessionStorage.removeItem('contactMessage');
-        sessionStorage.removeItem('contactServices');
-      }
-
-      // Redirect to thank-you page after a brief delay
-      setTimeout(() => {
-        router.push('/thank-you');
-      }, 1500);
-    } catch (error) {
-      setSubmitStatus('error');
-      if (error instanceof Error) {
-        setErrorMessage(error.message);
-      } else {
-        setErrorMessage('Failed to send message. Please try again later.');
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   // Get first 5 clients for logo display
   const displayClients = clientsData.slice(0, 5);
@@ -327,176 +203,8 @@ export default function ContactUsSection() {
           </div>
 
           {/* Right Form - 60% (3 columns) */}
-          <div
-            ref={rightCardRef}
-            className="flex flex-col rounded-3xl border border-[#E8E6E6] bg-white p-6 lg:col-span-3 lg:p-10"
-          >
-            {/* Form Header */}
-            <div className="mb-8 text-center">
-              <h3
-                className="text-xl leading-tight text-primary md:text-[30px]"
-                style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 400 }}
-              >
-                Your Future
-              </h3>
-              <h3
-                className="text-xl leading-tight text-[#030712] md:text-[30px]"
-                style={{ fontFamily: 'Nohemi, sans-serif', fontWeight: 400 }}
-              >
-                Website Starts Here
-              </h3>
-            </div>
-
-            {/* Service Type Buttons */}
-            <div className="mb-10 flex flex-wrap items-center justify-center gap-2 md:justify-start md:gap-3">
-              {serviceTypes.map((service) => (
-                <button
-                  key={service}
-                  type="button"
-                  onClick={() => handleServiceSelect(service)}
-                  className={`rounded-full border px-5 py-2 text-sm transition-all duration-300 ease-in-out md:px-9 md:py-4 md:text-[18px] ${
-                    selectedServices.includes(service)
-                      ? 'border-primary bg-primary text-white'
-                      : 'border-[#E8E6E6] bg-[#F8F8F7] text-[#030712] hover:border-primary hover:bg-primary hover:text-white'
-                  }`}
-                  style={{ fontFamily: 'Public Sans, sans-serif' }}
-                >
-                  {service}
-                </button>
-              ))}
-            </div>
-
-            {/* Contact Form */}
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              {/* Name Field - Full Width */}
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="name"
-                  className="text-sm text-[#32201D] md:text-[16px]"
-                  style={{ fontFamily: 'Public Sans, sans-serif' }}
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="John Smith"
-                  className="rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-3 py-2 text-sm text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none md:px-5 md:py-4 md:text-[18px]"
-                  style={{ fontFamily: 'Public Sans, sans-serif' }}
-                  required
-                />
-              </div>
-
-              {/* Email and Phone - Two Column */}
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="email"
-                    className="text-sm text-[#32201D] md:text-[16px]"
-                    style={{ fontFamily: 'Public Sans, sans-serif' }}
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="john@example.com"
-                    className="rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-3 py-2 text-sm text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none md:px-5 md:py-4 md:text-[18px]"
-                    style={{ fontFamily: 'Public Sans, sans-serif' }}
-                    required
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="phone"
-                    className="text-sm text-[#32201D] md:text-[16px]"
-                    style={{ fontFamily: 'Public Sans, sans-serif' }}
-                  >
-                    Phone/ Whatsapp
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder="(713) 123-4567"
-                    className="rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-3 py-2 text-sm text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none md:px-5 md:py-4 md:text-[18px]"
-                    style={{ fontFamily: 'Public Sans, sans-serif' }}
-                    required
-                  />
-                </div>
-              </div>
-
-              {/* Message Field */}
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="message"
-                  className="text-sm text-[#32201D] md:text-[16px]"
-                  style={{ fontFamily: 'Public Sans, sans-serif' }}
-                >
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  placeholder="How can we assist you?"
-                  rows={5}
-                  className="resize-none rounded-lg border border-[#D8D5D4] bg-[#F8F8F7] px-3 py-2 text-sm text-[#766A68] transition-colors placeholder:text-[#766A68] focus:border-primary focus:outline-none md:px-5 md:py-4 md:text-[18px]"
-                  style={{ fontFamily: 'Public Sans, sans-serif' }}
-                  required
-                />
-              </div>
-
-              {/* Submit Button */}
-              <div className="flex flex-col items-center gap-4 pt-6">
-                <Button
-                  type="submit"
-                  size="lg"
-                  variant="primary"
-                  disabled={isSubmitting}
-                  className="gap-3"
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                  {!isSubmitting && <ArrowRight className="h-5 w-5" />}
-                </Button>
-
-                {/* Status Messages */}
-                {submitStatus === 'success' && (
-                  <p
-                    className="text-sm text-green-600 md:text-[16px]"
-                    style={{ fontFamily: 'Public Sans, sans-serif' }}
-                  >
-                    ✓ Message sent successfully! We'll get back to you within 12 hours.
-                  </p>
-                )}
-                {submitStatus === 'error' && (
-                  <p
-                    className="text-sm text-red-600 md:text-[16px]"
-                    style={{ fontFamily: 'Public Sans, sans-serif' }}
-                  >
-                    ✗ {errorMessage}
-                  </p>
-                )}
-                {submitStatus === 'idle' && !isSubmitting && (
-                  <p
-                    className="text-sm text-[#32201D] md:text-[16px]"
-                    style={{ fontFamily: 'Public Sans, sans-serif' }}
-                  >
-                    We'll get back to you within 12 hours!
-                  </p>
-                )}
-              </div>
-            </form>
+          <div ref={rightCardRef} className="lg:col-span-3">
+            <ContactForm />
           </div>
         </div>
       </div>

@@ -94,8 +94,11 @@
 
   /* Badge/Tag styles */
   .tag {
-    @apply font-nav inline-flex items-center gap-1.5 rounded-full bg-white/70 px-4 py-2 text-sm font-medium text-accent-950 border border-slate-50 backdrop-blur-md;
-    box-shadow: 0px 2px 4px 0px #D4D4D414, 0px 8px 8px 0px #D4D4D412, 0px 18px 11px 0px #D4D4D40A;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-50 bg-white/70 px-4 py-2 font-nav text-sm font-medium text-accent-950 backdrop-blur-md;
+    box-shadow:
+      0px 2px 4px 0px #d4d4d414,
+      0px 8px 8px 0px #d4d4d412,
+      0px 18px 11px 0px #d4d4d40a;
   }
 
   .tag::before {
