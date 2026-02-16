@@ -3,21 +3,13 @@
 
 
 import { Menu, X } from '@/components/icons';
-
 import { Button } from '@/components/ui/Button';
-
 import { Container } from '@/components/ui/Container';
-
 import { Logo } from '@/components/ui/Logo';
-
 import { cn } from '@/lib/utils';
-
 import Link from 'next/link';
-
 import { usePathname } from 'next/navigation';
-
 import { useEffect, useState } from 'react';
-
 
 
 const navigation = [
@@ -28,7 +20,7 @@ const navigation = [
 
   { name: 'Blog', href: '/blog' },
 
-  { name: 'Portfolio', href: '/portfolio' },
+  // { name: 'Portfolio', href: '/portfolio' },
 
   { name: 'Contact', href: '/contact' },
 

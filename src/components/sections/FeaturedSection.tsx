@@ -45,7 +45,7 @@ export default function StatsSection() {
       scrollTrigger: {
         trigger: desktopWrapperRef.current, // Trigger based on the desktop wrapper
         start: 'top 40%',
-        end: 'bottom 100%',
+        end: 'bottom bottom',
         scrub: 1.5,
       }
     });
