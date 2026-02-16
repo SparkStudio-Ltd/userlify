@@ -83,7 +83,7 @@ export default function ProjectsSection() {
               the Play Store and App Store. Each project reflects our passion for
               usability, creativity, and measurable business growth.
             </p>
-            <div>
+            {/* <div>
               <Button
                 variant="primary"
                 size="lg"
@@ -93,7 +93,7 @@ export default function ProjectsSection() {
                 View All Portfolio
                 <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
 

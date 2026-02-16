@@ -1,3 +1,6 @@
+
+
+
 'use client';
 
 import gsap from 'gsap';
@@ -16,58 +19,55 @@ interface ServiceSliderProps {
 
 export default function ServiceSlider({ services }: ServiceSliderProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<gsap.core.Tween | null>(null);
 
-  // 1. Create a double list for the seamless loop
-  // We render this directly in JSX instead of using innerHTML
-  const duplicatedServices = [...services, ...services];
+  // 1. Quadruple the list to create a safe buffer
+  const repeatedServices = [...services, ...services, ...services, ...services];
 
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;
 
-    // 2. Kill old animation to prevent memory leaks/speedups on re-render
-    if (animationRef.current) {
-      animationRef.current.kill();
-    }
+    const ctx = gsap.context(() => {
+      // 2. The Animation Logic (Right Direction)
+      // We start shifted left (-25%) and move to 0.
+      // Because we used 'margin' instead of 'gap', -25% is EXACTLY the width of one set.
+      
+      gsap.fromTo(
+        slider,
+        {
+          xPercent: -25, // Start showing the 2nd set
+        },
+        {
+          xPercent: 0,   // Move right until we hit the 1st set
+          duration: 30,  
+          ease: 'none',
+          repeat: -1,
+          force3D: true, // Forces GPU acceleration for smoother frames
+        }
+      );
 
-    // 3. The Animation Logic (Left to Right)
-    // We start at -50% (showing the second half) and move to 0% (showing the first half)
-    // Since both halves are identical, the snap back to -50% is invisible.
+      // Pause on hover
+      const animation = gsap.getTweensOf(slider)[0];
+      slider.addEventListener('mouseenter', () => animation.pause());
+      slider.addEventListener('mouseleave', () => animation.play());
+    }, sliderRef);
 
-    // Initial setup
-    gsap.set(slider, { xPercent: -20 });
-
-    animationRef.current = gsap.to(slider, {
-      xPercent: 0, // Move to the right until the start aligns
-      duration: 35, // Adjusted speed (slower is usually better for reading)
-      ease: 'none',
-      repeat: -1,
-    });
-
-    // Hover effect: Pause on hover (Optional, remove if unwanted)
-    const onMouseEnter = () => animationRef.current?.timeScale(0);
-    const onMouseLeave = () => animationRef.current?.timeScale(1);
-
-    slider.addEventListener('mouseenter', onMouseEnter);
-    slider.addEventListener('mouseleave', onMouseLeave);
-
-    return () => {
-      animationRef.current?.kill();
-      slider.removeEventListener('mouseenter', onMouseEnter);
-      slider.removeEventListener('mouseleave', onMouseLeave);
-    };
+    return () => ctx.revert();
   }, [services]);
 
   return (
     <div className="w-full overflow-hidden py-8">
-      {/* 4. Added w-max to force items into a single horizontal line (prevents wrapping) */}
-      <div ref={sliderRef} className="flex w-max gap-4">
-        {duplicatedServices.map((service, index) => (
+      {/* CRITICAL FIX: 
+        1. Removed 'gap-4' (which causes the math error).
+        2. Added 'flex-nowrap' and 'w-max' to keep it in a line.
+      */}
+      <div ref={sliderRef} className="flex w-max flex-nowrap">
+        {repeatedServices.map((service, index) => (
           <div
-            // Using index in key because we have duplicate IDs now
             key={`${service.id}-${index}`}
-            className="service-item flex flex-shrink-0 items-center justify-center gap-4 rounded-[56px] border border-[#E8E6E6] bg-white px-4 py-3 text-center md:px-7 md:py-6"
+            // CRITICAL FIX: Added 'mr-4' here.
+            // Every item now owns its spacing, making the total width perfectly divisible.
+            className="mr-4 service-item flex flex-shrink-0 items-center justify-center gap-4 rounded-[56px] border border-[#E8E6E6] bg-white px-4 py-3 text-center md:px-7 md:py-6"
           >
             <div className="relative flex h-6 w-6 flex-shrink-0 items-center justify-center">
               <Image
