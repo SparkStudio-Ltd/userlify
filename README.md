@@ -1,6 +1,6 @@
 # Userlify
 
-A modern design agency website built with Next.js 15, Tailwind CSS, and GSAP animations.
+A modern design agency website built with Next.js 15, Tailwind CSS, and GSAP animations, email api and Other's.
 
 ## 🚀 Features
 

@@ -1,0 +1,56 @@
+{
+  "cards": [
+    {
+      "id": "ui-ux-design",
+      "title": "UI/UX Design",
+      "icon": "/assets/icons/servicesIcon1.svg",
+      "description": "We're proud to have designed apps and digital experiences that are live on the Play Store and App Store. Each project reflects our passion for usability, creativity, and measurable business growth.",
+      "tags": [
+        "Troubleshooting Challenges",
+        "Overcoming Obstacles",
+        "Resolving Issues",
+        "Addressing Problems",
+        "Finding Solutions"
+      ]
+    },
+    {
+      "id": "mobile-design",
+      "title": "Mobile Design",
+      "icon": "/assets/icons/servicesIcon2.svg",
+      "description": "We're proud to have designed apps and digital experiences that are live on the Play Store and App Store. Each project reflects our passion for usability, creativity, and measurable business growth.",
+      "tags": [
+        "Troubleshooting Challenges",
+        "Overcoming Obstacles",
+        "Resolving Issues",
+        "Addressing Problems",
+        "Finding Solutions"
+      ]
+    },
+    {
+      "id": "web-design",
+      "title": "Web Design",
+      "icon": "/assets/icons/servicesIcon3.svg",
+      "description": "We're proud to have designed apps and digital experiences that are live on the Play Store and App Store. Each project reflects our passion for usability, creativity, and measurable business growth.",
+      "tags": [
+        "Troubleshooting Challenges",
+        "Overcoming Obstacles",
+        "Resolving Issues",
+        "Addressing Problems",
+        "Finding Solutions"
+      ]
+    },
+    {
+      "id": "product-design",
+      "title": "Product Design",
+      "icon": "/assets/icons/servicesIcon4.svg",
+      "description": "We're proud to have designed apps and digital experiences that are live on the Play Store and App Store. Each project reflects our passion for usability, creativity, and measurable business growth.",
+      "tags": [
+        "Troubleshooting Challenges",
+        "Overcoming Obstacles",
+        "Resolving Issues",
+        "Addressing Problems",
+        "Finding Solutions"
+      ]
+    }
+  ]
+}

@@ -1,126 +1,225 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
-import { Logo } from '@/components/ui/Logo';
+
+
+import { Menu, X } from '@/components/icons';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
+import { Logo } from '@/components/ui/Logo';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
 
 const navigation = [
+
   { name: 'Home', href: '/' },
-  { name: 'Features', href: '/features' },
-  { name: 'Case Study', href: '/case-study' },
-  { name: 'Pricing', href: '/pricing' },
+
+  { name: 'About', href: '/about' },
+
+  { name: 'Blog', href: '/blog' },
+
+  // { name: 'Portfolio', href: '/portfolio' },
+
+  { name: 'Contact', href: '/contact' },
+
 ];
 
+
+
 export function Header() {
+
   const pathname = usePathname();
+
   const [isScrolled, setIsScrolled] = useState(false);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+
+
   useEffect(() => {
+
     const handleScroll = () => {
+
       setIsScrolled(window.scrollY > 10);
+
     };
 
+
+
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
+
   }, []);
 
+
+
   return (
+
     <header
+
       className={cn(
-        'fixed left-0 right-0 top-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-white/90 shadow-soft backdrop-blur-md' : 'bg-transparent'
+
+        'fixed left-0 right-0 top-0 z-50 transition-all duration-300 px-4 md:px-12',
+
+        isScrolled || isMobileMenuOpen ? 'bg-white shadow-soft backdrop-blur-md' : 'bg-transparent'
+
       )}
+
     >
+
       <Container>
-        <nav className="flex h-20 items-center justify-between">
+
+        <nav className="flex h-20 max-w-[1472px] items-center justify-between">
+
           {/* Logo */}
+
           <Link href="/" className="flex items-center">
+
             <Logo />
+
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden items-center gap-1 rounded-full border border-primary-800/10 bg-white/80 px-2 py-1.5 backdrop-blur-sm md:flex">
+
+
+          {/* Desktop navigation */}
+
+          <div className="hidden items-center gap-1 rounded-full bg-gray-50 px-2.5 py-2.5 md:flex">
+
             {navigation.map((item) => (
+
               <Link
+
                 key={item.name}
+
                 href={item.href}
+
                 className={cn(
-                  'rounded-full px-5 py-2 text-sm font-medium transition-colors',
+
+                  'font-nav rounded-full px-5 py-2 text-base font-medium transition-colors',
+
                   pathname === item.href
-                    ? 'bg-primary-50 text-primary-800'
-                    : 'text-primary-700/70 hover:text-primary-800'
+
+                    ? 'bg-white text-gray-950 shadow-[0px_2px_2px_0px_#0000000A]'
+
+                    : 'text-gray-600 hover:text-gray-950'
+
                 )}
+
               >
+
                 {item.name}
+
               </Link>
+
             ))}
+
           </div>
+
+
 
           {/* CTA Button */}
+
           <div className="hidden md:block">
-            <Button href="/get-quote" variant="primary" size="md">
+
+            <Button className='px-5 py-3 text-base tracking-[-0.25px] font-medium' href="/contact">
+
               Get a Quote
+
             </Button>
+
           </div>
+
+
 
           {/* Mobile Menu Button */}
+
           <button
+
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/80 backdrop-blur-sm md:hidden"
+
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-950 backdrop-blur-sm md:hidden"
+
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+
           >
-            <span
-              className={cn(
-                'block h-0.5 w-5 bg-primary-800 transition-all duration-300',
-                isMobileMenuOpen && 'translate-y-[3px] rotate-45'
-              )}
-            />
-            <span
-              className={cn(
-                'absolute block h-0.5 w-5 bg-primary-800 transition-all duration-300',
-                isMobileMenuOpen ? '-rotate-45' : 'translate-y-[6px]'
-              )}
-            />
+
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+
           </button>
+
         </nav>
 
+
+
         {/* Mobile Menu */}
+
         <div
+
           className={cn(
+
             'overflow-hidden transition-all duration-300 md:hidden',
-            isMobileMenuOpen ? 'max-h-80' : 'max-h-0'
+
+            isMobileMenuOpen ? 'min-h-[22rem]' : 'max-h-0'
+
           )}
+
         >
-          <div className="space-y-1 pb-6 pt-2">
+
+          <div className="flex flex-col items-center justify-center ">
+
             {navigation.map((item) => (
+
               <Link
+
                 key={item.name}
+
                 href={item.href}
+
                 className={cn(
-                  'block rounded-lg px-4 py-3 text-sm font-medium transition-colors',
+
+                  'font-nav block w-full text-center rounded-lg px-6 py-3 text-lg font-medium transition-colors',
+
                   pathname === item.href
-                    ? 'bg-primary-50 text-primary-800'
-                    : 'text-primary-700/70 hover:bg-primary-50/50 hover:text-primary-800'
+
+                    ? 'text-primary'
+
+                    : 'text-gray-600 hover:text-primary'
+
                 )}
+
                 onClick={() => setIsMobileMenuOpen(false)}
+
               >
+
                 {item.name}
+
               </Link>
+
             ))}
+
             <div className="pt-4">
-              <Button href="/get-quote" variant="primary" size="md" className="w-full">
+
+              <Button href="/get-quote" variant="primary" size="lg" className="w-full">
+
                 Get a Quote
+
               </Button>
+
             </div>
+
           </div>
+
         </div>
+
       </Container>
+
     </header>
+
   );
+
 }

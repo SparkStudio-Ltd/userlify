@@ -1,17 +1,76 @@
-import type { Metadata, Viewport } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
 import '@/styles/globals.css';
+import type { Metadata, Viewport } from 'next';
+import localFont from 'next/font/local';
 
-const inter = Inter({
-  subsets: ['latin'],
+const nohemi = localFont({
+  src: [
+    {
+      path: '../../public/assets/Nohemi-ExtraLight-BF6438cc58a2634.ttf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../../public/assets/Nohemi-Light-BF6438cc5899919.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../public/assets/Nohemi-Regular-BF6438cc4d0e493.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/assets/Nohemi-Medium-BF6438cc5883899.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../../public/assets/Nohemi-SemiBold-BF6438cc588a48a.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../../public/assets/Nohemi-Bold-BF6438cc587b5b5.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../../public/assets/Nohemi-ExtraBold-BF6438cc5881baf.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-nohemi',
   display: 'swap',
-  variable: '--font-inter',
 });
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
+const instrumentSerif = localFont({
+  src: [
+    {
+      path: '../../public/assets/InstrumentSerif-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/assets/InstrumentSerif-Italic.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-instrument',
   display: 'swap',
-  variable: '--font-playfair',
+});
+
+const publicSans = localFont({
+  src: [
+    {
+      path: '../../public/assets/PublicSans-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-public-sans',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -75,9 +134,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: '/logo.svg',
+    shortcut: '/logo.svg',
+    apple: '/logo.svg',
   },
   manifest: '/site.webmanifest',
 };
@@ -98,10 +157,11 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="font-sans antialiased">
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${nohemi.variable} ${instrumentSerif.variable} ${publicSans.variable}`}
+    >
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }

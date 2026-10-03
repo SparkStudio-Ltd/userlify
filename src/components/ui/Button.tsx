@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'cta';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   className?: string;
@@ -12,12 +12,15 @@ interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
 }
 
+// border border-gray-950/20
+
 const variants = {
   primary:
-    'bg-accent text-white shadow-button hover:bg-accent-600 hover:shadow-lg active:scale-95',
-  secondary:
-    'border border-primary-800/20 bg-white/80 text-primary-800 backdrop-blur-sm hover:bg-white hover:border-primary-800/40',
-  ghost: 'text-primary-800 hover:bg-primary-50',
+    'bg-primary text-white hover:bg-primary-600 hover:shadow-lg active:scale-95',
+  secondary: 'bg-white text-[#493936] shadow-[0px_0px_0px_1px_#14141F1F,0px_1px_3px_0px_#14141F1F] hover:bg-white hover:shadow-[0px_0px_0px_1px_#E86A54,0px_1px_3px_0px_#14141F1F]',
+  ghost: 'text-gray-950 hover:bg-gray-50',
+  cta: 'text-[#493936] bg-[white] hover:border-primary'
+
 };
 
 const sizes = {
@@ -37,7 +40,7 @@ export function Button({
   type = 'button',
 }: ButtonProps) {
   const classes = cn(
-    'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300',
+    'font-nav inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300',
     variants[variant],
     sizes[size],
     disabled && 'cursor-not-allowed opacity-50',
@@ -53,12 +56,7 @@ export function Button({
   }
 
   return (
-    <button
-      type={type}
-      className={classes}
-      onClick={onClick}
-      disabled={disabled}
-    >
+    <button type={type} className={classes} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

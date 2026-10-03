@@ -1,15 +1,16 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
 import { ArrowUpRight } from '@/components/icons';
+import SliderSection from '@/components/sections/SliderSection';
+import { Button } from '@/components/ui/Button';
+import { Container } from '@/components/ui/Container';
+import { gsap } from 'gsap';
+import { useEffect, useRef } from 'react';
 
 const floatingTags = [
-  { text: 'App Design', position: 'left-[15%] top-[30%]' },
-  { text: 'Development', position: 'right-[18%] top-[25%]' },
-  { text: 'Web Design', position: 'right-[12%] top-[45%]' },
+  { text: 'App Design', position: 'left-[27%] top-[12%]' },
+  { text: 'Development', position: 'right-[42%] top-[12%]' },
+  { text: 'Web Design', position: 'right-[23%] top-[30%]' },
 ];
 
 export function HeroSection() {
@@ -17,6 +18,11 @@ export function HeroSection() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const tagsRef = useRef<HTMLDivElement[]>([]);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const tagFactorsRef = useRef<{ x: number; y: number; duration: number }[]>([]);
+
+  // Refs for the new background orbs
+  const orb1Ref = useRef<HTMLDivElement>(null);
+  const orb2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -38,16 +44,24 @@ export function HeroSection() {
         delay: 0.3,
       });
 
-      // Floating animation for tags
-      tagsRef.current.forEach((tag, index) => {
-        gsap.to(tag, {
-          y: 'random(-8, 8)',
-          duration: 'random(2, 3)',
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          delay: index * 0.2,
-        });
+      //  Background Orbs Floating Animation (Moving Gradient)
+      gsap.to(orb1Ref.current, {
+        x: -50,
+        y: 50,
+        duration: 6,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+      gsap.to(orb2Ref.current, {
+        x: 50,
+        y: -50,
+        duration: 7,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: 1,
       });
 
       // CTA animation
@@ -58,6 +72,57 @@ export function HeroSection() {
         ease: 'power2.out',
         delay: 0.6,
       });
+
+      if (tagFactorsRef.current.length === 0) {
+        tagFactorsRef.current = [
+          { x: 0.07, y: 0.05, duration: 0.45 }, // App Design: follows
+          { x: -0.06, y: 0.08, duration: 0.32 }, // Development: opposes X, faster
+          { x: 0.05, y: -0.07, duration: 0.58 }, // Web Design: opposes Y, slower
+        ];
+      }
+
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!heroRef.current) return;
+
+        const rect = heroRef.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const offsetX = e.clientX - centerX;
+        const offsetY = e.clientY - centerY;
+
+        tagsRef.current.forEach((tag, index) => {
+          if (!tag) return;
+          const factors = tagFactorsRef.current[index] ?? { x: 0.05, y: 0.05, duration: 0.4 };
+          gsap.to(tag, {
+            x: offsetX * factors.x,
+            y: offsetY * factors.y,
+            duration: factors.duration,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        });
+      };
+
+      const handleMouseLeave = () => {
+        tagsRef.current.forEach((tag) => {
+          if (!tag) return;
+          gsap.to(tag, {
+            x: 0,
+            y: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            overwrite: 'auto',
+          });
+        });
+      };
+
+      heroRef.current?.addEventListener('mousemove', handleMouseMove);
+      heroRef.current?.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        heroRef.current?.removeEventListener('mousemove', handleMouseMove);
+        heroRef.current?.removeEventListener('mouseleave', handleMouseLeave);
+      };
     }, heroRef);
 
     return () => ctx.revert();
@@ -66,67 +131,75 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen overflow-hidden bg-gradient-hero pt-20"
-    >
-      {/* Background gradient orb */}
-      <div className="absolute -left-40 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-gradient-to-br from-accent-200/40 via-accent-100/20 to-transparent blur-3xl" />
+      className="bg-white relative overflow-hidden w-full pb-16 pt-11 md:pb-20  md:pt-24 px-0">
+      <div>
+        <div ref={orb1Ref} className="absolute -top-[20%] -right-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full opacity-40 pointer-events-none" 
+        style={{
+          background: '#E86A54',
+          filter: 'blur(120px)',
+          transform: 'translateZ(0)',
+        }}
+        />
 
-      <Container className="relative">
-        <div className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-center py-20 text-center">
-          {/* Floating Tags */}
-          <div className="absolute inset-0 hidden lg:block">
-            {floatingTags.map((tag, index) => (
-              <div
-                key={tag.text}
-                ref={(el) => {
-                  if (el) tagsRef.current[index] = el;
-                }}
-                className={`tag absolute ${tag.position}`}
-              >
-                {tag.text}
-              </div>
-            ))}
+        {/* Bottom Left Moving Gradient */}
+        <div
+          ref={orb2Ref}
+          className="absolute bottom-[15%] -left-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full opacity-40 pointer-events-none"
+          style={{
+            background: '#E86A54',
+            filter: 'blur(120px)',
+            transform: 'translateZ(0)',
+          }}
+        />
+
+        <Container className="relative">
+          <div className="flex min-h-[430px] md:min-h-[492px] flex-col items-center justify-center mx-auto text-center">
+            {/* Floating Tags */}
+            <div className="absolute inset-0 hidden lg:block">
+              {floatingTags.map((tag, index) => (
+                <div
+                  key={tag.text}
+                  ref={(el) => {
+                    if (el) tagsRef.current[index] = el;
+                  }}
+                  className={`tag absolute z-30 ${tag.position}`}
+                >
+                  {tag.text}
+                </div>
+              ))}
+            </div>
+
+            {/* Main heading */}
+            <h1
+              ref={headingRef}
+              className="max-w-4xl font-heading text-display-1 font-medium leading-tight text-accent-950 md:text-display-1"
+            >
+              Design Agency <span className="md:block">Turning Startup Ideas </span>
+              <span className="md:block">
+                into <span className="font-serif italic text-primary">Real Products</span>
+              </span>
+            </h1>
+
+            {/* CTA Buttons */}
+            <div ref={ctaRef} className="mt-8 md:mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6">
+              <Button href="/get-quote" variant="primary" size="lg">
+                Start Your Project
+                <ArrowUpRight className="h-5 w-5" />
+              </Button>
+              <Button href="/case-study" variant="secondary" size="lg">
+                View Our Work
+                <ArrowUpRight className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
+        </Container>
+      </div>
+       <SliderSection />
 
-          {/* Main heading */}
-          <h1
-            ref={headingRef}
-            className="max-w-4xl text-display-2 font-heading font-bold leading-tight text-primary-800 md:text-display-1"
-          >
-            Design Agency{' '}
-            <span className="block">
-              Turning Startup Ideas
-            </span>
-            <span className="block">
-              into <span className="font-heading italic text-accent">Real Products</span>
-            </span>
-          </h1>
-
-          {/* CTA Buttons */}
-          <div
-            ref={ctaRef}
-            className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6"
-          >
-            <Button href="/get-quote" variant="primary" size="lg">
-              Start Your Project
-              <ArrowUpRight className="h-5 w-5" />
-            </Button>
-            <Button href="/case-study" variant="secondary" size="lg">
-              View Our Work
-              <ArrowUpRight className="h-5 w-5" />
-            </Button>
-          </div>
-
-          {/* Mobile Tags */}
-          <div className="mt-12 flex flex-wrap justify-center gap-3 lg:hidden">
-            {floatingTags.map((tag) => (
-              <div key={tag.text} className="tag">
-                {tag.text}
-              </div>
-            ))}
-          </div>
-        </div>
-      </Container>
     </section>
   );
 }
+
+
+
+
